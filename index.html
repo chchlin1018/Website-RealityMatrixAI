@@ -4,376 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reality Matrix AI — USD↔Revit Interoperability for Semiconductor Fabs</title>
-<meta name="description" content="Reality Matrix AI bridges NVIDIA Omniverse (USD) and Autodesk Revit for semiconductor fabrication facilities. Bidirectional conversion with 99% accuracy in seconds.">
-<meta name="keywords" content="USD, Revit, Omniverse, semiconductor, digital twin, BIM, fab, converter, interoperability, AIF">
-<meta property="og:title" content="Reality Matrix AI — USD↔Revit for Semiconductor Fabs">
-<meta property="og:description" content="Bridging NVIDIA Omniverse and Autodesk Revit for semiconductor fabrication facilities. 99% accuracy. Seconds, not hours.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.realitymatrixai.com">
+<meta name="description" content="Reality Matrix AI bridges NVIDIA Omniverse (USD) and Autodesk Revit for semiconductor fabrication facilities.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23080b12'/><text x='16' y='22' font-size='16' font-weight='bold' text-anchor='middle' fill='%2300dfa2'>RM</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #060910;
-  --bg-subtle: #0b0f1a;
-  --bg-card: #0d1220;
-  --border: #162035;
-  --border-hover: #1e3050;
-  --text: #e4e8f1;
-  --text-dim: #7d8ba6;
-  --text-muted: #4a5672;
-  --accent: #00dfa2;
-  --accent-soft: rgba(0,223,162,0.1);
-  --accent-glow: rgba(0,223,162,0.2);
-  --blue: #3b82f6;
-  --blue-soft: rgba(59,130,246,0.1);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
-a:hover { opacity: .8; }
-
-/* Grid BG */
-.bg-grid {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-  background-size: 72px 72px;
-}
-
-/* Glow */
-.glow {
-  position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0;
-}
-.glow-1 { width: 700px; height: 700px; top: -250px; right: -150px; background: var(--accent-glow); opacity: .35; }
-.glow-2 { width: 500px; height: 500px; bottom: 30%; left: -200px; background: rgba(59,130,246,.1); opacity: .3; }
-
-/* Container */
-.w { max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-
-/* Nav */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 14px 0;
-  background: rgba(6,9,16,.8);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-}
-nav .w { display: flex; align-items: center; justify-content: space-between; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; letter-spacing: -.3px; }
-.logo-icon {
-  width: 30px; height: 30px; border-radius: 7px;
-  background: linear-gradient(135deg, var(--accent), #00b87d);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 11px; color: var(--bg); letter-spacing: -.5px;
-}
-.nav-cta {
-  font-size: 13px; font-weight: 500;
-  border: 1px solid rgba(0,223,162,.3); padding: 7px 18px; border-radius: 7px;
-  transition: all .2s;
-}
-.nav-cta:hover { background: var(--accent-soft); opacity: 1; }
-
-/* Hero */
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 70px; }
-.badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
-  color: var(--accent); background: var(--accent-soft);
-  border: 1px solid rgba(0,223,162,.15);
-  padding: 5px 12px; border-radius: 99px;
-  margin-bottom: 24px; letter-spacing: .5px; text-transform: uppercase;
-}
-.badge .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-
-h1 {
-  font-size: clamp(38px, 6vw, 68px); font-weight: 700;
-  line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 22px;
-}
-h1 .g {
-  background: linear-gradient(135deg, var(--accent), #6ee7b7, var(--blue));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.hero p { font-size: clamp(16px, 2vw, 20px); color: var(--text-dim); max-width: 540px; margin-bottom: 36px; }
-.cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent); color: var(--bg); font-weight: 600; font-size: 14px;
-  padding: 13px 26px; border-radius: 9px;
-  box-shadow: 0 0 30px var(--accent-glow);
-  transition: all .25s;
-}
-.cta:hover { opacity: 1; transform: translateY(-1px); box-shadow: 0 0 50px var(--accent-glow); }
-.cta svg { width: 16px; height: 16px; }
-
-/* Stats */
-.stats {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 1px; background: var(--border);
-  border: 1px solid var(--border); border-radius: 12px;
-  overflow: hidden; margin: 72px 0;
-}
-.stat { background: var(--bg-card); padding: 32px 24px; text-align: center; }
-.stat-v {
-  font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; letter-spacing: -1px;
-  color: var(--accent); font-family: 'JetBrains Mono', monospace;
-}
-.stat-l { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
-
-/* Sections */
-section { padding: 72px 0; }
-.stag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 1.5px; color: var(--accent); margin-bottom: 12px;
-}
-h2 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; letter-spacing: -.8px; margin-bottom: 16px; }
-.sub { color: var(--text-dim); font-size: 16px; max-width: 520px; margin-bottom: 40px; }
-
-/* Problem → Solution */
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-  padding: 32px 28px; transition: border-color .3s;
-}
-.card:hover { border-color: var(--border-hover); }
-.card-icon { font-size: 28px; margin-bottom: 16px; }
-.card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-.card p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-
-/* Features */
-.features { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-.feat {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-  padding: 28px 24px; transition: border-color .3s;
-}
-.feat:hover { border-color: var(--border-hover); }
-.feat-icon {
-  width: 40px; height: 40px; border-radius: 10px; margin-bottom: 16px;
-  display: flex; align-items: center; justify-content: center; font-size: 18px;
-}
-.feat-icon.green { background: var(--accent-soft); }
-.feat-icon.blue { background: var(--blue-soft); }
-.feat h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-.feat p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
-
-/* Team */
-.team-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-  padding: 36px 32px; max-width: 640px;
-}
-.team-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-.team-card .role { color: var(--accent); font-size: 14px; font-weight: 500; margin-bottom: 16px; }
-.team-card p { font-size: 14px; color: var(--text-dim); line-height: 1.8; }
-.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.tag {
-  font-size: 11px; font-weight: 500; padding: 4px 10px;
-  border-radius: 6px; border: 1px solid var(--border);
-  color: var(--text-dim);
-}
-
-/* CTA section */
-.cta-section {
-  text-align: center; padding: 80px 0;
-  border-top: 1px solid var(--border);
-}
-.cta-section h2 { margin-bottom: 12px; }
-.cta-section p { color: var(--text-dim); font-size: 16px; margin-bottom: 28px; }
-.email-link {
-  font-family: 'JetBrains Mono', monospace; font-size: 15px;
-  color: var(--accent);
-}
-
-/* Footer */
-footer {
-  padding: 28px 0; border-top: 1px solid var(--border);
-  text-align: center; font-size: 13px; color: var(--text-muted);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .split { grid-template-columns: 1fr; }
-  .features { grid-template-columns: 1fr; }
-  .stats { grid-template-columns: 1fr; }
-  h1 { letter-spacing: -1px; }
-}
-
-/* Animations */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero .badge { animation: fadeUp .6s ease both; }
-.hero h1 { animation: fadeUp .6s ease .1s both; }
-.hero p { animation: fadeUp .6s ease .2s both; }
-.hero .cta { animation: fadeUp .6s ease .3s both; }
-.stat { animation: fadeUp .5s ease both; }
-.stat:nth-child(2) { animation-delay: .1s; }
-.stat:nth-child(3) { animation-delay: .2s; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#060910;--bg-card:#0d1220;--border:#162035;--text:#e4e8f1;--text-dim:#7d8ba6;--accent:#00dfa2;--accent-soft:rgba(0,223,162,0.1);--accent-glow:rgba(0,223,162,0.2);--blue:#3b82f6}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.8}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px}
+.glow{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
+.glow-1{width:700px;height:700px;top:-250px;right:-150px;background:var(--accent-glow);opacity:.35}
+.w{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(6,9,16,.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+nav .w{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;letter-spacing:-.3px}
+.logo-icon{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--accent),#00b87d);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--bg);letter-spacing:-.5px}
+.nav-cta{font-size:13px;font-weight:500;border:1px solid rgba(0,223,162,.3);padding:7px 18px;border-radius:7px;transition:all .2s}
+.nav-cta:hover{background:var(--accent-soft);opacity:1}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:70px}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(0,223,162,.15);padding:5px 12px;border-radius:99px;margin-bottom:24px;letter-spacing:.5px;text-transform:uppercase}
+.badge .dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-size:clamp(38px,6vw,68px);font-weight:700;line-height:1.08;letter-spacing:-1.5px;margin-bottom:22px}
+h1 .g{background:linear-gradient(135deg,var(--accent),#6ee7b7,var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(16px,2vw,20px);color:var(--text-dim);max-width:540px;margin-bottom:36px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--bg);font-weight:600;font-size:14px;padding:13px 26px;border-radius:9px;box-shadow:0 0 30px var(--accent-glow);transition:all .25s}
+.cta:hover{opacity:1;transform:translateY(-1px);box-shadow:0 0 50px var(--accent-glow)}
+.cta svg{width:16px;height:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:72px 0}
+.stat{background:var(--bg-card);padding:32px 24px;text-align:center}
+.stat-v{font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-1px;color:var(--accent);font-family:'JetBrains Mono',monospace}
+.stat-l{font-size:13px;color:var(--text-dim);margin-top:4px}
+footer{padding:28px 0;border-top:1px solid var(--border);text-align:center;font-size:13px;color:#55556a}
+@media(max-width:768px){.stats{grid-template-columns:1fr}h1{letter-spacing:-1px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero .badge{animation:fadeUp .6s ease both}
+.hero h1{animation:fadeUp .6s ease .1s both}
+.hero p{animation:fadeUp .6s ease .2s both}
+.hero .cta{animation:fadeUp .6s ease .3s both}
 </style>
 </head>
 <body>
-
 <div class="bg-grid"></div>
 <div class="glow glow-1"></div>
-<div class="glow glow-2"></div>
-
-<!-- Nav -->
-<nav>
-  <div class="w">
-    <div class="logo">
-      <div class="logo-icon">RM</div>
-      Reality Matrix AI
-    </div>
-    <a href="#contact" class="nav-cta">Contact Us</a>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-  <div class="w">
-    <div class="badge"><span class="dot"></span> AIF Compliant · USD ↔ Revit</div>
-    <h1>Bridging <span class="g">Digital Twins</span> to Engineering Reality</h1>
-    <p>The only bidirectional USD↔Revit converter built for semiconductor fabrication facilities. NVIDIA AIF compliant. Seconds, not hours.</p>
-    <a href="#contact" class="cta">
-      Get in Touch
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- Stats -->
-<div class="w">
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-v">402/402</div>
-      <div class="stat-l">Elements Converted</div>
-    </div>
-    <div class="stat">
-      <div class="stat-v">~7s</div>
-      <div class="stat-l">Conversion Time</div>
-    </div>
-    <div class="stat">
-      <div class="stat-v">99%</div>
-      <div class="stat-l">Round-Trip Accuracy</div>
-    </div>
-  </div>
-</div>
-
-<!-- Problem / Solution -->
-<section>
-  <div class="w">
-    <div class="stag">The Gap</div>
-    <h2>Two Worlds, One Facility</h2>
-    <p class="sub">Semiconductor fabs generate massive 3D digital twins in NVIDIA Omniverse. Engineers need that data in Autodesk Revit. Until now, there was no bridge.</p>
-    <div class="split">
-      <div class="card">
-        <div class="card-icon">⚠️</div>
-        <h3>The Problem</h3>
-        <p>NVIDIA Omniverse creates stunning USD-based digital twins for semiconductor fabs — but MEP engineers, EPC contractors, and facility teams live in Autodesk Revit. Manual conversion takes weeks, loses critical metadata, and breaks compliance. No production-grade converter exists.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">✅</div>
-        <h3>Our Solution</h3>
-        <p>Zigma Converter is a native Revit plugin that performs lossless, bidirectional USD↔Revit conversion in seconds. Fully AIF-compliant, preserving all facility metadata — piping specs, equipment tags, spatial coordinates — ready for engineering workflows from day one.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Features -->
-<section>
-  <div class="w">
-    <div class="stag">Capabilities</div>
-    <h2>Built for Semiconductor Scale</h2>
-    <p class="sub">Engineered from the ground up for the complexity of modern fab environments.</p>
-    <div class="features">
-      <div class="feat">
-        <div class="feat-icon green">⚡</div>
-        <h3>Blazing Fast</h3>
-        <p>Full facility conversion in seconds, not hours. Optimized C++ core with native Revit API integration.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon blue">🔄</div>
-        <h3>Bidirectional</h3>
-        <p>USD→Revit and Revit→USD. True round-trip fidelity with 99% accuracy across all MEP elements.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon green">📋</div>
-        <h3>AIF Compliant</h3>
-        <p>Built to NVIDIA's Asset Interchange Framework standard. Future-proof interoperability guaranteed.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon blue">🏭</div>
-        <h3>Fab-Grade Metadata</h3>
-        <p>Preserves piping specifications, equipment tags, spatial coordinates, and all facility-critical attributes.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon green">🔒</div>
-        <h3>Air-Gap Ready</h3>
-        <p>Designed for semiconductor security requirements. Fully offline operation with hardware-bound licensing.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon blue">🔌</div>
-        <h3>Native Plugin</h3>
-        <p>Installs directly into Revit 2026/2027. No middleware, no cloud dependency. One-click export and import.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Team -->
-<section>
-  <div class="w">
-    <div class="stag">Leadership</div>
-    <h2>20 Years of Industry Expertise</h2>
-    <p class="sub">Deep roots in BIM, industrial software, and semiconductor facility engineering.</p>
-    <div class="team-card">
-      <h3>Michael Lin 林志鑫</h3>
-      <div class="role">Founder & CEO</div>
-      <p>Two decades spanning Autodesk Taiwan (BIM/Revit), Dassault Systèmes, Epic Games APAC, and AVEVA Taiwan. Former Head of AVEVA Taiwan, recipient of the 2022 AVEVA President's Award. Second-time founder with deep expertise in industrial digital transformation and USD/Revit interoperability. NTU Civil & Structural Engineering.</p>
-      <div class="team-tags">
-        <span class="tag">Autodesk BIM · 20yr</span>
-        <span class="tag">AVEVA President's Award</span>
-        <span class="tag">Digital Twin</span>
-        <span class="tag">USD Expert</span>
-        <span class="tag">NTU Engineering</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="w">
-    <div class="stag">Get Started</div>
-    <h2>Ready to Bridge the Gap?</h2>
-    <p>Let's discuss how Zigma Converter can accelerate your fab's digital twin workflow.</p>
-    <a href="mailto:michael.lin@realitymatrixai.com" class="email-link">michael.lin@realitymatrixai.com</a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="w">
-    © 2026 Reality Matrix Inc. (實矩科技) · Taipei, Taiwan
-  </div>
-</footer>
-
-</body>
-</html>
+<nav><div class="w">
+<div class="logo"><div class="logo-icon">RM</div>Reality Matrix AI</div>
+<a href="mailto:michael.lin@realitymatrixai.com" class="nav-cta">Contact Us</a>
+</div></nav>
+<section class="hero"><div class="w">
+<div class="badge"><span class="dot"></span> AIF Compliant · USD ↔ Revit</div>
+<h1>Bridging <span class="g">Digital Twins</span> to Engineering Reality</h1>
+<p>The only bidirectional USD↔Revit converter built for semiconductor fabrication facilities. NVIDIA AIF compliant. Seconds, not hours.</p>
+<a href="mailto:michael.lin@realitymatrixai.com" class="cta">Get in Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div></section>
+<div class="w"><div class="stats">
+<div class="stat"><div class="stat-v">402/402</div><div class="stat-l">Elements Converted</div></div>
+<div class="stat"><div class="stat-v">~7s</div><div class="stat-l">Conversion Time</div></div>
+<div class="stat"><div class="stat-v">99%</div><div class="stat-l">Round-Trip Accuracy</div></div>
+</div></div>
+<footer><div class="w">© 2026 Reality Matrix Inc. (實矩科技) · Taipei, Taiwan</div></footer>
+</body></html>

@@ -61,15 +61,15 @@ h1 .g{background:linear-gradient(125deg,var(--accent) 0%,#6ee7b7 50%,var(--blue)
 .diagram-section{padding:80px 0 20px}
 .diagram{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:40px;overflow:hidden;position:relative}
 .diagram::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.diagram-title{text-align:center;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:36px}
-.diagram-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
-.diag-box{background:var(--bg-card2);border:1px solid var(--border-bright);border-radius:12px;padding:20px 24px;text-align:center;min-width:160px}
+.diagram-title{text-align:center;font-size:11px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.45);letter-spacing:1px;text-transform:uppercase;margin-bottom:36px}
+.diagram-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px}
+.diag-box{background:var(--bg-card2);border:1px solid var(--border-bright);border-radius:14px;padding:22px 26px;text-align:center;min-width:170px}
 .diag-box.nv-box{border-color:rgba(118,185,0,.3);background:rgba(118,185,0,.04)}
 .diag-box.rm-box{border-color:rgba(0,223,162,.4);background:rgba(0,223,162,.06);position:relative}
 .diag-box.bim-box{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.04)}
-.diag-icon{font-size:28px;margin-bottom:8px}
-.diag-name{font-size:13px;font-weight:700;margin-bottom:4px}
-.diag-sub{font-size:11px;color:var(--text-muted)}
+.diag-icon{font-size:28px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;min-height:44px}
+.diag-name{font-size:14px;font-weight:700;margin-bottom:5px;color:#fff}
+.diag-sub{font-size:12px;color:rgba(255,255,255,0.6)}
 .diag-name.nv{color:var(--nv-green)}.diag-name.rm{color:var(--accent)}.diag-name.bim{color:var(--blue)}
 .diag-arrow{display:flex;flex-direction:column;align-items:center;padding:0 16px;gap:6px}
 .arrow-line{width:60px;height:2px;background:linear-gradient(90deg,rgba(0,223,162,.2),rgba(0,223,162,.6),rgba(0,223,162,.2))}
@@ -199,10 +199,14 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     <div class="diagram-title">Architecture · AI Factory → BIM Bridge</div>
     <div class="diagram-flow">
       <div class="diag-box nv-box">
-        <div class="diag-icon">⚡</div>
+        <div class="diag-icon">
+          <svg width="90" height="28" viewBox="0 0 90 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="22" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="20" fill="#76b900" letter-spacing="-0.5">NVIDIA</text>
+          </svg>
+        </div>
         <div class="diag-name nv">NVIDIA Omniverse</div>
         <div class="diag-sub">AI Factory Digital Twin</div>
-        <div class="diag-sub" style="font-size:10px;margin-top:4px">DGX Racks · CDU · CRAH · UPS</div>
+        <div class="diag-sub" style="font-size:11px;margin-top:4px;color:rgba(255,255,255,0.4)">DGX Racks · CDU · CRAH · UPS</div>
       </div>
       <div class="diag-arrow">
         <div class="arrow-text" style="color:var(--accent);font-weight:700">USD → Revit ★</div>
@@ -211,10 +215,21 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
       </div>
       <div class="diag-box rm-box">
         <div class="diag-badge">Reality Matrix</div>
-        <div class="diag-icon">🔌</div>
+        <div class="diag-icon">
+          <svg width="82" height="26" viewBox="0 0 82 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="zg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b7dff"/>
+                <stop offset="100%" stop-color="#7aa8ff"/>
+              </linearGradient>
+            </defs>
+            <text x="0" y="22" font-family="DM Sans, Arial, sans-serif" font-weight="800" font-size="24" fill="url(#zg)">Z</text>
+            <text x="18" y="21" font-family="DM Sans, Arial, sans-serif" font-weight="600" font-size="20" fill="white">igma</text>
+          </svg>
+        </div>
         <div class="diag-name rm">Zigma Converter</div>
         <div class="diag-sub">Bidirectional Bridge</div>
-        <div class="diag-sub" style="font-size:10px;margin-top:4px">★ Import = Our Permanent Moat</div>
+        <div class="diag-sub" style="font-size:11px;margin-top:4px;color:rgba(0,223,162,0.7)">★ Import = Our Permanent Moat</div>
       </div>
       <div class="diag-arrow">
         <div class="arrow-text" style="color:var(--accent);font-weight:700">USD → Revit ★</div>
@@ -222,10 +237,16 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
         <div class="arrow-text">Revit → USD</div>
       </div>
       <div class="diag-box bim-box">
-        <div class="diag-icon">🏗️</div>
+        <div class="diag-icon">
+          <svg width="88" height="28" viewBox="0 0 88 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="5" fill="#0696D7"/>
+            <text x="14" y="21" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="17" text-anchor="middle" fill="white">R</text>
+            <text x="34" y="21" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.9)">Revit</text>
+          </svg>
+        </div>
         <div class="diag-name bim">Autodesk Revit</div>
         <div class="diag-sub">MEP Engineering Team</div>
-        <div class="diag-sub" style="font-size:10px;margin-top:4px">EPC · Fab Facility Design</div>
+        <div class="diag-sub" style="font-size:11px;margin-top:4px;color:rgba(255,255,255,0.4)">EPC · Fab Facility Design</div>
       </div>
     </div>
   </div>
@@ -242,7 +263,9 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   <div class="nv-grid">
     <div>
       <a href="https://www.nvidia.com/en-us/omniverse/" target="_blank" rel="noopener" class="nv-link-card">
-        <div class="nv-link-icon">⚡</div>
+        <div class="nv-link-icon" style="background:rgba(118,185,0,.15)">
+          <svg width="36" height="14" viewBox="0 0 72 22" fill="none"><text x="0" y="18" font-family="Arial Black,sans-serif" font-weight="900" font-size="17" fill="#76b900">NVIDIA</text></svg>
+        </div>
         <div class="nv-link-text"><div class="nv-link-label">NVIDIA Omniverse</div><div class="nv-link-sub">Real-time 3D collaboration &amp; simulation platform</div></div>
         <span class="nv-link-arrow">↗</span>
       </a>

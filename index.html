@@ -36,6 +36,10 @@ nav .w{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav-links{display:flex;align-items:center;gap:8px}
 .nav-link{font-size:13px;color:var(--text-dim);padding:7px 14px;border-radius:7px;transition:all .2s}
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,.04);opacity:1}
+.lang-sw{display:flex;align-items:center;gap:2px;margin-right:4px}
+.lbtn{font-size:11px;font-weight:600;padding:5px 9px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;font-family:'JetBrains Mono',monospace;letter-spacing:.3px}
+.lbtn:hover{color:var(--text);border-color:var(--border-bright)}
+.lbtn.active{background:rgba(255,255,255,.08);color:var(--text);border-color:var(--border-bright)}
 .nav-cta{font-size:14px;font-weight:700;border:1px solid rgba(0,223,162,.35);padding:10px 24px;border-radius:8px;color:var(--accent);transition:all .2s}
 .nav-cta:hover{background:rgba(0,223,162,.08);opacity:1}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;padding-bottom:60px}
@@ -177,9 +181,14 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 <nav><div class="w">
   <div class="logo"><div class="logo-icon">RM</div>Reality Matrix AI</div>
   <div class="nav-links">
-    <a href="#ecosystem" class="nav-link">NVIDIA</a>
-    <a href="#product" class="nav-link">Product</a>
-    <a href="#who" class="nav-link">Who We Serve</a>
+    <div class="lang-sw">
+      <button class="lbtn" id="lbtn-en" onclick="setLang('en')">EN</button>
+      <button class="lbtn" id="lbtn-zh" onclick="setLang('zh')">中文</button>
+      <button class="lbtn" id="lbtn-ja" onclick="setLang('ja')">日本語</button>
+    </div>
+    <a href="#ecosystem" class="nav-link" data-i18n="nav_nvidia">NVIDIA</a>
+    <a href="#product" class="nav-link" data-i18n="nav_product">Product</a>
+    <a href="#who" class="nav-link" data-i18n="nav_serve">Who We Serve</a>
     <a href="https://www.zigma.club" target="_blank" class="nav-cta"><span class="zl"><span class="z">Z</span><span class="igma">igma</span></span> →</a>
   </div>
 </div></nav>
@@ -387,5 +396,268 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     <a href="mailto:michael.lin@realitymatrixai.com">Contact</a>
   </div>
 </div></footer>
+<script>
+// ── Reality Matrix AI — i18n (EN / 中文 / 日本語) ──
+const _RM = {
+en:{
+  nav_nvidia:'NVIDIA', nav_product:'Product', nav_serve:'Who We Serve',
+  b_live:'Product Live', b_nv:'NVIDIA Omniverse Ecosystem', b_aif:'AI Factory Compatible',
+  h1:'From AI Factory', h2:'to Revit. Finally.',
+  h_sub:'The digital twin lives in NVIDIA Omniverse. Your MEP engineering team works in Autodesk Revit. Autodesk exports Revit to USD — but will never import back. Zigma fills that permanent gap.',
+  h_tag:'Omniverse → Revit &nbsp;·&nbsp; <span>USD → BIM</span> &nbsp;·&nbsp; <span>Bidirectional · AI Factory</span>',
+  h_cta1:'Free Trial', h_cta2:'Enterprise Inquiry',
+  diag_title:'Architecture · AI Factory → BIM Bridge',
+  d1n:'NVIDIA Omniverse', d1s1:'AI Factory Digital Twin', d1s2:'DGX Racks · CDU · CRAH · UPS',
+  d2n:'Zigma Converter', d2s1:'Bidirectional Bridge', d2s2:'★ Import = Our Permanent Moat',
+  d3n:'Autodesk Revit', d3s1:'MEP Engineering Team', d3s2:'EPC · Fab Facility Design',
+  arr1:'USD → Revit ★', arr2:'Revit → USD',
+  st1:'MEP Component Types · 100% Export', st2:'Round-Trip Accuracy', st3:'Full Conversion Speed',
+  ns_e:'NVIDIA ECOSYSTEM', ns_t:'Built for NVIDIA AI Factory',
+  ns_d:'NVIDIA AI Factory digital twins contain precision simulation data — GPU rack layouts, CDU cooling specs, power budgets. Zigma brings this data INTO Autodesk Revit, where EPC and MEP teams do their work.',
+  nl1:'NVIDIA Omniverse', nl1s:'Real-time 3D collaboration & simulation platform',
+  nl2:'SimReady & AI Factory Pipeline', nl2s:"NVIDIA's standard for simulation-ready USD assets in AI Factory digital twins",
+  nl3:'NVIDIA AI Factory', nl3s:'Full-stack AI infrastructure — GPU racks, cooling, power, facility digital twins',
+  nl4:'OpenUSD', nl4s:'Universal Scene Description — the language of digital twins',
+  nb1:'★ USD → Revit: The Permanent Gap', nb1d:"Autodesk exports Revit to USD and will never import back — that protects their Forma cloud. Zigma fills this permanent gap: AI Factory digital twin data flows INTO Revit, where EPC teams actually work.",
+  nb2:'OpenUSD Native · AI Factory Compatible', nb2d:'Our USD output uses aif:core: and aif:spec: namespaces — the same metadata spec used by NVIDIA\'s AI Factory pipeline for CDU, CRAH, UPS, and DGX rack assets.',
+  nb3:'Bidirectional · Full Round-Trip', nb3d:'OV → Revit to ground the digital twin in real MEP design. Revit → OV to sync updated MEP back to the AI Factory model. 99% round-trip accuracy across 402 component types.',
+  nb4:'SolidWorks: Equipment Layer Next', nb4d:'Equipment vendors (CDU, CRAH, UPS manufacturers) design in SolidWorks. Zigma SolidWorks connector bridges equipment CAD directly to Omniverse — expanding our coverage from facility MEP to equipment-level assets.',
+  pe:'PRODUCT', pt_pre:'Converter', pd:'Brings NVIDIA Omniverse AI Factory data into Autodesk Revit — and syncs it back. Bidirectional. AIF-compatible. Available now at',
+  p_tag:'For Semiconductor Fabs · EPC Contractors · MEP Engineers',
+  p_ver:'v2.0.0 · Windows · Revit 2026–2027 · AIF-Compliant',
+  pf1t:'USD → Revit Import (Primary)', pf1d:'Bring AI Factory digital twin data from Omniverse INTO Revit. The direction Autodesk will never support. 398/402 components fully restored.',
+  pf2t:'Revit → USD Export', pf2d:'Export MEP design from Revit back to Omniverse for digital twin sync. 402/402 component types, 100% export with AI Factory-compatible metadata.',
+  pf3t:'~7 Second Conversion', pf3d:'Full fab MEP model in seconds. Ready for Omniverse ingestion immediately.',
+  pf4t:'Enterprise License System', pf4d:'Machine-locked licensing with Trial / Licensed / Unlimited tiers. HMAC-SHA256 token security. Offline-capable for restricted fab environments.',
+  pf5t:'Built-in USD Viewer', pf5d:'Preview AI Factory USD models directly in Revit before and after conversion. No external tools needed.',
+  pf6t:'SolidWorks Connector (Next)', pf6d:'Equipment vendors (CDU, CRAH, UPS) design in SolidWorks. Zigma SolidWorks connector extends the AI Factory coverage to the equipment layer.',
+  se:'WHO WE SERVE', st_t:'Built for the Industrial Enterprise',
+  sd:'Our customers are the teams building and operating the world\'s most advanced manufacturing facilities.',
+  sc1t:'Semiconductor Fabs', sc1d:'Leading foundries building AI Factory digital twins in Omniverse need their facility MEP data in Revit — and Revit MEP data synced back to the digital twin. Zigma is the bridge.',
+  sc2t:'EPC Contractors', sc2d:'Engineering, Procurement & Construction firms design semiconductor fab MEP in Revit. They need to import AI Factory reference models from Omniverse into Revit — and deliver USD back to the fab.',
+  sc3t:'Equipment Suppliers', sc3d:"CDU, CRAH, UPS, and rack manufacturers design in SolidWorks. Zigma's SolidWorks connector will bridge their equipment CAD directly to Omniverse — completing the AI Factory asset pipeline.",
+  we:'WHY REALITY MATRIX', wt:'The Permanent Gap We Fill',
+  wc1t:"Autodesk Will Never Do Import", wc1d:"Autodesk exports Revit → USD to pull you into Forma cloud. Importing USD back to Revit would break that strategy — so they won't. That's our permanent moat: OV → Revit is ours alone.",
+  wc2t:'AI Factory Domain Knowledge', wc2d:'402 MEP component types mapped to correct AI Factory metadata namespaces. Built from real semiconductor fab Revit files. No other tool has this.',
+  wc3t:'Proven on Real Fab Data', wc3d:'Validated against actual semiconductor fab MEP models. 40 PASS / 0 FAIL. Production-grade, not a prototype.',
+  wc4t:'Full Ecosystem Coverage', wc4d:'Facility MEP via Revit. Equipment CAD via SolidWorks (next). Both feed into NVIDIA AI Factory. Reality Matrix covers every import path Autodesk left open.',
+  te:'FOUNDING TEAM', tt:'Built by Industry Veterans',
+  tm_bio:'20+ years in industrial software across Greater China and APAC — Autodesk (BIM/Revit Lead & M&E Director), Dassault Systèmes, EPIC Games APAC, and AVEVA Taiwan (Head of Taiwan, <strong style="color:var(--accent)">2022 President Award</strong>). Second-time founder. NTU Civil Engineering.',
+  fc_t:"Ready to bring your<br>AI Factory into Revit?",
+  fc_d:'NVIDIA Omniverse has the digital twin. Your MEP team has Revit. Zigma connects them — in both directions.',
+  fc_cta1:'Free Trial', fc_cta2:'Enterprise Inquiry',
+  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · Taipei, Taiwan',
+  zp_link:'Zigma Product', nv_link:'NVIDIA Omniverse', ct_link:'Contact'
+},
+zh:{
+  nav_nvidia:'NVIDIA', nav_product:'產品', nav_serve:'服務對象',
+  b_live:'產品已上線', b_nv:'NVIDIA Omniverse 生態系', b_aif:'AI Factory 相容',
+  h1:'從 AI Factory', h2:'到 Revit，終於實現。',
+  h_sub:'數位孿生存在於 NVIDIA Omniverse。MEP 工程師在 Autodesk Revit 工作。Autodesk 只將 Revit 匯出至 USD，卻永遠不會匯入。Zigma 填補了這個永久缺口。',
+  h_tag:'Omniverse → Revit &nbsp;·&nbsp; <span>USD → BIM</span> &nbsp;·&nbsp; <span>雙向 · AI Factory</span>',
+  h_cta1:'免費試用', h_cta2:'企業諮詢',
+  diag_title:'架構 · AI Factory → BIM 橋接',
+  d1n:'NVIDIA Omniverse', d1s1:'AI Factory 數位孿生', d1s2:'DGX Rack · CDU · CRAH · UPS',
+  d2n:'Zigma Converter', d2s1:'雙向橋接', d2s2:'★ 匯入 = 我們的永久護城河',
+  d3n:'Autodesk Revit', d3s1:'MEP 工程師團隊', d3s2:'EPC · 廠房設施設計',
+  arr1:'USD → Revit ★', arr2:'Revit → USD',
+  st1:'MEP 元件類型 · 100% 匯出', st2:'往返轉換精確率', st3:'完整轉換速度',
+  ns_e:'NVIDIA 生態系', ns_t:'專為 NVIDIA AI Factory 打造',
+  ns_d:'NVIDIA AI Factory 數位孿生包含精準模擬數據 — GPU 機架佈局、CDU 冷卻規格、電力預算。Zigma 將這些數據帶入 Autodesk Revit，讓 EPC 和 MEP 團隊能夠直接使用。',
+  nl1:'NVIDIA Omniverse', nl1s:'即時 3D 協作與模擬平台',
+  nl2:'SimReady & AI Factory Pipeline', nl2s:'NVIDIA AI Factory 數位孿生的模擬就緒資產標準',
+  nl3:'NVIDIA AI Factory', nl3s:'完整 AI 基礎設施 — GPU 機架、冷卻、電力、設施數位孿生',
+  nl4:'OpenUSD', nl4s:'Universal Scene Description — 數位孿生的語言',
+  nb1:'★ USD → Revit：永久缺口', nb1d:'Autodesk 將 Revit 匯出至 USD 以鎖定 Forma 雲端，永遠不會匯入回來。Zigma 填補了這個永久缺口：AI Factory 數位孿生數據流入 Revit，讓 EPC 團隊能夠實際使用。',
+  nb2:'OpenUSD 原生 · AI Factory 相容', nb2d:'我們的 USD 輸出使用 aif:core: 和 aif:spec: 命名空間，與 NVIDIA AI Factory Pipeline 的 CDU、CRAH、UPS 和 DGX Rack 資產規格完全一致。',
+  nb3:'雙向 · 完整往返', nb3d:'OV → Revit 將數位孿生落地至實際 MEP 設計。Revit → OV 將更新後的 MEP 同步回 AI Factory 模型。402 種元件類型 99% 往返精確率。',
+  nb4:'SolidWorks：設備層（下一步）', nb4d:'CDU、CRAH、UPS 設備廠商使用 SolidWorks 設計。Zigma SolidWorks Connector 將設備 CAD 直接橋接至 Omniverse，將覆蓋範圍從設施 MEP 擴展至設備層。',
+  pe:'產品', pt_pre:'Converter', pd:'將 NVIDIA Omniverse AI Factory 數據帶入 Autodesk Revit，並雙向同步。雙向 · AI Factory 相容。立即試用：',
+  p_tag:'適用於半導體廠 · EPC 承包商 · MEP 工程師',
+  p_ver:'v2.0.0 · Windows · Revit 2026–2027 · AI Factory 相容',
+  pf1t:'USD → Revit 匯入（主要功能）', pf1d:'將 AI Factory 數位孿生數據從 Omniverse 帶入 Revit。Autodesk 永遠不會支援的方向。398/402 元件完整還原。',
+  pf2t:'Revit → USD 匯出', pf2d:'將 MEP 設計從 Revit 匯出回 Omniverse 進行數位孿生同步。402/402 元件類型，100% 匯出並附帶 AI Factory 相容 metadata。',
+  pf3t:'~7 秒完成轉換', pf3d:'完整廠房 MEP 模型僅需幾秒。立即準備好供 Omniverse 接收。',
+  pf4t:'企業授權系統', pf4d:'機器鎖定授權，分 Trial / Licensed / Unlimited 層級。HMAC-SHA256 令牌安全。支援受限廠房環境的離線模式。',
+  pf5t:'內建 USD Viewer', pf5d:'在 Revit 中直接預覽 AI Factory USD 模型，轉換前後皆可。無需外部工具。',
+  pf6t:'SolidWorks Connector（即將推出）', pf6d:'設備廠商（CDU、CRAH、UPS）使用 SolidWorks 設計。Zigma SolidWorks Connector 將設備 CAD 橋接至 Omniverse，擴展 AI Factory 覆蓋範圍至設備層。',
+  se:'服務對象', st_t:'專為工業企業打造',
+  sd:'我們的客戶是建造和運營全球最先進製造設施的團隊。',
+  sc1t:'半導體廠', sc1d:'在 Omniverse 建立 AI Factory 數位孿生的頂尖晶圓廠，需要將設施 MEP 數據帶入 Revit，並將 Revit MEP 數據同步回數位孿生。Zigma 就是這座橋。',
+  sc2t:'EPC 承包商', sc2d:'在 Revit 設計半導體廠 MEP 的工程、採購和建設公司，需要從 Omniverse 匯入 AI Factory 參考模型至 Revit，並將 USD 交付回廠方。',
+  sc3t:'設備供應商', sc3d:'CDU、CRAH、UPS 和機架製造商使用 SolidWorks 設計。Zigma SolidWorks Connector 將設備 CAD 橋接至 Omniverse，完成 AI Factory 資產管線。',
+  we:'為何選擇我們', wt:'我們填補的永久缺口',
+  wc1t:'Autodesk 永遠不做匯入', wc1d:'Autodesk 將 Revit → USD 匯出以推動 Forma 雲端。將 USD 匯入回 Revit 會破壞這個策略 — 所以他們永遠不會做。OV → Revit 是我們獨有的永久護城河。',
+  wc2t:'AI Factory 領域知識', wc2d:'402 種 MEP 元件類型已對應至正確的 AI Factory metadata 命名空間。從真實半導體廠 Revit 檔案建立。沒有其他工具擁有這些。',
+  wc3t:'經真實廠房數據驗證', wc3d:'針對實際半導體廠 MEP 模型驗證。40 PASS / 0 FAIL。生產級別，非原型。',
+  wc4t:'完整生態系覆蓋', wc4d:'透過 Revit 覆蓋設施 MEP。透過 SolidWorks（下一步）覆蓋設備 CAD。兩者都接入 NVIDIA AI Factory。Reality Matrix 覆蓋 Autodesk 留下的所有匯入路徑。',
+  te:'創辦團隊', tt:'由業界資深人士打造',
+  tm_bio:'在大中華區和亞太地區擁有 20 多年工業軟體經驗 — Autodesk（BIM/Revit 負責人及 M&E 總監）、Dassault Systèmes、Epic Games APAC，以及 AVEVA 台灣（台灣區總經理，<strong style="color:var(--accent)">2022 年總裁獎</strong>）。二次創業。台灣大學土木工程系。',
+  fc_t:'準備好將<br>AI Factory 帶入 Revit 了嗎？',
+  fc_d:'NVIDIA Omniverse 擁有數位孿生。MEP 團隊使用 Revit。Zigma 雙向連接它們。',
+  fc_cta1:'免費試用', fc_cta2:'企業諮詢',
+  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 台北，台灣',
+  zp_link:'Zigma 產品', nv_link:'NVIDIA Omniverse', ct_link:'聯絡我們'
+},
+ja:{
+  nav_nvidia:'NVIDIA', nav_product:'製品', nav_serve:'導入企業',
+  b_live:'製品リリース済', b_nv:'NVIDIA Omniverse エコシステム', b_aif:'AI Factory 対応',
+  h1:'AI Factory から', h2:'Revit へ。ついに実現。',
+  h_sub:'デジタルツインは NVIDIA Omniverse に存在します。MEP エンジニアリングチームは Autodesk Revit で作業します。Autodesk は Revit を USD にエクスポートしますが、インポートすることはありません。Zigma がその永続的なギャップを埋めます。',
+  h_tag:'Omniverse → Revit &nbsp;·&nbsp; <span>USD → BIM</span> &nbsp;·&nbsp; <span>双方向 · AI Factory</span>',
+  h_cta1:'無料トライアル', h_cta2:'エンタープライズ問合せ',
+  diag_title:'アーキテクチャ · AI Factory → BIM ブリッジ',
+  d1n:'NVIDIA Omniverse', d1s1:'AI Factory デジタルツイン', d1s2:'DGX Rack · CDU · CRAH · UPS',
+  d2n:'Zigma Converter', d2s1:'双方向ブリッジ', d2s2:'★ インポート = 永続的な競合優位',
+  d3n:'Autodesk Revit', d3s1:'MEP エンジニアリングチーム', d3s2:'EPC · ファブ設備設計',
+  arr1:'USD → Revit ★', arr2:'Revit → USD',
+  st1:'MEP コンポーネント種類 · 100% エクスポート', st2:'往復精度', st3:'変換速度',
+  ns_e:'NVIDIA エコシステム', ns_t:'NVIDIA AI Factory のために構築',
+  ns_d:'NVIDIA AI Factory のデジタルツインには精密なシミュレーションデータが含まれています。Zigmaはこのデータを Autodesk Revit に取り込み、EPC および MEP チームが実際に作業できるようにします。',
+  nl1:'NVIDIA Omniverse', nl1s:'リアルタイム 3D コラボレーション＆シミュレーションプラットフォーム',
+  nl2:'SimReady & AI Factory Pipeline', nl2s:'AI Factory デジタルツイン向けシミュレーション対応 USD 資産の NVIDIA 標準',
+  nl3:'NVIDIA AI Factory', nl3s:'フルスタック AI インフラ — GPU ラック・冷却・電力・設備デジタルツイン',
+  nl4:'OpenUSD', nl4s:'Universal Scene Description — デジタルツインの言語',
+  nb1:'★ USD → Revit：永続的なギャップ', nb1d:'Autodesk は Revit を USD にエクスポートして Forma クラウドに誘導しますが、インポートは絶対にしません。Zigma がこの永続的なギャップを埋めます。',
+  nb2:'OpenUSD ネイティブ · AI Factory 対応', nb2d:'当社の USD 出力は aif:core: および aif:spec: 名前空間を使用し、NVIDIA AI Factory Pipeline の CDU・CRAH・UPS・DGX Rack 資産と同じ仕様です。',
+  nb3:'双方向 · 完全往復', nb3d:'OV → Revit でデジタルツインを実際の MEP 設計に落とし込みます。Revit → OV で更新された MEP を AI Factory モデルに同期します。402 コンポーネント種類で 99% の往復精度。',
+  nb4:'SolidWorks：設備層（次期）', nb4d:'CDU・CRAH・UPS メーカーは SolidWorks で設計しています。Zigma SolidWorks Connector が設備 CAD を Omniverse に直接ブリッジし、施設 MEP から設備レベルへカバレッジを拡大します。',
+  pe:'製品', pt_pre:'Converter', pd:'NVIDIA Omniverse AI Factory データを Autodesk Revit に取り込み、双方向同期します。AI Factory 対応。今すぐ試用：',
+  p_tag:'半導体ファブ · EPC 事業者 · MEP エンジニア向け',
+  p_ver:'v2.0.0 · Windows · Revit 2026–2027 · AI Factory 対応',
+  pf1t:'USD → Revit インポート（主要機能）', pf1d:'AI Factory デジタルツインデータを Omniverse から Revit へ取り込みます。Autodesk が絶対にサポートしない方向。398/402 コンポーネントを完全復元。',
+  pf2t:'Revit → USD エクスポート', pf2d:'MEP 設計を Revit から Omniverse へエクスポートしてデジタルツインを同期。402/402 コンポーネント種類、AI Factory 互換メタデータ付き 100% エクスポート。',
+  pf3t:'～7 秒で変換完了', pf3d:'ファブ全体の MEP モデルを数秒で変換。Omniverse への取り込みにすぐ対応。',
+  pf4t:'エンタープライズライセンスシステム', pf4d:'マシンロックライセンス（Trial / Licensed / Unlimited 3段階）。HMAC-SHA256 トークンセキュリティ。制限されたファブ環境でのオフライン対応。',
+  pf5t:'内蔵 USD ビューアー', pf5d:'変換前後に AI Factory USD モデルを Revit 内で直接プレビュー。外部ツール不要。',
+  pf6t:'SolidWorks Connector（次期）', pf6d:'設備メーカー（CDU・CRAH・UPS）は SolidWorks で設計しています。Zigma SolidWorks Connector が設備 CAD を Omniverse にブリッジし、AI Factory カバレッジを拡大します。',
+  se:'導入企業', st_t:'産業エンタープライズのために構築',
+  sd:'当社のお客様は、世界最先端の製造施設を建設・運営するチームです。',
+  sc1t:'半導体ファブ', sc1d:'Omniverse で AI Factory デジタルツインを構築する主要ファウンドリは、施設 MEP データを Revit で取り込み、Revit MEP データをデジタルツインに同期する必要があります。',
+  sc2t:'EPC 事業者', sc2d:'Revit で半導体ファブの MEP を設計する EPC 企業は、Omniverse から AI Factory 参照モデルを Revit に取り込み、USD をファブに納品する必要があります。',
+  sc3t:'設備サプライヤー', sc3d:'CDU・CRAH・UPS・ラックメーカーは SolidWorks で設計しています。Zigma SolidWorks Connector が設備 CAD を Omniverse にブリッジし、AI Factory 資産パイプラインを完成させます。',
+  we:'選ばれる理由', wt:'私たちが埋める永続的なギャップ',
+  wc1t:'Autodesk は絶対にインポートしない', wc1d:'Autodesk は Revit → USD をエクスポートして Forma クラウドへ誘導します。USD を Revit に戻すインポートはそれを破壊するため、絶対に行いません。OV → Revit は当社だけが持つ永続的な優位性です。',
+  wc2t:'AI Factory ドメイン知識', wc2d:'402 種類の MEP コンポーネントを正確な AI Factory メタデータ名前空間にマッピング。実際の半導体ファブ Revit ファイルから構築。他のツールには存在しません。',
+  wc3t:'実際のファブデータで検証済み', wc3d:'実際の半導体ファブ MEP モデルで検証。40 PASS / 0 FAIL。プロトタイプではなく、本番環境対応。',
+  wc4t:'完全なエコシステムカバレッジ', wc4d:'Revit で施設 MEP をカバー。SolidWorks（次期）で設備 CAD をカバー。両方が NVIDIA AI Factory に接続。',
+  te:'創設チーム', tt:'業界のベテランが構築',
+  tm_bio:'中華圏およびアジア太平洋地域で 20 年以上の産業ソフトウェア経験 — Autodesk（BIM/Revit リード & M&E ディレクター）、Dassault Systèmes、EPIC Games APAC、AVEVA Taiwan（台湾ヘッド、<strong style="color:var(--accent)">2022 年プレジデント賞</strong>）。二度目の起業。台湾大学土木工学科。',
+  fc_t:'AI Factory を<br>Revit に取り込む準備はできていますか？',
+  fc_d:'NVIDIA Omniverse にデジタルツインがあります。MEP チームに Revit があります。Zigma が双方向で繋ぎます。',
+  fc_cta1:'無料トライアル', fc_cta2:'エンタープライズ問合せ',
+  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 台北、台湾',
+  zp_link:'Zigma 製品', nv_link:'NVIDIA Omniverse', ct_link:'お問合せ'
+}
+};
+
+// Selector → i18n key map
+const _RM_map = [
+  ['.nav-link[href="#ecosystem"]','nav_nvidia','t'],
+  ['.nav-link[href="#product"]','nav_product','t'],
+  ['.nav-link[href="#who"]','nav_serve','t'],
+  ['.badge-live','b_live','t',1],
+  ['.badge-nv','b_nv','t',1],
+  ['.badge-aif','b_aif','t',1],
+  ['.hero h1','h_title','h'],
+  ['.hero-sub','h_sub','h'],
+  ['.hero-tag','h_tag','h'],
+  ['.diagram-title','diag_title','t'],
+  ['.stat:nth-child(1) .stat-l','st1','t'],
+  ['.stat:nth-child(2) .stat-l','st2','t'],
+  ['.stat:nth-child(3) .stat-l','st3','t'],
+  ['.section-eyebrow:first-of-type','ns_e','t'],
+];
+
+function setLang(lang){
+  const t = _RM[lang];
+  if(!t) return;
+  // Nav
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n;
+    if(t[k] !== undefined) el.innerHTML = t[k];
+  });
+  // Hero title (has nested spans)
+  const h1 = document.querySelector('.hero h1');
+  if(h1){ const s = h1.querySelector('.g'); if(s) s.textContent = t.h2; const f = h1.firstChild; if(f && f.nodeType===3) f.textContent = t.h1+'\n'; }
+  // Hero sub / tag / cta
+  const hs = document.querySelector('.hero-sub'); if(hs) hs.innerHTML = t.h_sub;
+  const ht = document.querySelector('.hero-tag'); if(ht) ht.innerHTML = t.h_tag;
+  // CTA buttons (extract from parent link - update text node)
+  document.querySelectorAll('.cta-primary').forEach(b=>{
+    const tn = Array.from(b.childNodes).find(n=>n.nodeType===3 && n.textContent.trim());
+    if(tn) tn.textContent = ' '+t.h_cta1+' ';
+  });
+  document.querySelectorAll('.cta-secondary').forEach(b=>{ if(b.tagName==='A') b.textContent = t.h_cta2; });
+  // Diagram
+  const dt = document.querySelector('.diagram-title'); if(dt) dt.textContent = t.diag_title;
+  const dboxes = document.querySelectorAll('.diag-box');
+  if(dboxes[0]){ dboxes[0].querySelectorAll('.diag-name')[0].textContent=t.d1n; const subs=dboxes[0].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d1s1; if(subs[1]) subs[1].textContent=t.d1s2; }
+  if(dboxes[1]){ dboxes[1].querySelectorAll('.diag-name')[0].textContent=t.d2n; const subs=dboxes[1].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d2s1; if(subs[1]) subs[1].textContent=t.d2s2; }
+  if(dboxes[2]){ dboxes[2].querySelectorAll('.diag-name')[0].textContent=t.d3n; const subs=dboxes[2].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d3s1; if(subs[1]) subs[1].textContent=t.d3s2; }
+  document.querySelectorAll('.arrow-text').forEach((a,i)=>{ a.textContent=(i%2===0)?t.arr1:t.arr2; });
+  // Stats
+  const stats=document.querySelectorAll('.stat-l');
+  if(stats[0]) stats[0].textContent=t.st1; if(stats[1]) stats[1].textContent=t.st2; if(stats[2]) stats[2].textContent=t.st3;
+  // NVIDIA section
+  const nse=document.querySelector('#ecosystem .section-eyebrow'); if(nse) nse.textContent=t.ns_e;
+  const nst=document.querySelector('#ecosystem .section-title'); if(nst) nst.textContent=t.ns_t;
+  const nsd=document.querySelector('#ecosystem .section-desc'); if(nsd) nsd.textContent=t.ns_d;
+  const nlc=document.querySelectorAll('.nv-link-card');
+  [[t.nl1,t.nl1s],[t.nl2,t.nl2s],[t.nl3,t.nl3s],[t.nl4,t.nl4s]].forEach(([l,s],i)=>{
+    if(nlc[i]){ const lbl=nlc[i].querySelector('.nv-link-label'); const sub=nlc[i].querySelector('.nv-link-sub'); if(lbl) lbl.textContent=l; if(sub) sub.textContent=s; }
+  });
+  const nbc=document.querySelectorAll('.nv-badge-card');
+  [[t.nb1,t.nb1d],[t.nb2,t.nb2d],[t.nb3,t.nb3d],[t.nb4,t.nb4d]].forEach(([ti,d],i)=>{
+    if(nbc[i]){ const tt2=nbc[i].querySelector('.nv-badge-title'); const dd=nbc[i].querySelector('.nv-badge-desc'); if(tt2) tt2.innerHTML=ti; if(dd) dd.textContent=d; }
+  });
+  // Product section
+  const pe=document.querySelector('#product .section-eyebrow'); if(pe) pe.textContent=t.pe;
+  const psd=document.querySelector('#product .section-desc'); if(psd){ const a=psd.querySelector('a'); const aHtml=a?a.outerHTML:'<a href="https://www.zigma.club" target="_blank">zigma.club</a>'; psd.innerHTML=t.pd+' '+aHtml+'.'; }
+  const ptag=document.querySelector('.product-tagline'); if(ptag) ptag.textContent=t.p_tag;
+  const pver=document.querySelector('.product-version'); if(pver) pver.textContent=t.p_ver;
+  const feats=document.querySelectorAll('.product-feature');
+  [[t.pf1t,t.pf1d],[t.pf2t,t.pf2d],[t.pf3t,t.pf3d],[t.pf4t,t.pf4d],[t.pf5t,t.pf5d],[t.pf6t,t.pf6d]].forEach(([ft,fd],i)=>{
+    if(feats[i]){ const ftt=feats[i].querySelector('.feat-title'); const fdd=feats[i].querySelector('.feat-desc'); if(ftt) ftt.textContent=ft; if(fdd) fdd.textContent=fd; }
+  });
+  // Serve section
+  const sere=document.querySelector('#who .section-eyebrow'); if(sere) sere.textContent=t.se;
+  const sert=document.querySelector('#who .section-title'); if(sert) sert.textContent=t.st_t;
+  const serd=document.querySelector('#who .section-desc'); if(serd) serd.textContent=t.sd;
+  const scards=document.querySelectorAll('.serve-card');
+  [[t.sc1t,t.sc1d],[t.sc2t,t.sc2d],[t.sc3t,t.sc3d]].forEach(([ct,cd],i)=>{
+    if(scards[i]){ const tt2=scards[i].querySelector('.serve-title'); const dd=scards[i].querySelector('.serve-desc'); if(tt2) tt2.textContent=ct; if(dd) dd.textContent=cd; }
+  });
+  // Why section
+  const wcards=document.querySelectorAll('.why-card');
+  [[t.wc1t,t.wc1d],[t.wc2t,t.wc2d],[t.wc3t,t.wc3d],[t.wc4t,t.wc4d]].forEach(([ct,cd],i)=>{
+    if(wcards[i]){ const tt2=wcards[i].querySelector('.why-title'); const dd=wcards[i].querySelector('.why-desc'); if(tt2) tt2.textContent=ct; if(dd) dd.textContent=cd; }
+  });
+  // Team
+  const tee=document.querySelector('.team-info .section-eyebrow, .w .section-eyebrow:last-of-type');
+  const teBio=document.querySelector('.team-bio'); if(teBio) teBio.innerHTML=t.tm_bio;
+  // Final CTA
+  const fch=document.querySelector('.final-cta h2'); if(fch) fch.innerHTML=t.fc_t;
+  const fcp=document.querySelector('.final-cta p'); if(fcp) fcp.textContent=t.fc_d;
+  // Footer
+  const fl=document.querySelector('.footer-left'); if(fl) fl.innerHTML=t.foot+' · <a href="mailto:michael.lin@realitymatrixai.com" style="color:var(--text-muted)">michael.lin@realitymatrixai.com</a>';
+  const flinks=document.querySelectorAll('.footer-links a');
+  if(flinks[0]) flinks[0].textContent=t.zp_link;
+  if(flinks[1]) flinks[1].textContent=t.nv_link;
+  if(flinks[2]) flinks[2].textContent=t.ct_link;
+  // Active button
+  document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('active'));
+  const ab=document.getElementById('lbtn-'+lang); if(ab) ab.classList.add('active');
+  localStorage.setItem('rm_lang',lang);
+  document.documentElement.lang=lang==='zh'?'zh-TW':lang;
+}
+// Init
+(function(){
+  const saved=localStorage.getItem('rm_lang');
+  const nav=navigator.language||'';
+  const auto=saved||(nav.startsWith('zh')?'zh':nav.startsWith('ja')?'ja':'en');
+  setLang(auto);
+})();
+</script>
 </body>
 </html>

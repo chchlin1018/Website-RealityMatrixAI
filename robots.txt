@@ -1,0 +1,8 @@
+# robots.txt for realitymatrixai.com
+# Allow all well-behaved crawlers
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.realitymatrixai.com/sitemap.xml

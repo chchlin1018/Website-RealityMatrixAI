@@ -272,11 +272,6 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
       </div>
     </div>
   </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-v">402/402</div><div class="stat-l">MEP Component Types · 100% Export</div></div>
-    <div class="stat"><div class="stat-v">99%</div><div class="stat-l">Round-Trip Accuracy</div></div>
-    <div class="stat"><div class="stat-v">~7s</div><div class="stat-l">Full Conversion Speed</div></div>
-  </div>
 </div>
 <section class="nv-section" id="ecosystem"><div class="w">
   <div class="section-eyebrow">OpenUSD Ecosystem</div>
@@ -613,8 +608,6 @@ function setLang(lang){
   if(dboxes[1]){ dboxes[1].querySelectorAll('.diag-name')[0].textContent=t.d2n; const subs=dboxes[1].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d2s1; if(subs[1]) subs[1].textContent=t.d2s2; }
   if(dboxes[2]){ dboxes[2].querySelectorAll('.diag-name')[0].textContent=t.d3n; const subs=dboxes[2].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d3s1; if(subs[1]) subs[1].textContent=t.d3s2; }
   document.querySelectorAll('.arrow-text').forEach((a,i)=>{ a.textContent=(i%2===0)?t.arr1:t.arr2; });
-  const stats=document.querySelectorAll('.stat-l');
-  if(stats[0]) stats[0].textContent=t.st1; if(stats[1]) stats[1].textContent=t.st2; if(stats[2]) stats[2].textContent=t.st3;
   const nse=document.querySelector('#ecosystem .section-eyebrow'); if(nse) nse.textContent=t.ns_e;
   const nst=document.querySelector('#ecosystem .section-title'); if(nst) nst.textContent=t.ns_t;
   const nsd=document.querySelector('#ecosystem .section-desc'); if(nsd) nsd.textContent=t.ns_d;

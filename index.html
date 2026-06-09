@@ -11,6 +11,7 @@
 <meta property="og:url" content="https://www.realitymatrixai.com">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reality Matrix AI">
+<meta property="og:locale:alternate" content="ko_KR">
 <link rel="canonical" href="https://www.realitymatrixai.com/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reality Matrix AI — The SIM-BIM Bridge">
@@ -186,6 +187,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
       <button class="lbtn" id="lbtn-en" onclick="setLang('en')">EN</button>
       <button class="lbtn" id="lbtn-zh" onclick="setLang('zh')">中文</button>
       <button class="lbtn" id="lbtn-ja" onclick="setLang('ja')">日本語</button>
+      <button class="lbtn" id="lbtn-ko" onclick="setLang('ko')">한국어</button>
     </div>
     <a href="#ecosystem" class="nav-link" data-i18n="nav_usd">OpenUSD</a>
     <a href="#product" class="nav-link" data-i18n="nav_product">Product</a>
@@ -385,7 +387,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   </div>
 </div></footer>
 <script>
-// ── Reality Matrix AI — i18n (EN / 中文 / 日本語) ──
+// ── Reality Matrix AI — i18n (EN / 中文 / 日本語 / 한국어) ──
 const _RM = {
 en:{
   nav_usd:'OpenUSD', nav_product:'Product', nav_serve:'Who We Serve',
@@ -536,6 +538,56 @@ ja:{
   fc_cta1:'無料トライアル', fc_cta2:'エンタープライズ問合せ',
   foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 台北、台湾',
   zp_link:'Zigma 製品', nv_link:'OpenUSD', ct_link:'お問合せ'
+},
+ko:{
+  nav_usd:'OpenUSD', nav_product:'제품', nav_serve:'고객사',
+  b_live:'제품 출시', b_nv:'OpenUSD 생태계', b_aif:'산업용 디지털 트윈 지원',
+  h1:'OpenUSD에서', h2:'Revit으로. 드디어.',
+  h_sub:'디지털 트윈은 OpenUSD에 존재합니다. MEP 엔지니어링 팀은 Autodesk Revit에서 작업합니다. Zigma가 양쪽을 연결합니다 — 시뮬레이션 정밀도를 Revit으로 가져오고, 다시 동기화합니다.',
+  h_tag:'USD → Revit &nbsp;·&nbsp; <span>OpenUSD → BIM</span> &nbsp;·&nbsp; <span>양방향 · 산업용 디지털 트윈</span>',
+  h_cta1:'무료 체험', h_cta2:'기업 문의',
+  diag_title:'아키텍처 · USD → BIM 브리지',
+  d1n:'OpenUSD', d1s1:'산업용 디지털 트윈', d1s2:'Universal Scene Description',
+  d2n:'Zigma Builder', d2s1:'양방향 브리지', d2s2:'★ 임포트 = 영구적 경쟁 우위',
+  d3n:'Autodesk Revit', d3s1:'MEP 엔지니어링 팀', d3s2:'EPC · 팹 시설 설계',
+  arr1:'USD → Revit ★', arr2:'Revit → USD',
+  st1:'MEP 컴포넌트 유형 · 100% 익스포트', st2:'라운드트립 정확도', st3:'전체 변환 속도',
+  ns_e:'OPENUSD 생태계', ns_t:'OpenUSD 디지털 트윈을 위해 구축',
+  ns_d:'OpenUSD로 구축된 산업용 디지털 트윈에는 정밀 시뮬레이션 데이터가 포함됩니다 — 장비 레이아웃, 열 사양, 전력 예산. Zigma는 이 데이터를 Autodesk Revit으로 가져와 EPC 및 MEP 팀이 실제로 작업할 수 있도록 합니다.',
+  nl1:'OpenUSD', nl1s:'Universal Scene Description — 3D 씬 교환을 위한 개방형 표준',
+  nl2:'OpenUSD 얼라이언스 (AOUSD)', nl2s:'벤더 및 플랫폼 간 OpenUSD를 표준화하는 산업 얼라이언스',
+  nl3:'Simulation-Ready USD', nl3s:'메타데이터, 동작 및 IoT 바인딩을 갖춘 물리적으로 정확한 USD 자산',
+  nl4:'Pixar USD', nl4s:'Pixar Animation Studios의 원조 Universal Scene Description',
+  nb1:'★ USD → Revit: 빠진 연결고리', nb1d:'업계는 BIM에서 USD로의 단방향 익스포트만 제공합니다. Zigma는 빠진 리턴 경로를 제공합니다 — OpenUSD 정밀도를 Revit으로 가져와 EPC 팀이 실제로 작업할 수 있도록 합니다.',
+  nb2:'OpenUSD 네이티브 · 산업용 디지털 트윈 지원', nb2d:'당사의 USD 출력은 aif:core: 및 aif:spec: 네임스페이스를 사용하며, 냉각, 전력 및 랙 장비를 포함한 산업 시설 자산용으로 설계되었습니다.',
+  nb3:'양방향 · 완전 라운드트립', nb3d:'USD → Revit으로 디지털 트윈을 실제 MEP 설계에 반영합니다. Revit → USD로 업데이트된 MEP를 디지털 트윈 모델에 동기화합니다. 402개 컴포넌트 유형에서 99% 라운드트립 정확도.',
+  nb4:'SolidWorks: 장비 레이어 (차기)', nb4d:'장비 제조업체(냉각, 전력, 랙)는 SolidWorks로 설계합니다. Zigma SolidWorks Connector가 장비 CAD를 USD로 직접 브리지하여, 시설 MEP에서 장비 수준으로 커버리지를 확장합니다.',
+  pe:'제품', pt_pre:'Builder', pd:'OpenUSD 디지털 트윈 데이터를 Autodesk Revit으로 가져오고 양방향 동기화합니다. OpenUSD 네이티브. 지금 바로 체험:',
+  p_tag:'반도체 팹 · EPC 시공사 · MEP 엔지니어 대상',
+  p_ver:'v2.0.0 · Windows · Revit 2026–2027 · OpenUSD 네이티브',
+  pf1t:'USD → Revit 임포트 (핵심 기능)', pf1d:'산업용 디지털 트윈 데이터를 OpenUSD에서 Revit으로 가져옵니다. 업계가 아직 제공하지 못한 빠진 연결고리. 398/402 컴포넌트 완전 복원.',
+  pf2t:'Revit → USD 익스포트', pf2d:'MEP 설계를 Revit에서 USD로 익스포트하여 디지털 트윈을 동기화합니다. 402/402 컴포넌트 유형, OpenUSD 호환 메타데이터 포함 100% 익스포트.',
+  pf3t:'~7초 변환 완료', pf3d:'전체 팹 MEP 모델을 수 초 만에 변환. USD 파이프라인 수집에 즉시 대응.',
+  pf4t:'엔터프라이즈 라이선스 시스템', pf4d:'머신 잠금 라이선스(Trial / Licensed / Unlimited 3단계). 오프라인 지원 — 네트워크 연결 불필요. 보안이 제한된 반도체 팹 환경을 위해 설계.',
+  pf5t:'내장 USD 뷰어', pf5d:'변환 전후에 산업용 디지털 트윈 USD 모델을 Revit 내에서 직접 미리보기. 외부 도구 불필요.',
+  pf6t:'SolidWorks Connector (차기)', pf6d:'장비 제조업체는 SolidWorks로 설계합니다. Zigma SolidWorks Connector가 장비 CAD를 USD로 브리지하여 디지털 트윈 커버리지를 장비 레이어까지 확장합니다.',
+  se:'고객사', st_t:'산업 엔터프라이즈를 위해 구축',
+  sd:'당사의 고객은 세계 최첨단 제조 시설을 건설하고 운영하는 팀입니다.',
+  sc1t:'반도체 팹', sc1d:'OpenUSD로 산업용 디지털 트윈을 구축하는 선도 파운드리는 시설 MEP 데이터를 Revit에서 활용하고, Revit MEP 데이터를 디지털 트윈에 동기화해야 합니다. Zigma가 그 브리지입니다.',
+  sc2t:'EPC 시공사', sc2d:'Revit에서 반도체 팹 MEP를 설계하는 EPC 기업은 OpenUSD 참조 모델을 Revit으로 임포트하고, USD를 팹에 납품해야 합니다.',
+  sc3t:'장비 공급업체', sc3d:'냉각, 전력, 랙 장비 제조업체는 SolidWorks로 설계합니다. Zigma SolidWorks Connector가 장비 CAD를 USD로 브리지하여 디지털 트윈 자산 파이프라인을 완성합니다.',
+  we:'Reality Matrix를 선택하는 이유', wt:'우리가 채우는 영구적 격차',
+  wc1t:'USD → Revit: 빠진 연결고리', wc1d:'업계는 BIM에서 USD로의 단방향 익스포트를 제공합니다. Zigma는 빠진 리턴 경로를 제공합니다. 산업용 디지털 트윈 데이터가 Revit으로 흘러들어, MEP 팀이 시뮬레이션 정확도에 기반한 설계를 수행할 수 있습니다.',
+  wc2t:'USD 도메인 지식', wc2d:'402종 MEP 컴포넌트 유형을 정확한 USD 메타데이터 네임스페이스에 매핑. 실제 반도체 팹 Revit 파일에서 구축. 다른 어떤 도구도 이를 보유하고 있지 않습니다.',
+  wc3t:'실제 팹 데이터로 검증 완료', wc3d:'실제 반도체 팹 MEP 모델에 대해 검증. 40 PASS / 0 FAIL. 프로토타입이 아닌, 프로덕션 등급.',
+  wc4t:'완전한 생태계 커버리지', wc4d:'Revit으로 시설 MEP를 커버. SolidWorks(차기)로 장비 CAD를 커버. 양쪽 모두 OpenUSD 디지털 트윈에 연결. Reality Matrix는 업계에 필요한 모든 양방향 연결을 제공합니다.',
+  te:'창립 팀', tt:'업계 베테랑이 구축',
+  tm_bio:'팀은 중화권 및 아시아태평양 지역에서 산업 소프트웨어, BIM, 시뮬레이션, 반도체 제조 분야에서 20년 이상의 크로스 인더스트리 경험을 보유하고 있습니다.',
+  fc_t:'USD 디지털 트윈을<br>Revit으로 가져올 준비가 되셨습니까?',
+  fc_d:'OpenUSD에 디지털 트윈이 있습니다. MEP 팀에 Revit이 있습니다. Zigma가 양방향으로 연결합니다.',
+  fc_cta1:'무료 체험', fc_cta2:'기업 문의',
+  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 타이베이, 대만',
+  zp_link:'Zigma 제품', nv_link:'OpenUSD', ct_link:'문의하기'
 }
 };
 
@@ -604,12 +656,12 @@ function setLang(lang){
   document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('active'));
   const ab=document.getElementById('lbtn-'+lang); if(ab) ab.classList.add('active');
   localStorage.setItem('rm_lang',lang);
-  document.documentElement.lang=lang==='zh'?'zh-TW':lang;
+  document.documentElement.lang=lang==='zh'?'zh-TW':lang==='ko'?'ko':'ja'===lang?'ja':lang;
 }
 (function(){
   const saved=localStorage.getItem('rm_lang');
   const nav=navigator.language||'';
-  const auto=saved||(nav.startsWith('zh')?'zh':nav.startsWith('ja')?'ja':'en');
+  const auto=saved||(nav.startsWith('zh')?'zh':nav.startsWith('ja')?'ja':nav.startsWith('ko')?'ko':'en');
   setLang(auto);
 })();
 </script>

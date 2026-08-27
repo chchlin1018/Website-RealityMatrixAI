@@ -185,6 +185,20 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 .zxb-logo{height:1.85em;width:auto;vertical-align:-0.2em;display:inline-block}
 .zxb-logo-lg{height:2em;width:auto;vertical-align:-0.22em;display:inline-block}
 .rmai-logo{height:58px;width:auto;display:block}
+.dl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:36px 40px;margin-top:32px;position:relative}
+.tm-frame{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px 34px;padding:22px 24px;border:1px dashed var(--border-bright);border-radius:12px;background:var(--bg-card2);margin-bottom:26px}
+.tm-frame img{height:56px;width:auto;display:block}
+.tm-frame .tm-x{color:var(--text-muted);font-size:22px;font-weight:300}
+.dl-name{font-size:22px;font-weight:800;letter-spacing:-.4px;color:#fff;margin-bottom:10px}
+.dl-desc{font-size:16px;color:rgba(255,255,255,.75);line-height:1.7;max-width:820px}
+.dl-ver{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);margin:16px 0 20px}
+.dl-link{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-bright);color:var(--text-dim);font-size:13px;font-weight:500;padding:11px 20px;border-radius:8px;text-decoration:none}
+.dl-link:hover{color:#fff;border-color:var(--accent)}
+.dl-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.dl-svc{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);font-size:13px;color:var(--text-dim);line-height:1.8}
+.dl-svc strong{color:rgba(255,255,255,.8)}
+.ftr-tm{width:100%;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:6px}
+@media(max-width:640px){.dl-card{padding:26px 22px}.tm-frame img{height:44px}}
 </style>
 </head>
 <body>
@@ -338,6 +352,22 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     </div>
   </div>
 </div></section>
+<!-- Products · Downloadable software (ZXBuilder) — company mark + product mark in one frame -->
+<section style="padding-top:0" id="download"><div class="w">
+  <div class="section-eyebrow" data-i18n="dl_e">Products &middot; Downloadable Software</div>
+  <div class="section-title" data-i18n="dl_t">ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI</div>
+  <div class="dl-card">
+    <div class="tm-frame"><img src="img/rmai-lockup.png" alt="Reality Matrix AI"><span class="tm-x">&times;</span><img src="img/zxbuilder-lockup.png" alt="ZXBuilder"></div>
+    <div class="dl-name" data-i18n="dl_name">ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027</div>
+    <p class="dl-desc" data-i18n="dl_d">ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 7-day trial.</p>
+    <div class="dl-ver" data-i18n="dl_ver">Current release: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027</div>
+    <div class="dl-row">
+      <a href="https://www.zxbuilder.club/" target="_blank" class="product-cta" data-i18n="dl_btn1">Download ZXBuilder &mdash; Free Trial &rarr;</a>
+      <a href="https://www.zxbuilder.club/" target="_blank" class="dl-link" data-i18n="dl_btn2">Product site: www.zxbuilder.club</a>
+    </div>
+    <div class="dl-svc" data-i18n="dl_svc"><strong>Software services under the ZXBuilder name:</strong> online licensing &amp; trial-key service &middot; software design &amp; development &middot; updates &amp; maintenance &middot; technical consulting, integration &amp; training. Trial and licensed editions are issued by Reality Matrix AI Inc. through the ZXBuilder licensing service.</div>
+  </div>
+</div></section>
 <section style="padding-top:0" id="who"><div class="w">
   <div class="section-eyebrow">Who We Serve</div>
   <div class="section-title">Built for the Industrial Enterprise</div>
@@ -382,12 +412,14 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     <a href="https://openusd.org" target="_blank">OpenUSD</a>
     <a href="mailto:michael.lin@realitymatrixai.com">Contact</a>
   </div>
+  <div class="ftr-tm" data-i18n="ftr_tm">ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.</div>
 </div></footer>
 <script>
 // ── Reality Matrix AI — i18n (EN / 中文 / 日本語 / 한국어) ──
 const _RM = {
 en:{
   nav_usd:'OpenUSD', nav_product:'Product', nav_serve:'Who We Serve',
+  dl_e:'Products &middot; Downloadable Software', dl_t:'ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI', dl_name:'ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027', dl_d:'ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 7-day trial.', dl_ver:'Current release: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'Download ZXBuilder &mdash; Free Trial &rarr;', dl_btn2:'Product site: www.zxbuilder.club', dl_svc:'<strong>Software services under the ZXBuilder name:</strong> online licensing &amp; trial-key service &middot; software design &amp; development &middot; updates &amp; maintenance &middot; technical consulting, integration &amp; training. Trial and licensed editions are issued by Reality Matrix AI Inc. through the ZXBuilder licensing service.', ftr_tm:'ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.',
   b_live:'Product Live', b_nv:'OpenUSD Ecosystem', b_aif:'Industrial Digital Twin Ready',
   h1:'From OpenUSD', h2:'to Revit. Finally.',
   h_sub:'The digital twin lives in OpenUSD. Your MEP engineering team works in Autodesk Revit. ZXBuilder connects them — bringing simulation precision into Revit, and syncing it back.',
@@ -438,6 +470,7 @@ en:{
 },
 zh:{
   nav_usd:'OpenUSD', nav_product:'產品', nav_serve:'服務對象',
+  dl_e:'產品 &middot; 可下載軟體', dl_t:'ZXBuilder&trade; —— Reality Matrix AI 的可下載軟體', dl_name:'ZXBuilder —— Autodesk Revit 2027 的 USD &harr; Revit 外掛程式', dl_d:'ZXBuilder 是實矩科技 Reality Matrix AI Inc. 的可下載電腦軟體：Autodesk Revit 2027 外掛程式，在 OpenUSD 與 Revit 之間轉換、翻譯與交換 3D 模型與建築資訊模型（BIM）資料。以 Windows 安裝程式（MSI）交付，經 Reality Matrix AI Inc. EV 程式碼簽章，並提供 7 天免費試用。', dl_ver:'現行版本：ZXBuilder v5.7.8.7-r2（Pre-Beta）&middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'下載 ZXBuilder —— 免費試用 &rarr;', dl_btn2:'產品網站：www.zxbuilder.club', dl_svc:'<strong>以 ZXBuilder 名義提供的軟體服務：</strong>線上授權與試用金鑰服務 &middot; 軟體設計與開發 &middot; 更新與維護 &middot; 技術諮詢、導入整合與教育訓練。試用版與正式授權版均由實矩科技經 ZXBuilder 授權服務核發。', ftr_tm:'ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.（實矩科技）之商標。',
   b_live:'產品已上線', b_nv:'OpenUSD 生態系', b_aif:'工業數位孿生就緒',
   h1:'從 OpenUSD', h2:'到 Revit，終於實現。',
   h_sub:'數位孿生存在於 OpenUSD。MEP 工程師在 Autodesk Revit 工作。ZXBuilder 橋接兩者 — 將模擬精準數據帶入 Revit,並雙向同步。',
@@ -488,6 +521,7 @@ zh:{
 },
 ja:{
   nav_usd:'OpenUSD', nav_product:'製品', nav_serve:'導入企業',
+  dl_e:'製品 &middot; ダウンロード型ソフトウェア', dl_t:'ZXBuilder&trade; &mdash; Reality Matrix AI のダウンロード型ソフトウェア', dl_name:'ZXBuilder &mdash; Autodesk Revit 2027 向け USD &harr; Revit プラグイン', dl_d:'ZXBuilder は Reality Matrix AI Inc. が提供するダウンロード型コンピュータソフトウェアです。Autodesk Revit 2027 用プラグインとして、OpenUSD と Revit の間で 3D モデルおよび BIM データを変換・翻訳・交換します。Reality Matrix AI Inc. の EV コード署名付き Windows インストーラ（MSI）で提供され、7 日間の無料トライアルがあります。', dl_ver:'現行リリース：ZXBuilder v5.7.8.7-r2（Pre-Beta）&middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'ZXBuilder をダウンロード &mdash; 無料トライアル &rarr;', dl_btn2:'製品サイト：www.zxbuilder.club', dl_svc:'<strong>ZXBuilder の名称で提供するソフトウェアサービス：</strong>オンラインライセンス・トライアルキー発行 &middot; ソフトウェア設計・開発 &middot; 更新・保守 &middot; 技術コンサルティング・導入・トレーニング。トライアル版および正規ライセンス版は Reality Matrix AI Inc. が ZXBuilder ライセンスサービスを通じて発行します。', ftr_tm:'ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。',
   b_live:'製品リリース済', b_nv:'OpenUSD エコシステム', b_aif:'産業デジタルツイン対応',
   h1:'OpenUSD から', h2:'Revit へ。ついに実現。',
   h_sub:'デジタルツインは OpenUSD に存在します。MEP エンジニアリングチームは Autodesk Revit で作業します。ZXBuilder が両者を橋渡しし — シミュレーション精度を Revit に取り込み、双方向で同期します。',
@@ -538,6 +572,7 @@ ja:{
 },
 ko:{
   nav_usd:'OpenUSD', nav_product:'제품', nav_serve:'고객사',
+  dl_e:'제품 &middot; 다운로드형 소프트웨어', dl_t:'ZXBuilder&trade; &mdash; Reality Matrix AI의 다운로드형 소프트웨어', dl_name:'ZXBuilder &mdash; Autodesk Revit 2027용 USD &harr; Revit 플러그인', dl_d:'ZXBuilder는 Reality Matrix AI Inc.의 다운로드형 컴퓨터 소프트웨어입니다. Autodesk Revit 2027용 플러그인으로 OpenUSD와 Revit 간에 3D 모델 및 BIM 데이터를 변환·번역·교환합니다. Reality Matrix AI Inc.의 EV 코드 서명이 적용된 Windows 설치 프로그램(MSI)으로 제공되며 7일 무료 체험이 가능합니다.', dl_ver:'현재 릴리스: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'ZXBuilder 다운로드 &mdash; 무료 체험 &rarr;', dl_btn2:'제품 사이트: www.zxbuilder.club', dl_svc:'<strong>ZXBuilder 이름으로 제공하는 소프트웨어 서비스:</strong> 온라인 라이선스 및 체험 키 발급 &middot; 소프트웨어 설계 및 개발 &middot; 업데이트 및 유지보수 &middot; 기술 컨설팅, 통합 및 교육. 체험판과 정식 라이선스는 Reality Matrix AI Inc.가 ZXBuilder 라이선스 서비스를 통해 발급합니다.', ftr_tm:'ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다.',
   b_live:'제품 출시', b_nv:'OpenUSD 생태계', b_aif:'산업용 디지털 트윈 지원',
   h1:'OpenUSD에서', h2:'Revit으로. 드디어.',
   h_sub:'디지털 트윈은 OpenUSD에 존재합니다. MEP 엔지니어링 팀은 Autodesk Revit에서 작업합니다. ZXBuilder가 양쪽을 연결합니다 — 시뮬레이션 정밀도를 Revit으로 가져오고, 다시 동기화합니다.',

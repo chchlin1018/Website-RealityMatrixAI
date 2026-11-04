@@ -199,6 +199,18 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 .dl-svc strong{color:rgba(255,255,255,.8)}
 .ftr-tm{width:100%;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:6px}
 @media(max-width:640px){.dl-card{padding:26px 22px}.tm-frame img{height:44px}}
+#video{scroll-margin-top:132px}
+.vid-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-top:32px;position:relative;overflow:hidden}
+.vid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),#6ee7b7,var(--blue),transparent)}
+.vid-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.vtab{font-family:inherit;font-size:14px;font-weight:600;padding:8px 18px;border-radius:8px;border:1px solid var(--border-bright);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s}
+.vtab:hover{color:var(--text)}
+.vtab.active{background:var(--accent-soft);color:var(--accent);border-color:rgba(0,223,162,.4)}
+.vid-panel{display:none}
+.vid-panel.active{display:block}
+.vid-panel video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px}
+.vid-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-dim)}
+@media(max-width:640px){.vid-card{padding:16px}.vtab{flex:1 1 calc(50% - 8px);text-align:center}}
 </style>
 </head>
 <body>
@@ -216,6 +228,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     </div>
     <a href="#ecosystem" class="nav-link" data-i18n="nav_usd">OpenUSD</a>
     <a href="#product" class="nav-link" data-i18n="nav_product">Product</a>
+    <a href="#video" class="nav-link" data-i18n="nav_video">Video</a>
     <a href="#who" class="nav-link" data-i18n="nav_serve">Who We Serve</a>
     <a href="https://www.zxbuilder.club/" target="_blank" class="nav-cta"><img class="zxb-logo" style="height:2.8em" src="img/zxbuilder-lockup.png" alt="ZXBuilder"> →</a>
   </div>
@@ -352,6 +365,36 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     </div>
   </div>
 </div></section>
+<!-- Product video · four languages (files hosted as GitHub release assets, tag intro-videos-20261102) -->
+<section style="padding-top:0" id="video"><div class="w">
+  <div class="section-eyebrow" data-i18n="v_e">Product Video</div>
+  <div class="section-title" data-i18n="v_t">ZXBuilder Product Introduction</div>
+  <p class="section-desc" data-i18n="v_d">ZXBuilder is the two-way bridge between NVIDIA Omniverse / OpenUSD and the BIM world. Each video runs about two to three minutes and is available in Chinese, English, Japanese and Korean.</p>
+  <div class="vid-card">
+    <div class="vid-tabs" role="tablist">
+      <button class="vtab" data-vl="zh" role="tab" aria-selected="false" onclick="selectVideo('zh')">中文</button>
+      <button class="vtab active" data-vl="en" role="tab" aria-selected="true" onclick="selectVideo('en')">English</button>
+      <button class="vtab" data-vl="ja" role="tab" aria-selected="false" onclick="selectVideo('ja')">日本語</button>
+      <button class="vtab" data-vl="ko" role="tab" aria-selected="false" onclick="selectVideo('ko')">한국어</button>
+    </div>
+    <div class="vid-panel" data-vl="zh">
+      <video controls preload="none" playsinline width="1280" height="720" poster="img/rmai-intro-zh.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-zh.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>中文 &middot; 2:14</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-zh.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 36 MB</a></div>
+    </div>
+    <div class="vid-panel active" data-vl="en">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-en.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-en.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>English &middot; 2:32</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-en.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 92 MB</a></div>
+    </div>
+    <div class="vid-panel" data-vl="ja">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-ja.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ja.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>日本語 &middot; 2:43</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ja.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 98 MB</a></div>
+    </div>
+    <div class="vid-panel" data-vl="ko">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-ko.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ko.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>한국어 &middot; 2:52</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ko.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 102 MB</a></div>
+    </div>
+  </div>
+</div></section>
 <!-- Products · Downloadable software (ZXBuilder) — company mark + product mark in one frame -->
 <section style="padding-top:0" id="download"><div class="w">
   <div class="section-eyebrow" data-i18n="dl_e">Products &middot; Downloadable Software</div>
@@ -418,7 +461,8 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 // ── Reality Matrix AI — i18n (EN / 中文 / 日本語 / 한국어) ──
 const _RM = {
 en:{
-  nav_usd:'OpenUSD', nav_product:'Product', nav_serve:'Who We Serve',
+  nav_usd:'OpenUSD', nav_product:'Product', nav_serve:'Who We Serve', nav_video:'Video',
+  v_e:'Product Video', v_t:'ZXBuilder Product Introduction', v_d:'ZXBuilder is the two-way bridge between NVIDIA Omniverse / OpenUSD and the BIM world. Each video runs about two to three minutes and is available in Chinese, English, Japanese and Korean.', v_dl:'Download video',
   dl_e:'Products &middot; Downloadable Software', dl_t:'ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI', dl_name:'ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027', dl_d:'ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 7-day trial.', dl_ver:'Current release: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'Download ZXBuilder &mdash; Free Trial &rarr;', dl_btn2:'Product site: www.zxbuilder.club', dl_svc:'<strong>Software services under the ZXBuilder name:</strong> online licensing &amp; trial-key service &middot; software design &amp; development &middot; updates &amp; maintenance &middot; technical consulting, integration &amp; training. Trial and licensed editions are issued by Reality Matrix AI Inc. through the ZXBuilder licensing service.', ftr_tm:'ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.',
   b_live:'Product Live', b_nv:'OpenUSD Ecosystem', b_aif:'Industrial Digital Twin Ready',
   h1:'From OpenUSD', h2:'to Revit. Finally.',
@@ -469,7 +513,8 @@ en:{
   zp_link:'ZXBuilder Product', nv_link:'OpenUSD', ct_link:'Contact'
 },
 zh:{
-  nav_usd:'OpenUSD', nav_product:'產品', nav_serve:'服務對象',
+  nav_usd:'OpenUSD', nav_product:'產品', nav_serve:'服務對象', nav_video:'影片',
+  v_e:'產品介紹影片', v_t:'ZXBuilder 產品介紹', v_d:'ZXBuilder 是 NVIDIA Omniverse / OpenUSD 連到 BIM 世界的雙向橋梁。影片約兩到三分鐘，提供中文、英文、日文、韓文四種語言版本。', v_dl:'下載影片',
   dl_e:'產品 &middot; 可下載軟體', dl_t:'ZXBuilder&trade; —— Reality Matrix AI 的可下載軟體', dl_name:'ZXBuilder —— Autodesk Revit 2027 的 USD &harr; Revit 外掛程式', dl_d:'ZXBuilder 是實矩科技 Reality Matrix AI Inc. 的可下載電腦軟體：Autodesk Revit 2027 外掛程式，在 OpenUSD 與 Revit 之間轉換、翻譯與交換 3D 模型與建築資訊模型（BIM）資料。以 Windows 安裝程式（MSI）交付，經 Reality Matrix AI Inc. EV 程式碼簽章，並提供 7 天免費試用。', dl_ver:'現行版本：ZXBuilder v5.7.8.7-r2（Pre-Beta）&middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'下載 ZXBuilder —— 免費試用 &rarr;', dl_btn2:'產品網站：www.zxbuilder.club', dl_svc:'<strong>以 ZXBuilder 名義提供的軟體服務：</strong>線上授權與試用金鑰服務 &middot; 軟體設計與開發 &middot; 更新與維護 &middot; 技術諮詢、導入整合與教育訓練。試用版與正式授權版均由實矩科技經 ZXBuilder 授權服務核發。', ftr_tm:'ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.（實矩科技）之商標。',
   b_live:'產品已上線', b_nv:'OpenUSD 生態系', b_aif:'工業數位孿生就緒',
   h1:'從 OpenUSD', h2:'到 Revit，終於實現。',
@@ -520,7 +565,8 @@ zh:{
   zp_link:'ZXBuilder 產品', nv_link:'OpenUSD', ct_link:'聯絡我們'
 },
 ja:{
-  nav_usd:'OpenUSD', nav_product:'製品', nav_serve:'導入企業',
+  nav_usd:'OpenUSD', nav_product:'製品', nav_serve:'導入企業', nav_video:'動画',
+  v_e:'製品紹介動画', v_t:'ZXBuilder 製品紹介', v_d:'ZXBuilder は、NVIDIA Omniverse / OpenUSD と BIM の世界をつなぐ双方向の橋渡しです。各動画は約 2〜3 分で、中国語・英語・日本語・韓国語の 4 言語版をご用意しています。', v_dl:'動画をダウンロード',
   dl_e:'製品 &middot; ダウンロード型ソフトウェア', dl_t:'ZXBuilder&trade; &mdash; Reality Matrix AI のダウンロード型ソフトウェア', dl_name:'ZXBuilder &mdash; Autodesk Revit 2027 向け USD &harr; Revit プラグイン', dl_d:'ZXBuilder は Reality Matrix AI Inc. が提供するダウンロード型コンピュータソフトウェアです。Autodesk Revit 2027 用プラグインとして、OpenUSD と Revit の間で 3D モデルおよび BIM データを変換・翻訳・交換します。Reality Matrix AI Inc. の EV コード署名付き Windows インストーラ（MSI）で提供され、7 日間の無料トライアルがあります。', dl_ver:'現行リリース：ZXBuilder v5.7.8.7-r2（Pre-Beta）&middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'ZXBuilder をダウンロード &mdash; 無料トライアル &rarr;', dl_btn2:'製品サイト：www.zxbuilder.club', dl_svc:'<strong>ZXBuilder の名称で提供するソフトウェアサービス：</strong>オンラインライセンス・トライアルキー発行 &middot; ソフトウェア設計・開発 &middot; 更新・保守 &middot; 技術コンサルティング・導入・トレーニング。トライアル版および正規ライセンス版は Reality Matrix AI Inc. が ZXBuilder ライセンスサービスを通じて発行します。', ftr_tm:'ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。',
   b_live:'製品リリース済', b_nv:'OpenUSD エコシステム', b_aif:'産業デジタルツイン対応',
   h1:'OpenUSD から', h2:'Revit へ。ついに実現。',
@@ -571,7 +617,8 @@ ja:{
   zp_link:'ZXBuilder 製品', nv_link:'OpenUSD', ct_link:'お問合せ'
 },
 ko:{
-  nav_usd:'OpenUSD', nav_product:'제품', nav_serve:'고객사',
+  nav_usd:'OpenUSD', nav_product:'제품', nav_serve:'고객사', nav_video:'동영상',
+  v_e:'제품 소개 영상', v_t:'ZXBuilder 제품 소개', v_d:'ZXBuilder는 NVIDIA Omniverse / OpenUSD와 BIM 세계를 잇는 양방향 브리지입니다. 각 영상은 약 2~3분이며 중국어, 영어, 일본어, 한국어 4개 언어로 제공됩니다.', v_dl:'동영상 다운로드',
   dl_e:'제품 &middot; 다운로드형 소프트웨어', dl_t:'ZXBuilder&trade; &mdash; Reality Matrix AI의 다운로드형 소프트웨어', dl_name:'ZXBuilder &mdash; Autodesk Revit 2027용 USD &harr; Revit 플러그인', dl_d:'ZXBuilder는 Reality Matrix AI Inc.의 다운로드형 컴퓨터 소프트웨어입니다. Autodesk Revit 2027용 플러그인으로 OpenUSD와 Revit 간에 3D 모델 및 BIM 데이터를 변환·번역·교환합니다. Reality Matrix AI Inc.의 EV 코드 서명이 적용된 Windows 설치 프로그램(MSI)으로 제공되며 7일 무료 체험이 가능합니다.', dl_ver:'현재 릴리스: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'ZXBuilder 다운로드 &mdash; 무료 체험 &rarr;', dl_btn2:'제품 사이트: www.zxbuilder.club', dl_svc:'<strong>ZXBuilder 이름으로 제공하는 소프트웨어 서비스:</strong> 온라인 라이선스 및 체험 키 발급 &middot; 소프트웨어 설계 및 개발 &middot; 업데이트 및 유지보수 &middot; 기술 컨설팅, 통합 및 교육. 체험판과 정식 라이선스는 Reality Matrix AI Inc.가 ZXBuilder 라이선스 서비스를 통해 발급합니다.', ftr_tm:'ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다.',
   b_live:'제품 출시', b_nv:'OpenUSD 생태계', b_aif:'산업용 디지털 트윈 지원',
   h1:'OpenUSD에서', h2:'Revit으로. 드디어.',
@@ -623,6 +670,10 @@ ko:{
 }
 };
 
+function selectVideo(l){
+  document.querySelectorAll('.vid-panel').forEach(p=>{ const on=p.dataset.vl===l; p.classList.toggle('active',on); const v=p.querySelector('video'); if(!on && v && !v.paused) v.pause(); });
+  document.querySelectorAll('.vtab').forEach(b=>{ const on=b.dataset.vl===l; b.classList.toggle('active',on); b.setAttribute('aria-selected',on?'true':'false'); });
+}
 function setLang(lang){
   const t = _RM[lang];
   if(!t) return;
@@ -683,6 +734,7 @@ function setLang(lang){
   if(flinks[0]) flinks[0].textContent=t.zp_link;
   if(flinks[1]) flinks[1].textContent=t.nv_link;
   if(flinks[2]) flinks[2].textContent=t.ct_link;
+  selectVideo(lang);
   document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('active'));
   const ab=document.getElementById('lbtn-'+lang); if(ab) ab.classList.add('active');
   localStorage.setItem('rm_lang',lang);

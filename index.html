@@ -60,7 +60,7 @@ nav .w{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav-cta{font-size:14px;font-weight:700;border:1px solid rgba(0,223,162,.35);padding:6px 16px;border-radius:8px;color:var(--accent);transition:all .2s;white-space:nowrap}
 .nav-cta:hover{background:rgba(0,223,162,.08);opacity:1}
 .zxb-logo{height:1.85em;width:auto;vertical-align:-0.2em;display:inline-block}
-.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:56px}
+.hero{padding-top:118px;padding-bottom:48px}
 .badge-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}
 .badge{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;padding:5px 12px;border-radius:99px;letter-spacing:.4px}
 .badge-live{color:var(--accent);background:var(--accent-soft);border:1px solid rgba(0,223,162,.18)}
@@ -218,11 +218,27 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 .footer-links a{font-size:12px;color:var(--text-muted);transition:color .2s}
 .footer-links a:hover{color:var(--text);opacity:1}
 .ftr-tm{width:100%;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:6px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-areas:"head video" "act video";column-gap:44px;row-gap:0;align-items:start}
+.hero-head{grid-area:head;align-self:end}
+.hero-video{grid-area:video;align-self:center}
+.hero-act{grid-area:act;margin-top:22px}
+.hero .badge-row{margin-bottom:20px}
+.hero h1{font-size:clamp(30px,3.4vw,46px);letter-spacing:-1px;margin-bottom:16px}
+.hero .hero-sub{font-size:clamp(15px,1.35vw,17px);max-width:none;margin-bottom:0}
+.hero .hero-prods{margin-bottom:20px}
+.hero .hero-prods img{height:40px}
+.hero .vid-card{margin-top:0;padding:16px}
+.vid-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.vid-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:1.2px;text-transform:uppercase}
+.hero .vid-tabs{margin-bottom:0;gap:6px}
+.hero .vtab{font-size:13px;padding:6px 12px}
+.hero .vid-meta{margin-top:10px;font-size:12px}
+.hero .vid-meta .dl-link{padding:6px 12px;font-size:12px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .hero .badge-row{animation:fadeUp .5s ease both}
 .hero h1{animation:fadeUp .5s ease .08s both}
 .hero .hero-sub{animation:fadeUp .5s ease .15s both}
-.hero .cta-row{animation:fadeUp .5s ease .25s both}
+.hero .hero-act{animation:fadeUp .5s ease .25s both}
 @media(max-width:1100px){.nav-links .nav-link{display:none}}
 @media(max-width:900px){
   .diagram-flow{flex-direction:column}
@@ -230,6 +246,9 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   .diag-arrow{padding:10px 0;max-width:none}
   .diag-arrow .arrow-line{width:2px;height:26px;background:linear-gradient(180deg,rgba(0,223,162,.2),rgba(0,223,162,.7),rgba(0,223,162,.2))}
   .proof-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "video" "act";row-gap:14px}
+  .hero-head{align-self:start}
+  .hero-act{margin-top:6px}
 }
 @media(max-width:768px){
   .w{padding:0 16px}
@@ -239,7 +258,15 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   .nav-links .nav-link,.nav-cta{display:none}
   .lang-sw{margin-right:0}
   .lbtn{font-size:10px;padding:4px 6px}
-  .hero{min-height:auto;padding-top:104px;padding-bottom:40px}
+  .hero{padding-top:76px;padding-bottom:36px}
+  .hero .badge-row{margin-bottom:12px;gap:6px}
+  .hero .badge{font-size:10px;padding:4px 9px}
+  .hero h1{font-size:28px;margin-bottom:10px}
+  .hero .vid-card{padding:10px}
+  .vid-top{margin-bottom:8px}
+  .hero .vid-tabs{width:100%}
+  .hero .vtab{flex:1 1 0;padding:6px 2px;font-size:12px}
+  .hero .vid-meta{margin-top:8px}
   h1{letter-spacing:-.8px}
   .hero-prods img{height:36px}
   section{padding:56px 0;scroll-margin-top:70px}
@@ -285,18 +312,52 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   </div>
 </div></nav>
 
-<section class="hero" id="top"><div class="w">
-  <div class="badge-row">
-    <span class="badge badge-live"><span class="dot dot-green"></span><span data-i18n="b_avail">ZXBuilder · ZX FSM available now (Pre-Beta)</span></span>
-    <span class="badge badge-nv" data-i18n="b_ind">Semiconductor fabs · AI data centers</span>
-    <span class="badge badge-aif" data-i18n="b_usd">Standard OpenUSD</span>
+<section class="hero" id="top"><div class="w hero-grid">
+  <div class="hero-head">
+    <div class="badge-row">
+      <span class="badge badge-live"><span class="dot dot-green"></span><span data-i18n="b_avail">ZXBuilder · ZX FSM available now (Pre-Beta)</span></span>
+      <span class="badge badge-nv" data-i18n="b_ind">Semiconductor fabs · AI data centers</span>
+      <span class="badge badge-aif" data-i18n="b_usd">Standard OpenUSD</span>
+    </div>
+    <h1 data-i18n="h1">Infrastructure and bridge<br><span class="g">for industrial digital twins</span></h1>
+    <p class="hero-sub" data-i18n="h_sub">Reality Matrix AI is infrastructure and a bridge for industrial digital twins (NVIDIA AI Factory, SimReady, OpenUSD), connecting the BIM engineering world with digital-twin applications.</p>
   </div>
-  <h1 data-i18n="h1">Infrastructure and bridge<br><span class="g">for industrial digital twins</span></h1>
-  <p class="hero-sub" data-i18n="h_sub">Reality Matrix AI is infrastructure and a bridge for industrial digital twins (NVIDIA AI Factory, SimReady, OpenUSD), connecting the BIM engineering world with digital-twin applications.</p>
-  <div class="hero-prods"><img src="img/zxbuilder-lockup.png" alt="ZXBuilder"><img src="img/zxfsm-lockup.png" alt="ZX FSM — ZX Fab Standard Manager"></div>
-  <div class="cta-row">
-    <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="cta-primary"><span data-i18n="h_cta1">Download ZXBuilder · ZX FSM</span> <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="mailto:michael.lin@realitymatrixai.com" class="cta-secondary" data-i18n="h_cta2">Enterprise inquiry</a>
+  <!-- Product video · four languages (files hosted as GitHub release assets, tag intro-videos-20261102) -->
+  <div class="hero-video" id="video">
+    <div class="vid-card">
+      <div class="vid-top">
+        <span class="vid-label" data-i18n="v_e">Video</span>
+        <div class="vid-tabs" role="tablist">
+          <button class="vtab" data-vl="zh" role="tab" aria-selected="false" onclick="selectVideo('zh')">中文</button>
+          <button class="vtab active" data-vl="en" role="tab" aria-selected="true" onclick="selectVideo('en')">English</button>
+          <button class="vtab" data-vl="ja" role="tab" aria-selected="false" onclick="selectVideo('ja')">日本語</button>
+          <button class="vtab" data-vl="ko" role="tab" aria-selected="false" onclick="selectVideo('ko')">한국어</button>
+        </div>
+      </div>
+    <div class="vid-panel" data-vl="zh">
+      <video controls preload="none" playsinline width="1280" height="720" poster="img/rmai-intro-zh.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-zh.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>中文 &middot; 2:14</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-zh.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 36 MB</a></div>
+    </div>
+    <div class="vid-panel active" data-vl="en">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-en.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-en.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>English &middot; 2:32</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-en.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 92 MB</a></div>
+    </div>
+    <div class="vid-panel" data-vl="ja">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-ja.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ja.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>日本語 &middot; 2:43</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ja.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 98 MB</a></div>
+    </div>
+    <div class="vid-panel" data-vl="ko">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-ko.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ko.mp4" type="video/mp4"></video>
+      <div class="vid-meta"><span>한국어 &middot; 2:52</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ko.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 102 MB</a></div>
+    </div>
+    </div>
+  </div>
+  <div class="hero-act">
+    <div class="hero-prods"><img src="img/zxbuilder-lockup.png" alt="ZXBuilder"><img src="img/zxfsm-lockup.png" alt="ZX FSM — ZX Fab Standard Manager"></div>
+    <div class="cta-row">
+      <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="cta-primary"><span data-i18n="h_cta1">Download ZXBuilder · ZX FSM</span> <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="mailto:michael.lin@realitymatrixai.com" class="cta-secondary" data-i18n="h_cta2">Enterprise inquiry</a>
+    </div>
   </div>
 </div></section>
 
@@ -408,25 +469,12 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 </div></section>
 
 <section class="band" id="proof"><div class="w">
-  <div class="section-eyebrow" data-i18n="pf_e">Proof</div>
-  <div class="section-title" data-i18n="pf_t">Round-trip results we measured</div>
-  <div class="proof-grid">
-    <div class="card proof-main">
-      <div class="proof-big">2,627 <span class="of">/ 2,653</span></div>
-      <div class="proof-lbl" data-i18n="pf_big_l">Of 2,653 elements in the sample model, the 2,627 non-auxiliary elements have the correct category (26 auxiliary objects listed separately)</div>
-      <div class="proof-s" data-i18n="pf_big_s">Autodesk Snowdon Towers (HVAC) sample model · counted by category with native Revit schedules after import · Revit 2027</div>
-      <div class="proof-mini">
-        <div><div class="pm-v">1,053</div><div class="pm-t" data-i18n="pf1t">ducts</div><div class="pm-d" data-i18n="pf1d">size, length and system type match the source (size within 0.5 mm, length within ±0.1%)</div></div>
-        <div><div class="pm-v">997</div><div class="pm-t" data-i18n="pf2t">duct fittings</div><div class="pm-d" data-i18n="pf2d">family, type and system type match the source; size within 0.5 mm</div></div>
-        <div><div class="pm-v">2,596 / 2,596</div><div class="pm-t" data-i18n="pf3t">elements, another HVAC model</div><div class="pm-d" data-i18n="pf3d">all within 0.5 mm of the expected position after export and re-import</div></div>
-      </div>
-      <div class="proof-note" data-i18n="pf_note">Measured by us on Revit 2027; not third-party verified.</div>
-    </div>
-    <div class="proof-side">
-      <div class="card side"><div class="card-t" data-i18n="pc1t">Online and offline (AirGap) editions</div><div class="card-d" data-i18n="pc1d">Same features; the offline edition has no networking components, for sites without network access</div></div>
-      <div class="card side"><div class="card-t" data-i18n="pc2t">EV code signing · SHA-256</div><div class="card-d" data-i18n="pc2d">Every release comes with release notes and the SHA-256 fingerprints of the installers</div></div>
-      <div class="card side"><div class="card-t" data-i18n="pc3t">US patent applications</div><div class="card-d" data-i18n="pc3d">7 US patent applications filed, under examination</div></div>
-    </div>
+  <div class="section-eyebrow" data-i18n="pf_e">Product information</div>
+  <div class="section-title" data-i18n="pf_t">Editions, code signing and patents</div>
+  <div class="grid3">
+    <div class="card side"><div class="card-t" data-i18n="pc1t">Online and offline (AirGap) editions</div><div class="card-d" data-i18n="pc1d">Same features; the offline edition has no networking components, for sites without network access</div></div>
+    <div class="card side"><div class="card-t" data-i18n="pc2t">EV code signing · SHA-256</div><div class="card-d" data-i18n="pc2d">Every release comes with release notes and the SHA-256 fingerprints of the installers</div></div>
+    <div class="card side"><div class="card-t" data-i18n="pc3t">US patent applications</div><div class="card-d" data-i18n="pc3d">7 US patent applications filed, under examination</div></div>
   </div>
 </div></section>
 
@@ -456,36 +504,6 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   </div>
 </div></section>
 
-<!-- Product video · four languages (files hosted as GitHub release assets, tag intro-videos-20261102) -->
-<section id="video"><div class="w">
-  <div class="section-eyebrow" data-i18n="v_e">Video</div>
-  <div class="section-title" data-i18n="v_t">Introducing Reality Matrix AI: ZXBuilder and ZX FSM</div>
-  <p class="section-desc" data-i18n="v_d">Each video runs about two to three minutes and walks through the problem, why now, the gap, our solution, proof, ZX FSM, openness, value and what’s next. Available in Chinese, English, Japanese and Korean.</p>
-  <div class="vid-card">
-    <div class="vid-tabs" role="tablist">
-      <button class="vtab" data-vl="zh" role="tab" aria-selected="false" onclick="selectVideo('zh')">中文</button>
-      <button class="vtab active" data-vl="en" role="tab" aria-selected="true" onclick="selectVideo('en')">English</button>
-      <button class="vtab" data-vl="ja" role="tab" aria-selected="false" onclick="selectVideo('ja')">日本語</button>
-      <button class="vtab" data-vl="ko" role="tab" aria-selected="false" onclick="selectVideo('ko')">한국어</button>
-    </div>
-    <div class="vid-panel" data-vl="zh">
-      <video controls preload="none" playsinline width="1280" height="720" poster="img/rmai-intro-zh.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-zh.mp4" type="video/mp4"></video>
-      <div class="vid-meta"><span>中文 &middot; 2:14</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-zh.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 36 MB</a></div>
-    </div>
-    <div class="vid-panel active" data-vl="en">
-      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-en.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-en.mp4" type="video/mp4"></video>
-      <div class="vid-meta"><span>English &middot; 2:32</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-en.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 92 MB</a></div>
-    </div>
-    <div class="vid-panel" data-vl="ja">
-      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-ja.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ja.mp4" type="video/mp4"></video>
-      <div class="vid-meta"><span>日本語 &middot; 2:43</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ja.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 98 MB</a></div>
-    </div>
-    <div class="vid-panel" data-vl="ko">
-      <video controls preload="none" playsinline width="1920" height="1080" poster="img/rmai-intro-ko.jpg"><source src="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ko.mp4" type="video/mp4"></video>
-      <div class="vid-meta"><span>한국어 &middot; 2:52</span><a class="dl-link" href="https://github.com/chchlin1018/Website-RealityMatrixAI/releases/download/intro-videos-20261102/RMAI-Intro-ko.mp4"><span data-i18n="v_dl">Download video</span>&nbsp;&middot; 102 MB</a></div>
-    </div>
-  </div>
-</div></section>
 
 
 <!-- Products · Downloadable software (ZXBuilder) — company mark + product mark in one frame -->
@@ -619,16 +637,8 @@ const _RM = {
 "mx1d": "For developers: Python tools, sample scenes, a ZF USDC part library and per-file SHA-256. Needs only Python 3.12 and usd-core; sample code is MIT-licensed. Write OpenUSD automation that generates scenes, then bring them into Revit with ZXBuilder.",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "Two file types, one round trip: ZX USDC scene files and ZF USDC part libraries. Both are standard OpenUSD files that a standard OpenUSD library can open.",
-"pf_e": "Proof",
-"pf_t": "Round-trip results we measured",
-"pf_big_s": "Autodesk Snowdon Towers (HVAC) sample model · counted by category with native Revit schedules after import · Revit 2027",
-"pf1t": "ducts",
-"pf1d": "size, length and system type match the source (size within 0.5 mm, length within ±0.1%)",
-"pf2t": "duct fittings",
-"pf2d": "family, type and system type match the source; size within 0.5 mm",
-"pf3t": "elements, another HVAC model",
-"pf3d": "all within 0.5 mm of the expected position after export and re-import",
-"pf_note": "Measured by us on Revit 2027; not third-party verified.",
+"pf_e": "Product information",
+"pf_t": "Editions, code signing and patents",
 "pc1t": "Online and offline (AirGap) editions",
 "pc1d": "Same features; the offline edition has no networking components, for sites without network access",
 "pc2t": "EV code signing · SHA-256",
@@ -664,8 +674,6 @@ const _RM = {
 "rl3h": "Equipment data delivered to the owner’s standard",
 "rl3d": "PI AF template and IoT point mappings maintained in ZX FSM",
 "v_e": "Video",
-"v_t": "Introducing Reality Matrix AI: ZXBuilder and ZX FSM",
-"v_d": "Each video runs about two to three minutes and walks through the problem, why now, the gap, our solution, proof, ZX FSM, openness, value and what’s next. Available in Chinese, English, Japanese and Korean.",
 "v_dl": "Download video",
 "dl_e": "Products &middot; Downloadable Software",
 "dl_t": "ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI",
@@ -686,8 +694,7 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM downloads",
 "nv_link": "OpenUSD",
 "ct_link": "Contact",
-"ftr_tm": "ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.",
-"pf_big_l": "Of 2,653 elements in the sample model, the 2,627 non-auxiliary elements have the correct category (26 auxiliary objects listed separately)"
+"ftr_tm": "ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc."
 },
 "zh": {
 "doc_title": "Reality Matrix AI 實矩科技 — 工業數位孿生的基礎建設與橋梁",
@@ -774,16 +781,8 @@ const _RM = {
 "mx1d": "給開發者：Python 工具、範例場景、ZF USDC 零件庫與逐檔 SHA-256；只需 Python 3.12 與 usd-core，範例原始碼以 MIT 授權。用它寫 OpenUSD 自動化程式產生場景，再經 ZXBuilder 匯回 Revit。",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "兩種檔案，一條往返路：ZX USDC 是場景檔，ZF USDC 是零件庫檔，都是標準 OpenUSD 檔，用標準的 OpenUSD 程式庫就能開啟。",
-"pf_e": "實證",
-"pf_t": "我方實測的往返結果",
-"pf_big_s": "Autodesk 範例模型 Snowdon Towers(HVAC)· 匯回後以 Revit 原生明細表依品類統計 · Revit 2027",
-"pf1t": "風管",
-"pf1d": "尺寸、長度與系統類型與來源相符(尺寸差 0.5 mm 內，長度差 ±0.1% 內)",
-"pf2t": "風管配件",
-"pf2d": "族、類型與系統類型與來源一致，尺寸差 0.5 mm 內",
-"pf3t": "件，另一個空調模型",
-"pf3d": "匯出再匯回，與預期位置相差都在 0.5 mm 以內",
-"pf_note": "以上為我方在 Revit 2027 上自行實測，非第三方驗證。",
+"pf_e": "產品資訊",
+"pf_t": "版本、簽章與專利",
 "pc1t": "線上版與離線版(AirGap)",
 "pc1d": "功能相同；離線版不含連網元件，供無法連網的環境使用",
 "pc2t": "EV 程式碼簽章 · SHA-256",
@@ -819,8 +818,6 @@ const _RM = {
 "rl3h": "設備資料照業主標準交付",
 "rl3d": "PI AF 樣板與 IoT 點位對照在 ZX FSM 維護",
 "v_e": "產品介紹影片",
-"v_t": "實矩科技介紹：ZXBuilder 與 ZX FSM",
-"v_d": "影片約兩到三分鐘，依序說明痛點、時機、缺口、定位、實證、ZX FSM、開放、價值與下一步；提供中文、英文、日文、韓文四種語言版本。",
 "v_dl": "下載影片",
 "dl_e": "產品 &middot; 可下載軟體",
 "dl_t": "ZXBuilder&trade; —— Reality Matrix AI 的可下載軟體",
@@ -841,8 +838,7 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM 下載",
 "nv_link": "OpenUSD",
 "ct_link": "聯絡我們",
-"ftr_tm": "ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.(實矩科技)之商標。",
-"pf_big_l": "範例模型 2,653 件中，非輔助件 2,627 件品類正確(26 件輔助物件另列)"
+"ftr_tm": "ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.(實矩科技)之商標。"
 },
 "ja": {
 "doc_title": "Reality Matrix AI — 産業デジタルツインの基盤と架け橋",
@@ -929,16 +925,8 @@ const _RM = {
 "mx1d": "開発者向け：Python ツール、サンプルシーン、ZF USDC 部品ライブラリ、ファイルごとの SHA-256。必要なのは Python 3.12 と usd-core のみで、サンプルコードは MIT ライセンスです。OpenUSD の自動化プログラムでシーンを生成し、ZXBuilder で Revit に取り込めます。",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "二つのファイル、一つの往復：ZX USDC はシーンファイル、ZF USDC は部品ライブラリ。どちらも標準の OpenUSD ファイルで、標準の OpenUSD ライブラリで開けます。",
-"pf_e": "実証",
-"pf_t": "当社で計測した往復の結果",
-"pf_big_s": "Autodesk サンプルモデル Snowdon Towers(HVAC)· 取り込み後にネイティブ Revit の集計表でカテゴリ別に集計 · Revit 2027",
-"pf1t": "ダクト",
-"pf1d": "サイズ、長さ、システムタイプが元データと一致(サイズ差 0.5 mm 以内、長さ差 ±0.1% 以内)",
-"pf2t": "ダクト継手",
-"pf2d": "ファミリ、タイプ、システムタイプが元データと一致、サイズ差 0.5 mm 以内",
-"pf3t": "要素、別の空調モデル",
-"pf3d": "書き出し後に再取り込みし、すべて想定位置から 0.5 mm 以内",
-"pf_note": "上記は当社が Revit 2027 で計測した値で、第三者による検証ではありません。",
+"pf_e": "製品情報",
+"pf_t": "エディション・コード署名・特許",
 "pc1t": "オンライン版とオフライン版(AirGap)",
 "pc1d": "機能は同じ。オフライン版はネットワーク接続用の部品を含まず、接続できない環境向けです",
 "pc2t": "EV コード署名 · SHA-256",
@@ -974,8 +962,6 @@ const _RM = {
 "rl3h": "設備データはオーナーの標準で納品",
 "rl3d": "PI AF テンプレートと IoT ポイントの対応は ZX FSM で管理",
 "v_e": "紹介動画",
-"v_t": "Reality Matrix AI のご紹介：ZXBuilder と ZX FSM",
-"v_d": "各動画は約 2〜3 分で、課題、なぜ今か、ギャップ、位置付け、実証、ZX FSM、オープン性、価値、次のステップを順に紹介します。中国語・英語・日本語・韓国語の 4 言語版をご用意しています。",
 "v_dl": "動画をダウンロード",
 "dl_e": "製品 &middot; ダウンロード型ソフトウェア",
 "dl_t": "ZXBuilder&trade; &mdash; Reality Matrix AI のダウンロード型ソフトウェア",
@@ -996,8 +982,7 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM ダウンロード",
 "nv_link": "OpenUSD",
 "ct_link": "お問い合わせ",
-"ftr_tm": "ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。",
-"pf_big_l": "サンプルモデル 2,653 件のうち、補助オブジェクト以外の 2,627 件が正しいカテゴリを持ちます(補助オブジェクト 26 件は別記)"
+"ftr_tm": "ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。"
 },
 "ko": {
 "doc_title": "Reality Matrix AI — 산업용 디지털 트윈의 기반이자 가교",
@@ -1084,16 +1069,8 @@ const _RM = {
 "mx1d": "개발자용: Python 도구, 샘플 장면, ZF USDC 부품 라이브러리, 파일별 SHA-256. Python 3.12와 usd-core만 있으면 되며 샘플 코드는 MIT 라이선스입니다. OpenUSD 자동화 프로그램으로 장면을 생성한 뒤 ZXBuilder로 Revit에 가져올 수 있습니다.",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "두 가지 파일, 하나의 왕복 경로: ZX USDC는 장면 파일, ZF USDC는 부품 라이브러리 파일입니다. 둘 다 표준 OpenUSD 파일이라 표준 OpenUSD 라이브러리로 열 수 있습니다.",
-"pf_e": "실증",
-"pf_t": "당사가 측정한 왕복 결과",
-"pf_big_s": "Autodesk 샘플 모델 Snowdon Towers(HVAC) · 가져온 뒤 네이티브 Revit 일람표로 카테고리별 집계 · Revit 2027",
-"pf1t": "덕트",
-"pf1d": "크기, 길이, 시스템 유형이 원본과 일치(크기 차 0.5 mm 이내, 길이 차 ±0.1% 이내)",
-"pf2t": "덕트 피팅",
-"pf2d": "패밀리, 유형, 시스템 유형이 원본과 일치, 크기 차 0.5 mm 이내",
-"pf3t": "개 요소, 또 다른 공조 모델",
-"pf3d": "내보낸 뒤 다시 가져와도 모두 예상 위치에서 0.5 mm 이내",
-"pf_note": "위 수치는 당사가 Revit 2027에서 직접 측정한 것으로, 제3자 검증이 아닙니다.",
+"pf_e": "제품 정보",
+"pf_t": "에디션 · 코드 서명 · 특허",
 "pc1t": "온라인판과 오프라인판(AirGap)",
 "pc1d": "기능은 같습니다. 오프라인판은 네트워크 연결용 구성 요소가 없어 네트워크를 쓸 수 없는 환경용입니다",
 "pc2t": "EV 코드 서명 · SHA-256",
@@ -1129,8 +1106,6 @@ const _RM = {
 "rl3h": "설비 데이터는 오너 표준으로 납품",
 "rl3d": "PI AF 템플릿과 IoT 포인트 대응은 ZX FSM에서 관리",
 "v_e": "소개 영상",
-"v_t": "Reality Matrix AI 소개: ZXBuilder와 ZX FSM",
-"v_d": "각 영상은 약 2~3분이며 문제, 왜 지금인가, 공백, 포지셔닝, 실증, ZX FSM, 개방성, 가치, 다음 단계를 차례로 소개합니다. 중국어, 영어, 일본어, 한국어 4개 언어로 제공됩니다.",
 "v_dl": "동영상 다운로드",
 "dl_e": "제품 &middot; 다운로드형 소프트웨어",
 "dl_t": "ZXBuilder&trade; &mdash; Reality Matrix AI의 다운로드형 소프트웨어",
@@ -1151,8 +1126,7 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM 다운로드",
 "nv_link": "OpenUSD",
 "ct_link": "문의하기",
-"ftr_tm": "ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다.",
-"pf_big_l": "샘플 모델 2,653개 요소 중 보조 객체를 제외한 2,627개 요소의 카테고리가 올바름(보조 객체 26개는 별도 표기)"
+"ftr_tm": "ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다."
 }
 };
 function selectVideo(l){

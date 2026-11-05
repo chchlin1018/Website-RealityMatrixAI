@@ -151,7 +151,7 @@ section.band{background:linear-gradient(180deg,transparent,rgba(0,223,162,.025),
 .proof-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;margin-top:28px}
 .proof-big{font-size:clamp(56px,9vw,104px);font-weight:800;line-height:1;color:#fff;letter-spacing:-3px}
 .proof-lbl{font-size:clamp(18px,2.2vw,24px);font-weight:700;color:#fff;margin-top:8px}
-.proof-lbl .g2{color:#4ade80}
+.proof-big .of{font-size:.42em;color:rgba(255,255,255,.55);letter-spacing:-1px}
 .proof-s{font-size:13px;color:rgba(255,255,255,.58);margin-top:6px}
 .proof-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
 .pm-v{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent)}
@@ -292,7 +292,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     <span class="badge badge-aif" data-i18n="b_usd">Standard OpenUSD</span>
   </div>
   <h1 data-i18n="h1">Infrastructure and bridge<br><span class="g">for industrial digital twins</span></h1>
-  <p class="hero-sub" data-i18n="h_sub">We connect the BIM engineering world with digital-twin applications (NVIDIA AI Factory, SimReady, OpenUSD). ZXBuilder carries engineering data, identity intact, both ways between Revit and OpenUSD. ZX FSM writes the owner’s equipment standards into every component.</p>
+  <p class="hero-sub" data-i18n="h_sub">Reality Matrix AI is infrastructure and a bridge for industrial digital twins (NVIDIA AI Factory, SimReady, OpenUSD), connecting the BIM engineering world with digital-twin applications.</p>
   <div class="hero-prods"><img src="img/zxbuilder-lockup.png" alt="ZXBuilder"><img src="img/zxfsm-lockup.png" alt="ZX FSM — ZX Fab Standard Manager"></div>
   <div class="cta-row">
     <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="cta-primary"><span data-i18n="h_cta1">Download ZXBuilder · ZX FSM</span> <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -304,7 +304,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   <div class="ai-band">
     <div class="section-eyebrow" data-i18n="ai_e">For the AI era</div>
     <p class="ai-q" data-i18n="ai_q">AI agents need engineering data they can trust. ZXBuilder delivers BIM ↔ OpenUSD data that carries its identity.</p>
-    <p class="ai-d" data-i18n="ai_d">Every component leaves Revit with a fixed identity and its connection points, written as plain properties that any OpenUSD program can read without asking Revit. On the way back, it is rebuilt by that identity as a native, editable Revit element with its parameters.</p>
+    <p class="ai-d" data-i18n="ai_d">Each component leaves Revit with a fixed identity and its connection points, written as plain properties that any OpenUSD program can read without asking Revit. On the way back, it is rebuilt by that identity as a native, editable Revit element with its parameters.</p>
   </div>
 </div></section>
 
@@ -326,19 +326,14 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     <div class="card pain"><div class="pain-x" aria-hidden="true">&times;</div><div class="card-t" data-i18n="pn2t">Only the shape comes back</div><div class="card-d" data-i18n="pn2d">After moving to a 3D platform, only geometry remains: families, types and parameters are gone, and edited layouts are redrawn in Revit.</div></div>
     <div class="card pain"><div class="pain-x" aria-hidden="true">&times;</div><div class="card-t" data-i18n="pn3t">Operations can’t connect</div><div class="card-d" data-i18n="pn3d">Equipment data for monitoring systems such as PI AF needs a separate list and mapping, and the model is checked again at handover to operations.</div></div>
   </div>
-  <div class="sub-title" data-i18n="wn_t">Why now: fabs and AI factories are scaling at once</div>
-  <div class="grid2">
-    <div class="card stat-card"><div class="stat-big">20 <span class="u" data-i18n="wn1u">fabs</span></div><div class="card-t" data-i18n="wn1t">New 300 mm fabs &amp; lines breaking ground in 2026</div><div class="card-d" data-i18n="wn1s">18 more in 2027 · 23 begin output</div><div class="stat-src" data-i18n="wn1src">Source: SEMI, Oct 2026</div></div>
-    <div class="card stat-card"><div class="stat-big">$720B+</div><div class="card-t" data-i18n="wn2t">2026 capex, top four clouds</div><div class="card-d" data-i18n="wn2s">Microsoft · Alphabet · Amazon · Meta · several plan more for 2027</div><div class="stat-src" data-i18n="wn2src">Source: company Q3 2026 reports</div></div>
-  </div>
 </div></section>
 
 <section class="band" id="what"><div class="w">
   <div class="section-eyebrow" data-i18n="wd_e">Our position</div>
-  <div class="section-title" data-i18n="wd_t">More than conversion: identity and standards, carried through to delivery</div>
+  <div class="section-title" data-i18n="wd_t">More than conversion: component identity and the owner’s standard, carried to delivery</div>
   <p class="section-desc" data-i18n="wd_d">Design data still lives mostly in Revit, and today’s workflows are mostly one-way export. We sit between the two worlds: ZXBuilder is the two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world, and ZX FSM provides the data rules for that bridge.</p>
   <div class="diagram">
-    <div class="diagram-title" data-i18n="dg_title">Two-way bridge · identity intact</div>
+    <div class="diagram-title" data-i18n="dg_title">Two-way bridge · component identity kept</div>
     <div class="diagram-flow">
       <div class="diag-box bim-box">
         <div class="diag-icon"><svg width="110" height="40" viewBox="0 0 110 40" fill="none" aria-hidden="true"><rect x="0" y="2" width="36" height="36" rx="6" fill="#0696D7"/><path d="M10 10 L10 30 M10 10 L22 10 Q28 10 28 17 Q28 23 22 23 L10 23 M20 23 L28 30" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="42" y="14" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" letter-spacing="1">AUTODESK</text><text x="41" y="29" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="14" fill="white">Revit</text></svg></div>
@@ -368,7 +363,6 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     </div>
     <div class="fsm-strip"><img src="img/zxfsm-lockup.png" alt="ZX FSM"><span data-i18n="dg_fsm"><strong>ZX FSM</strong> · the owner’s standard, applied automatically when ZXBuilder brings models back</span></div>
   </div>
-  <p class="goal" data-i18n="wd_goal">Our goal: make ZX and ZF, both standard OpenUSD files, the data-exchange standard for semiconductor fab infrastructure.</p>
 </div></section>
 
 <section id="products"><div class="w">
@@ -394,7 +388,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     <div class="prod-card fsm">
       <div class="prod-head"><img class="prod-logo" src="img/zxfsm-lockup.png" alt="ZX FSM — ZX Fab Standard Manager"><span class="pill pill-now" data-i18n="st_now">Available now</span></div>
       <div class="prod-kind" data-i18n="fs_kind">ZX Fab Standard Manager · Windows desktop app for owners</div>
-      <div class="prod-tag" data-i18n="fs_tag">Facility standards for owners, written into every component, not just documents</div>
+      <div class="prod-tag" data-i18n="fs_tag">The owner’s equipment information standard: defined, checked and published in Revit’s own classification</div>
       <ul class="feat-list">
       <li><div class="ft" data-i18n="fs1t">Set the standard</div><div class="fd" data-i18n="fs1d">Rules in Revit’s own classification: categories, parameters, units, required fields and system type codes; load 40 common Revit categories at once.</div></li>
       <li><div class="ft" data-i18n="fs2t">Organize RFA files</div><div class="fd" data-i18n="fs2d">Point it at RFA folders: it scans and builds an asset library, and finds new versions, moves, duplicates and missing files. No Revit needed; your files are only read.</div></li>
@@ -403,7 +397,6 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
       <li><div class="ft" data-i18n="fs5t">Send to ZXBuilder</div><div class="fd" data-i18n="fs5d">One click writes the standard package and shared parameter file; ZXBuilder applies them on import.</div></li>
       <li><div class="ft" data-i18n="fs6t">Check deliveries</div><div class="fd" data-i18n="fs6d">Open a ZX USDC scene against the standard and review equipment data in 3D.</div></li>
       </ul>
-      <div class="plan"><span class="pill pill-plan" data-i18n="st_plan">Planned</span> <span data-i18n="fs_plan">Planned for 0.8: equipment class library, standard check, delivery package with manifest, comparison report. Release date to be announced.</span></div>
       <div class="prod-meta" data-i18n="fs_meta">Windows · Normal / offline (AirGap) editions · EN / 中文 / 日本語 / 한국어 interface · 0.7 Pre-Beta</div>
       <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="product-cta" data-i18n="dl_go">Download at www.zxbuilder.club →</a>
     </div>
@@ -416,23 +409,23 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 
 <section class="band" id="proof"><div class="w">
   <div class="section-eyebrow" data-i18n="pf_e">Proof</div>
-  <div class="section-title" data-i18n="pf_t">Not a concept: a measured round trip</div>
+  <div class="section-title" data-i18n="pf_t">Round-trip results we measured</div>
   <div class="proof-grid">
     <div class="card proof-main">
-      <div class="proof-big">2,627</div>
-      <div class="proof-lbl"><span data-i18n="pf_big_u">components</span> <span class="g2" data-i18n="pf_big_g">100% rebuilt native</span></div>
-      <div class="proof-s" data-i18n="pf_big_s">Round trip on the Autodesk Snowdon Towers (HVAC) sample model · Revit 2027</div>
+      <div class="proof-big">2,627 <span class="of">/ 2,653</span></div>
+      <div class="proof-lbl" data-i18n="pf_big_l">Of 2,653 elements in the sample model, the 2,627 non-auxiliary elements have the correct category (26 auxiliary objects listed separately)</div>
+      <div class="proof-s" data-i18n="pf_big_s">Autodesk Snowdon Towers (HVAC) sample model · counted by category with native Revit schedules after import · Revit 2027</div>
       <div class="proof-mini">
-        <div><div class="pm-v">1,053</div><div class="pm-t" data-i18n="pf1t">ducts</div><div class="pm-d" data-i18n="pf1d">size, length and system type match the source</div></div>
-        <div><div class="pm-v">997</div><div class="pm-t" data-i18n="pf2t">duct fittings</div><div class="pm-d" data-i18n="pf2d">family, type and system type match the source</div></div>
+        <div><div class="pm-v">1,053</div><div class="pm-t" data-i18n="pf1t">ducts</div><div class="pm-d" data-i18n="pf1d">size, length and system type match the source (size within 0.5 mm, length within ±0.1%)</div></div>
+        <div><div class="pm-v">997</div><div class="pm-t" data-i18n="pf2t">duct fittings</div><div class="pm-d" data-i18n="pf2d">family, type and system type match the source; size within 0.5 mm</div></div>
         <div><div class="pm-v">2,596 / 2,596</div><div class="pm-t" data-i18n="pf3t">elements, another HVAC model</div><div class="pm-d" data-i18n="pf3d">all within 0.5 mm of the expected position after export and re-import</div></div>
       </div>
       <div class="proof-note" data-i18n="pf_note">Measured by us on Revit 2027; not third-party verified.</div>
     </div>
     <div class="proof-side">
-      <div class="card side"><div class="card-t" data-i18n="pc1t">Normal + AirGap editions</div><div class="card-d" data-i18n="pc1d">Designed for fab security · signed and released together</div></div>
-      <div class="card side"><div class="card-t" data-i18n="pc2t">EV code signing · SHA-256</div><div class="card-d" data-i18n="pc2d">Release notes and file fingerprints published for every release</div></div>
-      <div class="card side"><div class="card-t" data-i18n="pc3t">US patents pending</div><div class="card-d" data-i18n="pc3d">7 applications filed · under examination</div></div>
+      <div class="card side"><div class="card-t" data-i18n="pc1t">Online and offline (AirGap) editions</div><div class="card-d" data-i18n="pc1d">Same features; the offline edition has no networking components, for sites without network access</div></div>
+      <div class="card side"><div class="card-t" data-i18n="pc2t">EV code signing · SHA-256</div><div class="card-d" data-i18n="pc2d">Every release comes with release notes and the SHA-256 fingerprints of the installers</div></div>
+      <div class="card side"><div class="card-t" data-i18n="pc3t">US patent applications</div><div class="card-d" data-i18n="pc3d">7 US patent applications filed, under examination</div></div>
     </div>
   </div>
 </div></section>
@@ -441,7 +434,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   <div class="section-eyebrow" data-i18n="op_e">Open by design</div>
   <div class="section-title" data-i18n="op_t">Open formats, industry delivery standards</div>
   <div class="grid3">
-    <div class="card open-card o1"><div class="ok-k">OPEN</div><div class="ok-t" data-i18n="op1t">Open</div><div class="ok-h" data-i18n="op1h">ZX / ZF are standard OpenUSD</div><div class="card-d" data-i18n="op1d">Any tool can open and validate them</div></div>
+    <div class="card open-card o1"><div class="ok-k">OPEN</div><div class="ok-t" data-i18n="op1t">Open</div><div class="ok-h" data-i18n="op1h">ZX / ZF are standard OpenUSD files</div><div class="card-d" data-i18n="op1d">They open with a standard OpenUSD library</div></div>
     <div class="card open-card o2"><div class="ok-k">TWO-WAY</div><div class="ok-t" data-i18n="op2t">Two-way</div><div class="ok-h" data-i18n="op2h">Revit ⇄ Omniverse</div><div class="card-d" data-i18n="op2d">Identity out, native elements back</div></div>
     <div class="card open-card o3"><div class="ok-k">STANDARD</div><div class="ok-t" data-i18n="op3t">Standard</div><div class="ok-h" data-i18n="op3h">HTFA Digital Twin Committee</div><div class="card-d" data-i18n="op3d">An industry spec with OpenUSD as the delivery format</div></div>
   </div>
@@ -452,14 +445,14 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   <div class="section-eyebrow" data-i18n="in_e">Industries</div>
   <div class="section-title" data-i18n="in_t">Focused on semiconductor fabs and AI data centers</div>
   <div class="grid2">
-    <div class="card ind"><div class="ind-icon" aria-hidden="true">&#127981;</div><div class="card-t" data-i18n="in1t">Semiconductor fabs</div><div class="card-d" data-i18n="in1d">Vacuum pumps, scrubbers, chillers: many systems and many hands from design to operation. Owners define one standard in ZX FSM and check every delivery against it.</div></div>
-    <div class="card ind"><div class="ind-icon" aria-hidden="true">&#128452;&#65039;</div><div class="card-t" data-i18n="in2t">AI data centers</div><div class="card-d" data-i18n="in2d">CDUs, UPS and other equipment are laid out, simulated and twinned in NVIDIA Omniverse. ZXBuilder carries the Revit design into OpenUSD with its identity, and back to Revit after changes.</div></div>
+    <div class="card ind"><div class="ind-icon" aria-hidden="true">&#127981;</div><div class="card-t" data-i18n="in1t">Semiconductor fabs</div><div class="card-d" data-i18n="in1d">Vacuum pumps, scrubbers, chillers: many systems, handed over again and again from design to operation. Owners can define one equipment information standard in ZX FSM and check deliveries against it.</div></div>
+    <div class="card ind"><div class="ind-icon" aria-hidden="true">&#128452;&#65039;</div><div class="card-t" data-i18n="in2t">AI data centers</div><div class="card-d" data-i18n="in2d">CDUs, UPS and other equipment are laid out, simulated and twinned in NVIDIA Omniverse; ZXBuilder exports the Revit design to OpenUSD with component identity.</div></div>
   </div>
-  <div class="sub-title" data-i18n="rv_t">Value for every stakeholder</div>
+  <div class="sub-title" data-i18n="rv_t">What each role gets</div>
   <div class="grid3">
-    <div class="card role-card r1"><div class="ok-k">OWNERS</div><div class="ok-t" data-i18n="rl1t">Owners</div><div class="ok-h" data-i18n="rl1h">Define standards once</div><div class="card-d" data-i18n="rl1d">verify every delivery</div></div>
-    <div class="card role-card r2"><div class="ok-k">CONTRACTORS &amp; SUPPLIERS</div><div class="ok-t" data-i18n="rl2t">Contractors &amp; suppliers</div><div class="ok-h" data-i18n="rl2h">Your existing Revit models</div><div class="card-d" data-i18n="rl2d">become SimReady digital twins</div><div class="serve-tags"><span class="serve-tag">CTCI</span><span class="serve-tag">Exyte</span><span class="serve-tag">Fluor</span><span class="serve-tag">MEP Design</span></div></div>
-    <div class="card role-card r3"><div class="ok-k">OPERATIONS</div><div class="ok-t" data-i18n="rl3t">Operations</div><div class="ok-h" data-i18n="rl3h">From day one</div><div class="card-d" data-i18n="rl3d">the twin carries the right data</div></div>
+    <div class="card role-card r1"><div class="ok-k">OWNERS</div><div class="ok-t" data-i18n="rl1t">Owners</div><div class="ok-h" data-i18n="rl1h">Define the standard once</div><div class="card-d" data-i18n="rl1d">check deliveries against the same standard</div></div>
+    <div class="card role-card r2"><div class="ok-k">CONTRACTORS &amp; SUPPLIERS</div><div class="ok-t" data-i18n="rl2t">Contractors &amp; suppliers</div><div class="ok-h" data-i18n="rl2h">Your existing Revit models</div><div class="card-d" data-i18n="rl2d">can be exported to OpenUSD with component identity</div></div>
+    <div class="card role-card r3"><div class="ok-k">OPERATIONS</div><div class="ok-t" data-i18n="rl3t">Operations</div><div class="ok-h" data-i18n="rl3h">Equipment data delivered to the owner’s standard</div><div class="card-d" data-i18n="rl3d">PI AF template and IoT point mappings maintained in ZX FSM</div></div>
   </div>
 </div></section>
 
@@ -494,16 +487,6 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
   </div>
 </div></section>
 
-<section class="tight-top" id="next"><div class="w">
-  <div class="section-eyebrow" data-i18n="nx_e">What’s next</div>
-  <div class="section-title" data-i18n="nx_t">Next: from fabs to AI factories</div>
-  <p class="section-desc" data-i18n="nx_note">Planned directions, not yet available; timing to be announced.</p>
-  <div class="grid3">
-    <div class="card next-card n1"><div class="nx-n">01</div><span class="pill pill-plan" data-i18n="st_plan">Planned</span><div class="card-t" data-i18n="nx1t">SimReady part libraries for AI factories</div><div class="card-d" data-i18n="nx1d">Electrical and thermal data for NVIDIA DSX workflows</div></div>
-    <div class="card next-card n2"><div class="nx-n">02</div><span class="pill pill-plan" data-i18n="st_plan">Planned</span><div class="card-t" data-i18n="nx2t">Delivery packages + comparison reports</div><div class="card-d" data-i18n="nx2d">Standard → delivery → verification, end to end</div></div>
-    <div class="card next-card n3"><div class="nx-n">03</div><span class="pill pill-plan" data-i18n="st_plan">Planned</span><div class="card-t" data-i18n="nx3t">Interfaces for AI agents</div><div class="card-d" data-i18n="nx3d">AI agents use ZX tools directly</div></div>
-  </div>
-</div></section>
 
 <!-- Products · Downloadable software (ZXBuilder) — company mark + product mark in one frame -->
 <section class="tight-top" id="download"><div class="w">
@@ -561,12 +544,12 @@ const _RM = {
 "b_ind": "Semiconductor fabs · AI data centers",
 "b_usd": "Standard OpenUSD",
 "h1": "Infrastructure and bridge<br><span class=\"g\">for industrial digital twins<\/span>",
-"h_sub": "We connect the BIM engineering world with digital-twin applications (NVIDIA AI Factory, SimReady, OpenUSD). ZXBuilder carries engineering data, identity intact, both ways between Revit and OpenUSD. ZX FSM writes the owner’s equipment standards into every component.",
+"h_sub": "Reality Matrix AI is infrastructure and a bridge for industrial digital twins (NVIDIA AI Factory, SimReady, OpenUSD), connecting the BIM engineering world with digital-twin applications.",
 "h_cta1": "Download ZXBuilder · ZX FSM",
 "h_cta2": "Enterprise inquiry",
 "ai_e": "For the AI era",
 "ai_q": "AI agents need engineering data they can trust. ZXBuilder delivers BIM ↔ OpenUSD data that carries its identity.",
-"ai_d": "Every component leaves Revit with a fixed identity and its connection points, written as plain properties that any OpenUSD program can read without asking Revit. On the way back, it is rebuilt by that identity as a native, editable Revit element with its parameters.",
+"ai_d": "Each component leaves Revit with a fixed identity and its connection points, written as plain properties that any OpenUSD program can read without asking Revit. On the way back, it is rebuilt by that identity as a native, editable Revit element with its parameters.",
 "pb_e": "The problem",
 "pb_t": "Design → Build → Operate: models change hands again and again",
 "pb_d": "A fab or an AI data center is handed from owner to designer, contractor and equipment supplier. Each handover is a Revit or CAD file exchange, and the identity of each component is hard to carry through.",
@@ -584,18 +567,10 @@ const _RM = {
 "pn2d": "After moving to a 3D platform, only geometry remains: families, types and parameters are gone, and edited layouts are redrawn in Revit.",
 "pn3t": "Operations can’t connect",
 "pn3d": "Equipment data for monitoring systems such as PI AF needs a separate list and mapping, and the model is checked again at handover to operations.",
-"wn_t": "Why now: fabs and AI factories are scaling at once",
-"wn1u": "fabs",
-"wn1t": "New 300 mm fabs &amp; lines breaking ground in 2026",
-"wn1s": "18 more in 2027 · 23 begin output",
-"wn1src": "Source: SEMI, Oct 2026",
-"wn2t": "2026 capex, top four clouds",
-"wn2s": "Microsoft · Alphabet · Amazon · Meta · several plan more for 2027",
-"wn2src": "Source: company Q3 2026 reports",
 "wd_e": "Our position",
-"wd_t": "More than conversion: identity and standards, carried through to delivery",
+"wd_t": "More than conversion: component identity and the owner’s standard, carried to delivery",
 "wd_d": "Design data still lives mostly in Revit, and today’s workflows are mostly one-way export. We sit between the two worlds: ZXBuilder is the two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world, and ZX FSM provides the data rules for that bridge.",
-"dg_title": "Two-way bridge · identity intact",
+"dg_title": "Two-way bridge · component identity kept",
 "dg_l_n": "The BIM world",
 "dg_l_s": "Autodesk Revit · design &amp; construction",
 "dg_c_s": "Revit add-in · two-way bridge",
@@ -605,12 +580,10 @@ const _RM = {
 "dg_f1": "ZX USDC · scene files",
 "dg_f2": "ZF USDC · part libraries",
 "dg_fsm": "<strong>ZX FSM<\/strong> · the owner’s standard, applied automatically when ZXBuilder brings models back",
-"wd_goal": "Our goal: make ZX and ZF, both standard OpenUSD files, the data-exchange standard for semiconductor fab infrastructure.",
 "pr_e": "Products",
 "pr_t": "Two products, one workflow",
 "pr_d": "ZX FSM sets the rules; ZXBuilder follows them. Both are available now as Pre-Beta at <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a>.",
 "st_now": "Available now",
-"st_plan": "Planned",
 "zb_kind": "Autodesk Revit 2027 add-in",
 "zb_tag": "The two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world",
 "zb1t": "Export with identity",
@@ -628,7 +601,7 @@ const _RM = {
 "zb_meta": "Windows · Autodesk Revit 2027 · EN / 中文 / 日本語 / 한국어 interface",
 "dl_go": "Download at www.zxbuilder.club →",
 "fs_kind": "ZX Fab Standard Manager · Windows desktop app for owners",
-"fs_tag": "Facility standards for owners, written into every component, not just documents",
+"fs_tag": "The owner’s equipment information standard: defined, checked and published in Revit’s own classification",
 "fs1t": "Set the standard",
 "fs1d": "Rules in Revit’s own classification: categories, parameters, units, required fields and system type codes; load 40 common Revit categories at once.",
 "fs2t": "Organize RFA files",
@@ -641,35 +614,32 @@ const _RM = {
 "fs5d": "One click writes the standard package and shared parameter file; ZXBuilder applies them on import.",
 "fs6t": "Check deliveries",
 "fs6d": "Open a ZX USDC scene against the standard and review equipment data in 3D.",
-"fs_plan": "Planned for 0.8: equipment class library, standard check, delivery package with manifest, comparison report. Release date to be announced.",
 "fs_meta": "Windows · Normal / offline (AirGap) editions · EN / 中文 / 日本語 / 한국어 interface · 0.7 Pre-Beta",
 "mx1t": "ZXSample (Python)",
 "mx1d": "For developers: Python tools, sample scenes, a ZF USDC part library and per-file SHA-256. Needs only Python 3.12 and usd-core; sample code is MIT-licensed. Write OpenUSD automation that generates scenes, then bring them into Revit with ZXBuilder.",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "Two file types, one round trip: ZX USDC scene files and ZF USDC part libraries. Both are standard OpenUSD files that a standard OpenUSD library can open.",
 "pf_e": "Proof",
-"pf_t": "Not a concept: a measured round trip",
-"pf_big_u": "components",
-"pf_big_g": "100% rebuilt native",
-"pf_big_s": "Round trip on the Autodesk Snowdon Towers (HVAC) sample model · Revit 2027",
+"pf_t": "Round-trip results we measured",
+"pf_big_s": "Autodesk Snowdon Towers (HVAC) sample model · counted by category with native Revit schedules after import · Revit 2027",
 "pf1t": "ducts",
-"pf1d": "size, length and system type match the source",
+"pf1d": "size, length and system type match the source (size within 0.5 mm, length within ±0.1%)",
 "pf2t": "duct fittings",
-"pf2d": "family, type and system type match the source",
+"pf2d": "family, type and system type match the source; size within 0.5 mm",
 "pf3t": "elements, another HVAC model",
 "pf3d": "all within 0.5 mm of the expected position after export and re-import",
 "pf_note": "Measured by us on Revit 2027; not third-party verified.",
-"pc1t": "Normal + AirGap editions",
-"pc1d": "Designed for fab security · signed and released together",
+"pc1t": "Online and offline (AirGap) editions",
+"pc1d": "Same features; the offline edition has no networking components, for sites without network access",
 "pc2t": "EV code signing · SHA-256",
-"pc2d": "Release notes and file fingerprints published for every release",
-"pc3t": "US patents pending",
-"pc3d": "7 applications filed · under examination",
+"pc2d": "Every release comes with release notes and the SHA-256 fingerprints of the installers",
+"pc3t": "US patent applications",
+"pc3d": "7 US patent applications filed, under examination",
 "op_e": "Open by design",
 "op_t": "Open formats, industry delivery standards",
 "op1t": "Open",
-"op1h": "ZX / ZF are standard OpenUSD",
-"op1d": "Any tool can open and validate them",
+"op1h": "ZX / ZF are standard OpenUSD files",
+"op1d": "They open with a standard OpenUSD library",
 "op2t": "Two-way",
 "op2h": "Revit ⇄ Omniverse",
 "op2d": "Identity out, native elements back",
@@ -680,32 +650,23 @@ const _RM = {
 "in_e": "Industries",
 "in_t": "Focused on semiconductor fabs and AI data centers",
 "in1t": "Semiconductor fabs",
-"in1d": "Vacuum pumps, scrubbers, chillers: many systems and many hands from design to operation. Owners define one standard in ZX FSM and check every delivery against it.",
+"in1d": "Vacuum pumps, scrubbers, chillers: many systems, handed over again and again from design to operation. Owners can define one equipment information standard in ZX FSM and check deliveries against it.",
 "in2t": "AI data centers",
-"in2d": "CDUs, UPS and other equipment are laid out, simulated and twinned in NVIDIA Omniverse. ZXBuilder carries the Revit design into OpenUSD with its identity, and back to Revit after changes.",
-"rv_t": "Value for every stakeholder",
+"in2d": "CDUs, UPS and other equipment are laid out, simulated and twinned in NVIDIA Omniverse; ZXBuilder exports the Revit design to OpenUSD with component identity.",
+"rv_t": "What each role gets",
 "rl1t": "Owners",
-"rl1h": "Define standards once",
-"rl1d": "verify every delivery",
+"rl1h": "Define the standard once",
+"rl1d": "check deliveries against the same standard",
 "rl2t": "Contractors &amp; suppliers",
 "rl2h": "Your existing Revit models",
-"rl2d": "become SimReady digital twins",
+"rl2d": "can be exported to OpenUSD with component identity",
 "rl3t": "Operations",
-"rl3h": "From day one",
-"rl3d": "the twin carries the right data",
+"rl3h": "Equipment data delivered to the owner’s standard",
+"rl3d": "PI AF template and IoT point mappings maintained in ZX FSM",
 "v_e": "Video",
 "v_t": "Introducing Reality Matrix AI: ZXBuilder and ZX FSM",
 "v_d": "Each video runs about two to three minutes and walks through the problem, why now, the gap, our solution, proof, ZX FSM, openness, value and what’s next. Available in Chinese, English, Japanese and Korean.",
 "v_dl": "Download video",
-"nx_e": "What’s next",
-"nx_t": "Next: from fabs to AI factories",
-"nx_note": "Planned directions, not yet available; timing to be announced.",
-"nx1t": "SimReady part libraries for AI factories",
-"nx1d": "Electrical and thermal data for NVIDIA DSX workflows",
-"nx2t": "Delivery packages + comparison reports",
-"nx2d": "Standard → delivery → verification, end to end",
-"nx3t": "Interfaces for AI agents",
-"nx3d": "AI agents use ZX tools directly",
 "dl_e": "Products &middot; Downloadable Software",
 "dl_t": "ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI",
 "dl_name": "ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027",
@@ -725,7 +686,8 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM downloads",
 "nv_link": "OpenUSD",
 "ct_link": "Contact",
-"ftr_tm": "ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc."
+"ftr_tm": "ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.",
+"pf_big_l": "Of 2,653 elements in the sample model, the 2,627 non-auxiliary elements have the correct category (26 auxiliary objects listed separately)"
 },
 "zh": {
 "doc_title": "Reality Matrix AI 實矩科技 — 工業數位孿生的基礎建設與橋梁",
@@ -737,7 +699,7 @@ const _RM = {
 "b_ind": "半導體廠房 · AI 資料中心",
 "b_usd": "標準 OpenUSD",
 "h1": "工業數位孿生的<br><span class=\"g\">基礎建設與橋梁<\/span>",
-"h_sub": "連接 BIM 工程領域與數位孿生應用領域(NVIDIA AI Factory、SimReady、OpenUSD 等)。ZXBuilder 讓工程資料帶著身分，在 Revit 與 OpenUSD 之間雙向往返；ZX FSM 讓業主的設備資訊標準寫進每一個元件。",
+"h_sub": "實矩科技是工業數位孿生(NVIDIA AI Factory、SimReady、OpenUSD 等)的基礎建設與橋梁，連接 BIM 工程領域與數位孿生應用領域。",
 "h_cta1": "下載 ZXBuilder · ZX FSM",
 "h_cta2": "企業諮詢",
 "ai_e": "AI 時代",
@@ -760,18 +722,10 @@ const _RM = {
 "pn2d": "模型轉到 3D 平台後只留下幾何，族、型別與參數不見；改完的佈置只能在 Revit 裡重畫一次。",
 "pn3t": "營運接不上",
 "pn3d": "設備資料要接到 PI AF 等監控系統，得另外整理設備清單與對照；模型交到營運端還要再對一次。",
-"wn_t": "為什麼是現在：建廠與 AI 工廠，同時進入高峰",
-"wn1u": "座",
-"wn1t": "2026 年全球新動工 300mm 晶圓廠 / 產線",
-"wn1s": "2027 再 18 座動工、23 座投產",
-"wn1src": "來源：SEMI，2026/10",
-"wn2t": "2026 年四大雲端業者資本支出",
-"wn2s": "Microsoft · Alphabet · Amazon · Meta；多家規劃 2027 年再增加",
-"wn2src": "來源：各公司 2026 年第三季財報",
 "wd_e": "我們的定位",
-"wd_t": "不只是轉檔：讓身分與標準一路帶到交付",
+"wd_t": "不只是轉檔：讓元件身分與業主標準一起帶到交付",
 "wd_d": "設計資料大多還在 Revit 裡，今天的流程多半只能單向匯出。我們站在兩個世界中間：ZXBuilder 是 NVIDIA Omniverse / OpenUSD 連到 BIM 世界的雙向橋梁；ZX FSM 提供這座橋上的資料規矩。",
-"dg_title": "雙向橋梁 · 身分一路帶著走",
+"dg_title": "雙向橋梁 · 帶著元件身分",
 "dg_l_n": "BIM 世界",
 "dg_l_s": "Autodesk Revit · 設計 / 施工",
 "dg_c_s": "Revit 增益集 · 雙向橋梁",
@@ -781,12 +735,10 @@ const _RM = {
 "dg_f1": "ZX USDC · 場景檔",
 "dg_f2": "ZF USDC · 零件庫檔",
 "dg_fsm": "<strong>ZX FSM<\/strong> · 業主的標準，ZXBuilder 匯回時自動套用",
-"wd_goal": "我們的目標：讓 ZX / ZF 這兩種標準 OpenUSD 檔，成為半導體廠房基礎建設的資料交換標準。",
 "pr_e": "產品",
 "pr_t": "兩個產品，一條工作流",
 "pr_d": "ZX FSM 定規矩，ZXBuilder 照規矩做。兩者都已在 <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a> 以 Pre-Beta 提供下載。",
 "st_now": "現已提供",
-"st_plan": "規劃中",
 "zb_kind": "Autodesk Revit 2027 增益集",
 "zb_tag": "NVIDIA Omniverse / OpenUSD 連到 BIM 世界的雙向橋梁",
 "zb1t": "帶身分匯出",
@@ -804,7 +756,7 @@ const _RM = {
 "zb_meta": "Windows · Autodesk Revit 2027 · 中 / 英 / 日 / 韓介面",
 "dl_go": "到 www.zxbuilder.club 下載 →",
 "fs_kind": "ZX Fab Standard Manager · 給業主的 Windows 桌面程式",
-"fs_tag": "業主的廠房標準管理：標準不只寫在文件裡，而是寫進每一個元件",
+"fs_tag": "業主的設備資訊標準：用 Revit 的分類語言制定、檢查、發布",
 "fs1t": "制定標準",
 "fs1d": "用 Revit 的分類語言定規矩：類別、參數、單位、必填與系統類型代碼；一次帶入 40 個常用 Revit 類別。",
 "fs2t": "整理 RFA",
@@ -817,35 +769,32 @@ const _RM = {
 "fs5d": "寫出標準包與共用參數檔，ZXBuilder 匯回時自動套用。",
 "fs6t": "驗收交付",
 "fs6d": "開啟 ZX USDC 場景對照標準，在 3D 中檢視設備資料。",
-"fs_plan": "0.8 規劃中：設備類別庫、對照標準包、產出交付包與清單、比對報告。上架時間另行通知。",
 "fs_meta": "Windows · 一般版 / 離線版(AirGap)· 中 / 英 / 日 / 韓介面 · 0.7 Pre-Beta",
 "mx1t": "ZXSample 範例包(Python)",
 "mx1d": "給開發者：Python 工具、範例場景、ZF USDC 零件庫與逐檔 SHA-256；只需 Python 3.12 與 usd-core，範例原始碼以 MIT 授權。用它寫 OpenUSD 自動化程式產生場景，再經 ZXBuilder 匯回 Revit。",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "兩種檔案，一條往返路：ZX USDC 是場景檔，ZF USDC 是零件庫檔，都是標準 OpenUSD 檔，用標準的 OpenUSD 程式庫就能開啟。",
 "pf_e": "實證",
-"pf_t": "不是概念，是可量測的往返",
-"pf_big_u": "件元件",
-"pf_big_g": "100% 原生重建",
-"pf_big_s": "Autodesk 範例模型 Snowdon Towers(HVAC)往返實測 · Revit 2027",
+"pf_t": "我方實測的往返結果",
+"pf_big_s": "Autodesk 範例模型 Snowdon Towers(HVAC)· 匯回後以 Revit 原生明細表依品類統計 · Revit 2027",
 "pf1t": "風管",
-"pf1d": "尺寸、長度與系統類型與來源相符",
+"pf1d": "尺寸、長度與系統類型與來源相符(尺寸差 0.5 mm 內，長度差 ±0.1% 內)",
 "pf2t": "風管配件",
-"pf2d": "族、類型與系統類型與來源一致",
+"pf2d": "族、類型與系統類型與來源一致，尺寸差 0.5 mm 內",
 "pf3t": "件，另一個空調模型",
 "pf3d": "匯出再匯回，與預期位置相差都在 0.5 mm 以內",
 "pf_note": "以上為我方在 Revit 2027 上自行實測，非第三方驗證。",
-"pc1t": "Normal + AirGap 離線版",
-"pc1d": "專為晶圓廠資安設計 · 同批簽章發布",
+"pc1t": "線上版與離線版(AirGap)",
+"pc1d": "功能相同；離線版不含連網元件，供無法連網的環境使用",
 "pc2t": "EV 程式碼簽章 · SHA-256",
-"pc2d": "每版公開版本說明與檔案指紋",
-"pc3t": "美國專利申請中",
-"pc3d": "7 件申請 · 審查中",
+"pc2d": "每次發布都附版本說明與安裝檔的 SHA-256 指紋",
+"pc3t": "美國專利申請",
+"pc3d": "已提出 7 件美國專利申請，審查中",
 "op_e": "開放與標準",
 "op_t": "開放格式，推動產業交付標準",
 "op1t": "開放",
-"op1h": "ZX / ZF 都是標準 OpenUSD",
-"op1d": "任何工具都打得開、驗得過",
+"op1h": "ZX / ZF 都是標準 OpenUSD 檔",
+"op1d": "可用標準的 OpenUSD 程式庫開啟",
 "op2t": "雙向",
 "op2h": "Revit ⇄ Omniverse",
 "op2d": "帶身分匯出，原生匯回",
@@ -856,32 +805,23 @@ const _RM = {
 "in_e": "焦點產業",
 "in_t": "專注半導體廠房與 AI 資料中心",
 "in1t": "半導體廠房",
-"in1d": "真空泵、洗滌塔、冰水主機……系統多、經手的人多，從設計到營運反覆交接。業主在 ZX FSM 定一份標準，每次交付都照同一份標準驗收。",
+"in1d": "真空泵、洗滌塔、冰水主機等設備多、系統多，從設計到營運反覆交接。業主可在 ZX FSM 定一份設備資訊標準，交付時照同一份標準檢查。",
 "in2t": "AI 資料中心",
-"in2d": "冷卻液分配單元(CDU)、不斷電系統(UPS)等設備，要在 NVIDIA Omniverse 裡做佈置、模擬與數位孿生。ZXBuilder 把 Revit 裡的設計帶著身分送進 OpenUSD，改完再回到 Revit。",
-"rv_t": "對每一個角色，都有價值",
+"in2d": "冷卻液分配單元(CDU)、不斷電系統(UPS)等設備，在 NVIDIA Omniverse 裡做佈置、模擬與數位孿生；ZXBuilder 把 Revit 裡的設計帶著元件身分匯出成 OpenUSD。",
+"rv_t": "對各角色的價值",
 "rl1t": "業主",
-"rl1h": "標準一次定義",
-"rl1d": "每次交付都能驗收",
+"rl1h": "標準定義一次",
+"rl1d": "交付時照同一份標準檢查",
 "rl2t": "承包商 · 設備商",
 "rl2h": "手上的 Revit 模型",
-"rl2d": "就能變成 SimReady 數位孿生",
+"rl2d": "可帶著元件身分匯出成 OpenUSD",
 "rl3t": "營運團隊",
-"rl3h": "從第一天起",
-"rl3d": "孿生就帶著正確的資料",
+"rl3h": "設備資料照業主標準交付",
+"rl3d": "PI AF 樣板與 IoT 點位對照在 ZX FSM 維護",
 "v_e": "產品介紹影片",
 "v_t": "實矩科技介紹：ZXBuilder 與 ZX FSM",
 "v_d": "影片約兩到三分鐘，依序說明痛點、時機、缺口、定位、實證、ZX FSM、開放、價值與下一步；提供中文、英文、日文、韓文四種語言版本。",
 "v_dl": "下載影片",
-"nx_e": "下一步",
-"nx_t": "接下來：從廠房走向 AI 工廠",
-"nx_note": "以下為規劃方向，目前尚未提供，時程另行通知。",
-"nx1t": "AI 工廠 SimReady 零件庫",
-"nx1d": "電氣與散熱資料，對接 NVIDIA DSX 流程",
-"nx2t": "交付包 + 自動比對報告",
-"nx2d": "標準 → 交付 → 驗收，一路串起來",
-"nx3t": "AI 代理程式介面",
-"nx3d": "讓 AI 代理程式直接使用 ZX 工具",
 "dl_e": "產品 &middot; 可下載軟體",
 "dl_t": "ZXBuilder&trade; —— Reality Matrix AI 的可下載軟體",
 "dl_name": "ZXBuilder —— Autodesk Revit 2027 的 USD &harr; Revit 外掛程式",
@@ -893,7 +833,7 @@ const _RM = {
 "te": "團隊",
 "tt": "由業界資深人士打造",
 "tm_bio": "創辦人暨執行長 Michael Lin 在工業軟體、3D 與模擬領域逾 25 年，有 20 年 BIM 實務經驗，親自開發 ZXBuilder 的 USD → Revit 引擎。共同創辦人暨財務長與顧問委員會共六位，其中四位來自 Autodesk、AVEVA 與 PTC 工業軟體體系及其合作夥伴。",
-"fc_t": "用你已有的 Revit 模型，出一座 SimReady 廠房",
+"fc_t": "從你已有的 Revit 模型開始",
 "fc_d": "免費試用 ZXBuilder 與 ZX FSM，或來信聊聊你的專案。",
 "fc_cta1": "下載免費試用",
 "fc_cta2": "企業諮詢",
@@ -901,7 +841,8 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM 下載",
 "nv_link": "OpenUSD",
 "ct_link": "聯絡我們",
-"ftr_tm": "ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.(實矩科技)之商標。"
+"ftr_tm": "ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.(實矩科技)之商標。",
+"pf_big_l": "範例模型 2,653 件中，非輔助件 2,627 件品類正確(26 件輔助物件另列)"
 },
 "ja": {
 "doc_title": "Reality Matrix AI — 産業デジタルツインの基盤と架け橋",
@@ -913,7 +854,7 @@ const _RM = {
 "b_ind": "半導体ファブ · AI データセンター",
 "b_usd": "標準 OpenUSD",
 "h1": "産業デジタルツインの<br><span class=\"g\">基盤と架け橋<\/span>",
-"h_sub": "BIM のエンジニアリング領域と、デジタルツインの活用領域(NVIDIA AI Factory、SimReady、OpenUSD など)をつなぎます。ZXBuilder はエンジニアリングデータを識別情報付きで Revit と OpenUSD の間で双方向にやり取りし、ZX FSM はオーナーの設備情報標準をすべての要素に書き込みます。",
+"h_sub": "Reality Matrix AI は、産業デジタルツイン(NVIDIA AI Factory、SimReady、OpenUSD など)の基盤と架け橋として、BIM のエンジニアリング領域とデジタルツインの活用領域をつなぎます。",
 "h_cta1": "ZXBuilder · ZX FSM をダウンロード",
 "h_cta2": "エンタープライズお問い合わせ",
 "ai_e": "AI 時代に",
@@ -936,18 +877,10 @@ const _RM = {
 "pn2d": "3D プラットフォームに移すと形状だけが残り、ファミリ、タイプ、パラメータは失われます。変更したレイアウトは Revit で描き直すしかありません。",
 "pn3t": "運用につながらない",
 "pn3d": "PI AF などの監視システムにつなぐには、設備リストと対応表を別途整理する必要があり、運用側への引き渡しでも再確認が発生します。",
-"wn_t": "なぜ今か：ファブと AI ファクトリーが同時に拡大",
-"wn1u": "件",
-"wn1t": "2026 年に世界で着工する 300mm ファブ / ライン",
-"wn1s": "2027 年にさらに 18 件が着工、23 件が稼働",
-"wn1src": "出典：SEMI、2026/10",
-"wn2t": "2026 年、大手クラウド 4 社の設備投資",
-"wn2s": "Microsoft · Alphabet · Amazon · Meta。複数社が 2027 年にさらに増額を計画",
-"wn2src": "出典：各社 2026 年第 3 四半期決算",
 "wd_e": "私たちの位置付け",
-"wd_t": "変換だけではない：識別情報と標準を納品まで運ぶ",
+"wd_t": "変換だけではない：要素の識別情報とオーナーの標準を納品まで運ぶ",
 "wd_d": "設計データの多くは今も Revit の中にあり、現在のワークフローはほとんどが一方向の書き出しです。私たちは二つの世界の間に立ちます。ZXBuilder は NVIDIA Omniverse / OpenUSD と BIM の世界をつなぐ双方向の架け橋であり、ZX FSM はこの架け橋のデータルールを提供します。",
-"dg_title": "双方向の架け橋 · 識別情報を保ったまま",
+"dg_title": "双方向の架け橋 · 要素の識別情報付き",
 "dg_l_n": "BIM の世界",
 "dg_l_s": "Autodesk Revit · 設計 / 施工",
 "dg_c_s": "Revit アドイン · 双方向の架け橋",
@@ -957,12 +890,10 @@ const _RM = {
 "dg_f1": "ZX USDC · シーンファイル",
 "dg_f2": "ZF USDC · 部品ライブラリ",
 "dg_fsm": "<strong>ZX FSM<\/strong> · オーナーの標準を、ZXBuilder の取り込み時に自動適用",
-"wd_goal": "私たちの目標：標準 OpenUSD ファイルである ZX と ZF を、半導体ファブのインフラにおけるデータ交換の標準にすること。",
 "pr_e": "製品",
 "pr_t": "二つの製品、一つのワークフロー",
 "pr_d": "ZX FSM がルールを定め、ZXBuilder がそれに従います。どちらも <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a> で Pre-Beta としてダウンロードできます。",
 "st_now": "提供中",
-"st_plan": "計画中",
 "zb_kind": "Autodesk Revit 2027 アドイン",
 "zb_tag": "NVIDIA Omniverse / OpenUSD と BIM の世界をつなぐ双方向の架け橋",
 "zb1t": "識別情報付きで書き出し",
@@ -980,7 +911,7 @@ const _RM = {
 "zb_meta": "Windows · Autodesk Revit 2027 · 日本語 / 英語 / 中国語 / 韓国語 UI",
 "dl_go": "www.zxbuilder.club でダウンロード →",
 "fs_kind": "ZX Fab Standard Manager · オーナー向け Windows デスクトップアプリ",
-"fs_tag": "オーナーのファブ標準管理：標準を文書だけでなく、すべての要素に書き込む",
+"fs_tag": "オーナーの設備情報標準：Revit の分類体系で定義・チェック・発行",
 "fs1t": "標準を定める",
 "fs1d": "Revit の分類体系でルールを定義します：カテゴリ、パラメータ、単位、必須項目、システムタイプコード。よく使う Revit カテゴリ 40 種を一度に読み込めます。",
 "fs2t": "RFA を整理",
@@ -993,35 +924,32 @@ const _RM = {
 "fs5d": "標準パッケージと共有パラメータファイルを書き出し、ZXBuilder が取り込み時に自動適用します。",
 "fs6t": "納品をチェック",
 "fs6d": "ZX USDC シーンを標準と照合し、設備データを 3D で確認できます。",
-"fs_plan": "0.8 で計画中：設備クラスライブラリ、標準との照合、納品パッケージとその一覧、比較レポート。リリース時期は別途お知らせします。",
 "fs_meta": "Windows · 通常版 / オフライン版(AirGap)· 日本語 / 英語 / 中国語 / 韓国語 UI · 0.7 Pre-Beta",
 "mx1t": "ZXSample(Python)",
 "mx1d": "開発者向け：Python ツール、サンプルシーン、ZF USDC 部品ライブラリ、ファイルごとの SHA-256。必要なのは Python 3.12 と usd-core のみで、サンプルコードは MIT ライセンスです。OpenUSD の自動化プログラムでシーンを生成し、ZXBuilder で Revit に取り込めます。",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "二つのファイル、一つの往復：ZX USDC はシーンファイル、ZF USDC は部品ライブラリ。どちらも標準の OpenUSD ファイルで、標準の OpenUSD ライブラリで開けます。",
 "pf_e": "実証",
-"pf_t": "コンセプトではなく、計測された往復",
-"pf_big_u": "個の要素",
-"pf_big_g": "100% ネイティブで再構築",
-"pf_big_s": "Autodesk サンプルモデル Snowdon Towers(HVAC)で往復を実測 · Revit 2027",
+"pf_t": "当社で計測した往復の結果",
+"pf_big_s": "Autodesk サンプルモデル Snowdon Towers(HVAC)· 取り込み後にネイティブ Revit の集計表でカテゴリ別に集計 · Revit 2027",
 "pf1t": "ダクト",
-"pf1d": "サイズ、長さ、システムタイプが元データと一致",
+"pf1d": "サイズ、長さ、システムタイプが元データと一致(サイズ差 0.5 mm 以内、長さ差 ±0.1% 以内)",
 "pf2t": "ダクト継手",
-"pf2d": "ファミリ、タイプ、システムタイプが元データと一致",
+"pf2d": "ファミリ、タイプ、システムタイプが元データと一致、サイズ差 0.5 mm 以内",
 "pf3t": "要素、別の空調モデル",
 "pf3d": "書き出し後に再取り込みし、すべて想定位置から 0.5 mm 以内",
 "pf_note": "上記は当社が Revit 2027 で計測した値で、第三者による検証ではありません。",
-"pc1t": "Normal + AirGap オフライン版",
-"pc1d": "ファブのセキュリティ要件向けに設計 · 同時に署名・リリース",
+"pc1t": "オンライン版とオフライン版(AirGap)",
+"pc1d": "機能は同じ。オフライン版はネットワーク接続用の部品を含まず、接続できない環境向けです",
 "pc2t": "EV コード署名 · SHA-256",
-"pc2d": "リリースごとにリリースノートとファイルのフィンガープリントを公開",
-"pc3t": "米国特許出願中",
-"pc3d": "7 件出願 · 審査中",
+"pc2d": "リリースごとにリリースノートとインストーラの SHA-256 フィンガープリントを添付",
+"pc3t": "米国特許出願",
+"pc3d": "米国特許出願 7 件を提出済み、審査中",
 "op_e": "オープン設計",
 "op_t": "オープンな形式で、業界の納品標準を推進",
 "op1t": "オープン",
-"op1h": "ZX / ZF は標準 OpenUSD",
-"op1d": "どのツールでも開けて、検証できる",
+"op1h": "ZX / ZF は標準 OpenUSD ファイル",
+"op1d": "標準の OpenUSD ライブラリで開けます",
 "op2t": "双方向",
 "op2h": "Revit ⇄ Omniverse",
 "op2d": "識別情報付きで書き出し、ネイティブで取り込み",
@@ -1032,32 +960,23 @@ const _RM = {
 "in_e": "注力産業",
 "in_t": "半導体ファブと AI データセンターに注力",
 "in1t": "半導体ファブ",
-"in1d": "真空ポンプ、スクラバー、チラー…。システムも関係者も多く、設計から運用まで受け渡しが繰り返されます。オーナーは ZX FSM で一つの標準を定め、すべての納品を同じ標準で検収できます。",
+"in1d": "真空ポンプ、スクラバー、チラーなど設備もシステムも多く、設計から運用まで受け渡しが繰り返されます。オーナーは ZX FSM で設備情報標準を一つ定め、納品をその標準で確認できます。",
 "in2t": "AI データセンター",
-"in2d": "CDU(冷却液分配ユニット)や UPS などの設備は、NVIDIA Omniverse でレイアウト、シミュレーション、デジタルツイン化されます。ZXBuilder は Revit の設計を識別情報付きで OpenUSD に運び、変更後に Revit へ戻します。",
-"rv_t": "すべての関係者に価値を",
+"in2d": "CDU(冷却液分配ユニット)や UPS などの設備は NVIDIA Omniverse でレイアウト、シミュレーション、デジタルツイン化されます。ZXBuilder は Revit の設計を要素の識別情報付きで OpenUSD に書き出します。",
+"rv_t": "それぞれの関係者にとって",
 "rl1t": "オーナー",
-"rl1h": "標準は一度定義するだけ",
-"rl1d": "すべての納品を検収できる",
+"rl1h": "標準は一度定義",
+"rl1d": "納品は同じ標準で確認",
 "rl2t": "施工会社 · 設備メーカー",
-"rl2h": "手元の Revit モデルが",
-"rl2d": "SimReady なデジタルツインに",
+"rl2h": "手元の Revit モデルを",
+"rl2d": "要素の識別情報付きで OpenUSD に書き出せる",
 "rl3t": "運用チーム",
-"rl3h": "初日から",
-"rl3d": "ツインが正しいデータを持っている",
+"rl3h": "設備データはオーナーの標準で納品",
+"rl3d": "PI AF テンプレートと IoT ポイントの対応は ZX FSM で管理",
 "v_e": "紹介動画",
 "v_t": "Reality Matrix AI のご紹介：ZXBuilder と ZX FSM",
 "v_d": "各動画は約 2〜3 分で、課題、なぜ今か、ギャップ、位置付け、実証、ZX FSM、オープン性、価値、次のステップを順に紹介します。中国語・英語・日本語・韓国語の 4 言語版をご用意しています。",
 "v_dl": "動画をダウンロード",
-"nx_e": "次のステップ",
-"nx_t": "次へ：ファブから AI ファクトリーへ",
-"nx_note": "以下は計画中の方向性で、まだ提供していません。時期は別途お知らせします。",
-"nx1t": "AI ファクトリー向け SimReady 部品ライブラリ",
-"nx1d": "電気と熱のデータで NVIDIA DSX のワークフローに対応",
-"nx2t": "納品パッケージ + 比較レポート",
-"nx2d": "標準 → 納品 → 検収を一貫して",
-"nx3t": "AI エージェント向けインターフェース",
-"nx3d": "AI エージェントが ZX ツールを直接使える",
 "dl_e": "製品 &middot; ダウンロード型ソフトウェア",
 "dl_t": "ZXBuilder&trade; &mdash; Reality Matrix AI のダウンロード型ソフトウェア",
 "dl_name": "ZXBuilder &mdash; Autodesk Revit 2027 向け USD &harr; Revit プラグイン",
@@ -1069,7 +988,7 @@ const _RM = {
 "te": "チーム",
 "tt": "業界のベテランが構築",
 "tm_bio": "創業者兼 CEO の Michael Lin は、産業ソフトウェア、3D、シミュレーションの分野で 25 年以上、BIM の実務で 20 年の経験を持ち、ZXBuilder の USD → Revit エンジンを自ら開発しました。共同創業者兼 CFO とアドバイザリーボードの計 6 名のうち 4 名は、Autodesk、AVEVA、PTC の産業ソフトウェア体系とそのパートナーの出身です。",
-"fc_t": "お手持ちの Revit モデルから、SimReady なファブへ",
+"fc_t": "お手持ちの Revit モデルから始めましょう",
 "fc_d": "ZXBuilder と ZX FSM を無料でお試しいただくか、プロジェクトについてお気軽にご相談ください。",
 "fc_cta1": "無料トライアルをダウンロード",
 "fc_cta2": "エンタープライズお問い合わせ",
@@ -1077,7 +996,8 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM ダウンロード",
 "nv_link": "OpenUSD",
 "ct_link": "お問い合わせ",
-"ftr_tm": "ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。"
+"ftr_tm": "ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。",
+"pf_big_l": "サンプルモデル 2,653 件のうち、補助オブジェクト以外の 2,627 件が正しいカテゴリを持ちます(補助オブジェクト 26 件は別記)"
 },
 "ko": {
 "doc_title": "Reality Matrix AI — 산업용 디지털 트윈의 기반이자 가교",
@@ -1089,7 +1009,7 @@ const _RM = {
 "b_ind": "반도체 팹 · AI 데이터센터",
 "b_usd": "표준 OpenUSD",
 "h1": "산업용 디지털 트윈의<br><span class=\"g\">기반이자 가교<\/span>",
-"h_sub": "BIM 엔지니어링 영역과 디지털 트윈 활용 영역(NVIDIA AI Factory, SimReady, OpenUSD 등)을 연결합니다. ZXBuilder는 엔지니어링 데이터를 식별 정보와 함께 Revit과 OpenUSD 사이에서 양방향으로 주고받고, ZX FSM은 오너의 설비 정보 표준을 모든 요소에 기록합니다.",
+"h_sub": "Reality Matrix AI는 산업용 디지털 트윈(NVIDIA AI Factory, SimReady, OpenUSD 등)의 기반이자 가교로서, BIM 엔지니어링 영역과 디지털 트윈 활용 영역을 연결합니다.",
 "h_cta1": "ZXBuilder · ZX FSM 다운로드",
 "h_cta2": "기업 문의",
 "ai_e": "AI 시대를 위해",
@@ -1112,18 +1032,10 @@ const _RM = {
 "pn2d": "3D 플랫폼으로 옮기면 형상만 남고 패밀리, 유형, 매개변수는 사라집니다. 수정한 배치는 Revit에서 다시 그려야 합니다.",
 "pn3t": "운영과 연결되지 않음",
 "pn3d": "PI AF 같은 모니터링 시스템에 연결하려면 설비 목록과 대응표를 따로 정리해야 하고, 운영 측에 넘길 때 다시 확인해야 합니다.",
-"wn_t": "왜 지금인가: 팹과 AI 팩토리가 동시에 확장",
-"wn1u": "곳",
-"wn1t": "2026년 전 세계에서 착공하는 300mm 팹 / 라인",
-"wn1s": "2027년 18곳 추가 착공 · 23곳 가동",
-"wn1src": "출처: SEMI, 2026/10",
-"wn2t": "2026년 4대 클라우드 기업 설비 투자",
-"wn2s": "Microsoft · Alphabet · Amazon · Meta. 여러 곳이 2027년 추가 증액 계획",
-"wn2src": "출처: 각사 2026년 3분기 실적 보고",
 "wd_e": "우리의 포지셔닝",
-"wd_t": "변환을 넘어: 식별 정보와 표준을 납품까지",
+"wd_t": "변환을 넘어: 요소 식별 정보와 오너의 표준을 납품까지",
 "wd_d": "설계 데이터의 대부분은 아직 Revit 안에 있고, 오늘날의 워크플로는 대부분 단방향 내보내기입니다. 우리는 두 세계 사이에 섭니다. ZXBuilder는 NVIDIA Omniverse / OpenUSD와 BIM 세계를 잇는 양방향 가교이고, ZX FSM은 이 가교의 데이터 규칙을 제공합니다.",
-"dg_title": "양방향 가교 · 식별 정보 유지",
+"dg_title": "양방향 가교 · 요소 식별 정보 유지",
 "dg_l_n": "BIM 세계",
 "dg_l_s": "Autodesk Revit · 설계 / 시공",
 "dg_c_s": "Revit 애드인 · 양방향 가교",
@@ -1133,12 +1045,10 @@ const _RM = {
 "dg_f1": "ZX USDC · 장면 파일",
 "dg_f2": "ZF USDC · 부품 라이브러리",
 "dg_fsm": "<strong>ZX FSM<\/strong> · 오너의 표준을 ZXBuilder 가져오기 시 자동 적용",
-"wd_goal": "우리의 목표: 표준 OpenUSD 파일인 ZX와 ZF를 반도체 팹 인프라의 데이터 교환 표준으로 만드는 것.",
 "pr_e": "제품",
 "pr_t": "두 제품, 하나의 워크플로",
 "pr_d": "ZX FSM이 규칙을 정하고, ZXBuilder가 그 규칙을 따릅니다. 두 제품 모두 <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a>에서 Pre-Beta로 다운로드할 수 있습니다.",
 "st_now": "제공 중",
-"st_plan": "계획 중",
 "zb_kind": "Autodesk Revit 2027 애드인",
 "zb_tag": "NVIDIA Omniverse / OpenUSD와 BIM 세계를 잇는 양방향 가교",
 "zb1t": "식별 정보와 함께 내보내기",
@@ -1156,7 +1066,7 @@ const _RM = {
 "zb_meta": "Windows · Autodesk Revit 2027 · 한국어 / 영어 / 중국어 / 일본어 UI",
 "dl_go": "www.zxbuilder.club에서 다운로드 →",
 "fs_kind": "ZX Fab Standard Manager · 오너를 위한 Windows 데스크톱 앱",
-"fs_tag": "오너의 팹 표준 관리: 표준을 문서에만 두지 않고 모든 요소에 기록",
+"fs_tag": "오너의 설비 정보 표준: Revit의 분류 체계로 정의·확인·배포",
 "fs1t": "표준 정하기",
 "fs1d": "Revit의 분류 체계로 규칙을 정의합니다: 카테고리, 매개변수, 단위, 필수 항목, 시스템 유형 코드. 자주 쓰는 Revit 카테고리 40개를 한 번에 불러옵니다.",
 "fs2t": "RFA 정리",
@@ -1169,35 +1079,32 @@ const _RM = {
 "fs5d": "표준 패키지와 공유 매개변수 파일을 내보내면 ZXBuilder가 가져오기 시 자동 적용합니다.",
 "fs6t": "납품 검수",
 "fs6d": "ZX USDC 장면을 표준과 대조하고 설비 데이터를 3D로 확인합니다.",
-"fs_plan": "0.8 계획: 설비 클래스 라이브러리, 표준 대조, 납품 패키지와 목록, 비교 보고서. 출시 시기는 별도로 안내합니다.",
 "fs_meta": "Windows · 일반판 / 오프라인판(AirGap) · 한국어 / 영어 / 중국어 / 일본어 UI · 0.7 Pre-Beta",
 "mx1t": "ZXSample (Python)",
 "mx1d": "개발자용: Python 도구, 샘플 장면, ZF USDC 부품 라이브러리, 파일별 SHA-256. Python 3.12와 usd-core만 있으면 되며 샘플 코드는 MIT 라이선스입니다. OpenUSD 자동화 프로그램으로 장면을 생성한 뒤 ZXBuilder로 Revit에 가져올 수 있습니다.",
 "mx2t": "ZX USDC · ZF USDC",
 "mx2d": "두 가지 파일, 하나의 왕복 경로: ZX USDC는 장면 파일, ZF USDC는 부품 라이브러리 파일입니다. 둘 다 표준 OpenUSD 파일이라 표준 OpenUSD 라이브러리로 열 수 있습니다.",
 "pf_e": "실증",
-"pf_t": "개념이 아닌, 측정된 왕복",
-"pf_big_u": "개 요소",
-"pf_big_g": "100% 네이티브 재구성",
-"pf_big_s": "Autodesk 샘플 모델 Snowdon Towers(HVAC) 왕복 실측 · Revit 2027",
+"pf_t": "당사가 측정한 왕복 결과",
+"pf_big_s": "Autodesk 샘플 모델 Snowdon Towers(HVAC) · 가져온 뒤 네이티브 Revit 일람표로 카테고리별 집계 · Revit 2027",
 "pf1t": "덕트",
-"pf1d": "크기, 길이, 시스템 유형이 원본과 일치",
+"pf1d": "크기, 길이, 시스템 유형이 원본과 일치(크기 차 0.5 mm 이내, 길이 차 ±0.1% 이내)",
 "pf2t": "덕트 피팅",
-"pf2d": "패밀리, 유형, 시스템 유형이 원본과 일치",
+"pf2d": "패밀리, 유형, 시스템 유형이 원본과 일치, 크기 차 0.5 mm 이내",
 "pf3t": "개 요소, 또 다른 공조 모델",
 "pf3d": "내보낸 뒤 다시 가져와도 모두 예상 위치에서 0.5 mm 이내",
 "pf_note": "위 수치는 당사가 Revit 2027에서 직접 측정한 것으로, 제3자 검증이 아닙니다.",
-"pc1t": "Normal + AirGap 오프라인판",
-"pc1d": "팹 보안 환경을 위해 설계 · 함께 서명·배포",
+"pc1t": "온라인판과 오프라인판(AirGap)",
+"pc1d": "기능은 같습니다. 오프라인판은 네트워크 연결용 구성 요소가 없어 네트워크를 쓸 수 없는 환경용입니다",
 "pc2t": "EV 코드 서명 · SHA-256",
-"pc2d": "릴리스마다 릴리스 노트와 파일 지문 공개",
-"pc3t": "미국 특허 출원 중",
-"pc3d": "7건 출원 · 심사 중",
+"pc2d": "릴리스마다 릴리스 노트와 설치 파일의 SHA-256 지문을 함께 제공",
+"pc3t": "미국 특허 출원",
+"pc3d": "미국 특허 출원 7건 제출, 심사 중",
 "op_e": "개방형 설계",
 "op_t": "개방형 포맷으로 산업 납품 표준을 추진",
 "op1t": "개방",
-"op1h": "ZX / ZF는 표준 OpenUSD",
-"op1d": "어떤 도구로도 열고 검증할 수 있음",
+"op1h": "ZX / ZF는 표준 OpenUSD 파일",
+"op1d": "표준 OpenUSD 라이브러리로 열 수 있음",
 "op2t": "양방향",
 "op2h": "Revit ⇄ Omniverse",
 "op2d": "식별 정보와 함께 내보내고, 네이티브로 가져오기",
@@ -1208,32 +1115,23 @@ const _RM = {
 "in_e": "주력 산업",
 "in_t": "반도체 팹과 AI 데이터센터에 집중",
 "in1t": "반도체 팹",
-"in1d": "진공 펌프, 스크러버, 칠러… 시스템도 관계자도 많아 설계부터 운영까지 전달이 반복됩니다. 오너는 ZX FSM에서 하나의 표준을 정하고, 모든 납품을 같은 표준으로 검수합니다.",
+"in1d": "진공 펌프, 스크러버, 칠러 등 설비와 시스템이 많아 설계부터 운영까지 전달이 반복됩니다. 오너는 ZX FSM에서 하나의 설비 정보 표준을 정하고 납품을 그 표준으로 확인할 수 있습니다.",
 "in2t": "AI 데이터센터",
-"in2d": "CDU(냉각수 분배 장치), UPS 등의 설비는 NVIDIA Omniverse에서 배치, 시뮬레이션, 디지털 트윈 작업을 거칩니다. ZXBuilder는 Revit 설계를 식별 정보와 함께 OpenUSD로 옮기고, 변경 후 다시 Revit으로 가져옵니다.",
-"rv_t": "모든 이해관계자를 위한 가치",
+"in2d": "CDU(냉각수 분배 장치), UPS 등의 설비는 NVIDIA Omniverse에서 배치, 시뮬레이션, 디지털 트윈 작업을 거칩니다. ZXBuilder는 Revit 설계를 요소 식별 정보와 함께 OpenUSD로 내보냅니다.",
+"rv_t": "역할별 가치",
 "rl1t": "오너",
-"rl1h": "표준은 한 번만 정의",
-"rl1d": "모든 납품을 검수",
+"rl1h": "표준은 한 번 정의",
+"rl1d": "납품은 같은 표준으로 확인",
 "rl2t": "시공사 · 설비 공급업체",
-"rl2h": "지금 가진 Revit 모델이",
-"rl2d": "SimReady 디지털 트윈으로",
+"rl2h": "지금 가진 Revit 모델을",
+"rl2d": "요소 식별 정보와 함께 OpenUSD로 내보낼 수 있음",
 "rl3t": "운영 팀",
-"rl3h": "첫날부터",
-"rl3d": "트윈이 올바른 데이터를 지님",
+"rl3h": "설비 데이터는 오너 표준으로 납품",
+"rl3d": "PI AF 템플릿과 IoT 포인트 대응은 ZX FSM에서 관리",
 "v_e": "소개 영상",
 "v_t": "Reality Matrix AI 소개: ZXBuilder와 ZX FSM",
 "v_d": "각 영상은 약 2~3분이며 문제, 왜 지금인가, 공백, 포지셔닝, 실증, ZX FSM, 개방성, 가치, 다음 단계를 차례로 소개합니다. 중국어, 영어, 일본어, 한국어 4개 언어로 제공됩니다.",
 "v_dl": "동영상 다운로드",
-"nx_e": "다음 단계",
-"nx_t": "다음: 팹에서 AI 팩토리로",
-"nx_note": "아래는 계획 중인 방향으로 아직 제공되지 않으며, 시기는 별도로 안내합니다.",
-"nx1t": "AI 팩토리용 SimReady 부품 라이브러리",
-"nx1d": "전기·열 데이터로 NVIDIA DSX 워크플로에 대응",
-"nx2t": "납품 패키지 + 비교 보고서",
-"nx2d": "표준 → 납품 → 검수를 한 흐름으로",
-"nx3t": "AI 에이전트용 인터페이스",
-"nx3d": "AI 에이전트가 ZX 도구를 직접 사용",
 "dl_e": "제품 &middot; 다운로드형 소프트웨어",
 "dl_t": "ZXBuilder&trade; &mdash; Reality Matrix AI의 다운로드형 소프트웨어",
 "dl_name": "ZXBuilder &mdash; Autodesk Revit 2027용 USD &harr; Revit 플러그인",
@@ -1245,7 +1143,7 @@ const _RM = {
 "te": "팀",
 "tt": "업계 베테랑이 구축",
 "tm_bio": "창업자 겸 CEO Michael Lin은 산업용 소프트웨어, 3D, 시뮬레이션 분야에서 25년 이상, BIM 실무 20년의 경력을 갖고 있으며 ZXBuilder의 USD → Revit 엔진을 직접 개발했습니다. 공동 창업자 겸 CFO와 자문위원회 6명 가운데 4명은 Autodesk, AVEVA, PTC 산업용 소프트웨어 생태계와 그 파트너 출신입니다.",
-"fc_t": "이미 가진 Revit 모델로 SimReady 팹을",
+"fc_t": "이미 가진 Revit 모델에서 시작하세요",
 "fc_d": "ZXBuilder와 ZX FSM을 무료로 체험하거나, 프로젝트에 대해 편하게 문의해 주세요.",
 "fc_cta1": "무료 체험 다운로드",
 "fc_cta2": "기업 문의",
@@ -1253,7 +1151,8 @@ const _RM = {
 "zp_link": "ZXBuilder · ZX FSM 다운로드",
 "nv_link": "OpenUSD",
 "ct_link": "문의하기",
-"ftr_tm": "ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다."
+"ftr_tm": "ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다.",
+"pf_big_l": "샘플 모델 2,653개 요소 중 보조 객체를 제외한 2,627개 요소의 카테고리가 올바름(보조 객체 26개는 별도 표기)"
 }
 };
 function selectVideo(l){

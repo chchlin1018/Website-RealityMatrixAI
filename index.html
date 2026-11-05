@@ -4,27 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="msvalidate.01" content="6325F170C8E28644F93D4A10820E6ED9" />
-<title>Reality Matrix AI — The SIM-BIM Bridge · USD ↔ Revit</title>
-<meta name="description" content="Reality Matrix AI — OpenUSD ↔ Revit builder for industrial digital twins. Built for semiconductor fabs and BIM-OT integration.">
-<meta property="og:title" content="Reality Matrix AI — Powering OpenUSD ↔ Revit">
-<meta property="og:description" content="The builder layer between OpenUSD and Autodesk Revit. OpenUSD Native. Built for semiconductor fabs.">
+<title>Reality Matrix AI — Infrastructure and bridge for industrial digital twins</title>
+<meta name="description" content="Reality Matrix AI is infrastructure and a bridge for industrial digital twins (NVIDIA AI Factory, SimReady, OpenUSD), connecting the BIM engineering world with digital-twin applications. Products: ZXBuilder (Revit ⇄ OpenUSD, identity intact) and ZX FSM (owner equipment standards). Focus: semiconductor fabs and AI data centers.">
+<meta property="og:title" content="Reality Matrix AI — Infrastructure and bridge for industrial digital twins">
+<meta property="og:description" content="Connecting the BIM engineering world with digital-twin applications. ZXBuilder · ZX FSM · standard OpenUSD. For semiconductor fabs and AI data centers.">
 <meta property="og:url" content="https://www.realitymatrixai.com">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reality Matrix AI">
 <meta property="og:image" content="https://www.realitymatrixai.com/img/og-rmai-1200x630.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:locale:alternate" content="ko_KR">
 <link rel="canonical" href="https://www.realitymatrixai.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://www.realitymatrixai.com/img/og-rmai-1200x630.png">
-<meta name="twitter:title" content="Reality Matrix AI — The SIM-BIM Bridge">
-<meta name="twitter:description" content="The builder layer between OpenUSD and Autodesk Revit. OpenUSD Native. Built for semiconductor fabs.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reality Matrix AI Inc.","alternateName":"實矩科技","url":"https://www.realitymatrixai.com","description":"OpenUSD \u2194 Revit builder for industrial digital twins. Built for semiconductor fabs and BIM-OT integration.","founder":{"@type":"Person","name":"Michael Lin"}}</script>
+<meta name="twitter:title" content="Reality Matrix AI — Infrastructure and bridge for industrial digital twins">
+<meta name="twitter:description" content="Connecting the BIM engineering world with digital-twin applications. ZXBuilder · ZX FSM · standard OpenUSD.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reality Matrix AI Inc.","alternateName":"實矩科技","url":"https://www.realitymatrixai.com","description":"Infrastructure and bridge for industrial digital twins (NVIDIA AI Factory, SimReady, OpenUSD), connecting the BIM engineering world with digital-twin applications.","founder":{"@type":"Person","name":"Michael Lin"}}</script>
 <link rel="icon" type="image/svg+xml" href="img/rmai-mark.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180.png">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -33,10 +35,10 @@
   --text:#e4e8f1;--text-dim:#7d8ba6;--text-muted:#4a5568;
   --accent:#00dfa2;--accent-soft:rgba(0,223,162,0.08);--accent-glow:rgba(0,223,162,0.18);
   --nv-green:#76b900;--nv-soft:rgba(118,185,0,0.10);--nv-glow:rgba(118,185,0,0.15);
-  --blue:#3b82f6;--blue-soft:rgba(59,130,246,0.1);--gold:#f5a623;
+  --blue:#3b82f6;--blue-soft:rgba(59,130,246,0.1);--gold:#f5a623;--violet:#8b9cf7;--red:#f87171;
 }
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Outfit',-apple-system,'Segoe UI','Microsoft JhengHei','PingFang TC','Noto Sans CJK TC','Meiryo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:var(--accent);text-decoration:none;transition:all .2s}
 a:hover{opacity:.8}
 .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px}
@@ -44,148 +46,151 @@ a:hover{opacity:.8}
 .glow-1{width:800px;height:800px;top:-300px;right:-200px;background:var(--accent-glow);opacity:.3}
 .glow-2{width:600px;height:600px;bottom:-100px;left:-100px;background:var(--nv-glow);opacity:.2}
 .w{max-width:1100px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(6,9,16,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(6,9,16,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 nav .w{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.3px;color:var(--text)}
-.logo-icon{width:32px;height:32px;display:block;flex-shrink:0}
-.logo .rm-ai{color:#5BD68E}
-.nav-links{display:flex;align-items:center;gap:8px}
-.nav-link{font-size:13px;color:var(--text-dim);padding:7px 14px;border-radius:7px;transition:all .2s}
+.logo{display:flex;align-items:center;flex-shrink:0}
+.rmai-logo{height:58px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:8px;min-width:0}
+.nav-link{font-size:13px;color:var(--text-dim);padding:7px 12px;border-radius:7px;transition:all .2s;white-space:nowrap}
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,.04);opacity:1}
-.lang-sw{display:flex;align-items:center;gap:2px;margin-right:4px}
-.lbtn{font-size:11px;font-weight:600;padding:5px 9px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;font-family:'JetBrains Mono',monospace;letter-spacing:.3px}
+.lang-sw{display:flex;align-items:center;gap:2px;margin-right:4px;flex-shrink:0}
+.lbtn{font-size:11px;font-weight:600;padding:5px 9px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;font-family:'JetBrains Mono',monospace;letter-spacing:.3px;white-space:nowrap}
 .lbtn:hover{color:var(--text);border-color:var(--border-bright)}
 .lbtn.active{background:rgba(255,255,255,.08);color:var(--text);border-color:var(--border-bright)}
-.nav-cta{font-size:14px;font-weight:700;border:1px solid rgba(0,223,162,.35);padding:10px 24px;border-radius:8px;color:var(--accent);transition:all .2s}
+.nav-cta{font-size:14px;font-weight:700;border:1px solid rgba(0,223,162,.35);padding:6px 16px;border-radius:8px;color:var(--accent);transition:all .2s;white-space:nowrap}
 .nav-cta:hover{background:rgba(0,223,162,.08);opacity:1}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;padding-bottom:60px}
+.zxb-logo{height:1.85em;width:auto;vertical-align:-0.2em;display:inline-block}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:56px}
 .badge-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}
-.badge{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;padding:5px 12px;border-radius:99px;letter-spacing:.4px;text-transform:uppercase}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;padding:5px 12px;border-radius:99px;letter-spacing:.4px}
 .badge-live{color:var(--accent);background:var(--accent-soft);border:1px solid rgba(0,223,162,.18)}
 .badge-nv{color:var(--nv-green);background:var(--nv-soft);border:1px solid rgba(118,185,0,.25)}
 .badge-aif{color:var(--blue);background:var(--blue-soft);border:1px solid rgba(59,130,246,.25)}
 .dot{width:5px;height:5px;border-radius:50%;animation:blink 2s ease-in-out infinite;flex-shrink:0}
-.dot-green{background:var(--accent)}.dot-nv{background:var(--nv-green)}
+.dot-green{background:var(--accent)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-h1{font-size:clamp(36px,5.5vw,66px);font-weight:800;line-height:1.07;letter-spacing:-2px;margin-bottom:20px}
+h1{font-size:clamp(34px,5.4vw,64px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:22px}
 h1 .g{background:linear-gradient(125deg,var(--accent) 0%,#6ee7b7 50%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.zl{font-weight:800;letter-spacing:-.5px;display:inline-block;line-height:1}
-.zl .z{background:linear-gradient(135deg,#3b7dff 0%,#7aa8ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.zl .igma{color:#fff}
-.hero-sub{font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,.8);max-width:560px;margin-bottom:14px;line-height:1.6}
-.hero-tag{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:36px;font-family:'JetBrains Mono',monospace}
-.hero-tag span{color:rgba(255,255,255,.65)}
+.hero-sub{font-size:clamp(15px,1.7vw,19px);color:rgba(255,255,255,.8);max-width:760px;margin-bottom:26px;line-height:1.7}
+.hero-prods{display:flex;align-items:center;flex-wrap:wrap;gap:14px 28px;margin-bottom:30px}
+.hero-prods img{height:46px;width:auto;display:block}
 .cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#060910;font-weight:700;font-size:14px;padding:13px 26px;border-radius:9px;box-shadow:0 0 30px var(--accent-glow);transition:all .25s}
 .cta-primary:hover{opacity:1;transform:translateY(-1px);box-shadow:0 0 50px var(--accent-glow)}
 .cta-secondary{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-bright);color:var(--text-dim);font-size:14px;font-weight:500;padding:12px 22px;border-radius:9px;transition:all .2s}
 .cta-secondary:hover{opacity:1;border-color:rgba(0,223,162,.3);color:var(--text);background:var(--accent-soft)}
-.cta-arrow{width:16px;height:16px}
-.diagram-section{padding:80px 0 20px}
-.diagram{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:40px;overflow:hidden;position:relative}
-.diagram::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.diagram-title{text-align:center;font-size:11px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.45);letter-spacing:1px;text-transform:uppercase;margin-bottom:36px}
-.diagram-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px}
-.diag-box{background:var(--bg-card2);border:1px solid var(--border-bright);border-radius:14px;padding:22px 26px;text-align:center;min-width:170px}
-.diag-box.nv-box{border-color:rgba(118,185,0,.3);background:rgba(118,185,0,.04)}
-.diag-box.rm-box{border-color:rgba(0,223,162,.4);background:rgba(0,223,162,.06);position:relative}
-.diag-box.bim-box{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.04)}
-.diag-icon{font-size:28px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;min-height:44px}
-.diag-name{font-size:14px;font-weight:700;margin-bottom:5px;color:#fff}
-.diag-sub{font-size:12px;color:rgba(255,255,255,0.6)}
-.diag-name.nv{color:var(--nv-green)}.diag-name.rm{color:var(--accent)}.diag-name.bim{color:var(--blue)}
-.diag-arrow{display:flex;flex-direction:column;align-items:center;padding:0 16px;gap:6px}
-.arrow-line{width:60px;height:2px;background:linear-gradient(90deg,rgba(0,223,162,.2),rgba(0,223,162,.6),rgba(0,223,162,.2))}
-.arrow-text{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:.3px;white-space:nowrap}
-.diag-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060910;font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;letter-spacing:.5px;white-space:nowrap}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:48px 0}
-.stat{background:var(--bg-card);padding:32px 24px;text-align:center;transition:background .2s}
-.stat:hover{background:var(--bg-card2)}
-.stat-v{font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-1.5px;color:var(--accent);font-family:'JetBrains Mono',monospace}
-.stat-l{font-size:14px;color:rgba(255,255,255,.65);margin-top:6px}
-section{padding:80px 0}
+.cta-arrow{width:16px;height:16px;flex-shrink:0}
+section{padding:80px 0;scroll-margin-top:92px}
+section.tight{padding:8px 0 40px}
+section.tight-top{padding-top:24px}
+section.band{background:linear-gradient(180deg,transparent,rgba(0,223,162,.025),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
-.section-title{font-size:clamp(26px,3.5vw,42px);font-weight:700;letter-spacing:-1px;margin-bottom:16px;line-height:1.15;color:#fff}
-.section-desc{font-size:17px;color:rgba(255,255,255,.72);max-width:560px;line-height:1.7}
-.nv-section{background:linear-gradient(180deg,transparent,rgba(118,185,0,.04),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.nv-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:48px}
-.nv-link-card{display:flex;align-items:center;gap:14px;background:var(--bg-card);border:1px solid var(--border);padding:14px 18px;border-radius:10px;transition:all .2s;color:var(--text);margin-bottom:12px}
-.nv-link-card:hover{opacity:1;border-color:rgba(118,185,0,.3);background:var(--nv-soft);transform:translateX(4px)}
-.nv-link-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:var(--nv-soft)}
-.nv-link-text{flex:1}
-.nv-link-label{font-size:14px;font-weight:600;color:#fff}
-.nv-link-sub{font-size:12px;color:rgba(255,255,255,.55)}
-.nv-link-arrow{color:var(--text-muted);font-size:14px}
-.nv-link-card:hover .nv-link-arrow{color:var(--nv-green)}
-.badge-stack{display:flex;flex-direction:column;gap:14px}
-.nv-badge-card{background:var(--bg-card2);border:1px solid var(--border-bright);border-radius:12px;padding:20px 22px}
-.nv-badge-card.highlight{border-color:rgba(0,223,162,.25);background:rgba(0,223,162,.04)}
-.nv-badge-title{font-size:14px;font-weight:700;margin-bottom:6px;color:#fff}
-.nv-badge-desc{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6}
-.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:48px;position:relative}
-.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),#6ee7b7,var(--blue),transparent)}
-.product-header{padding:36px 40px 28px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.product-name{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;color:#fff}
-.product-tagline{font-size:14px;color:rgba(255,255,255,.65)}
-.product-version{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.4);margin-top:8px}
-.product-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#060910;font-weight:700;font-size:13px;padding:11px 22px;border-radius:8px;white-space:nowrap;box-shadow:0 0 20px var(--accent-glow);transition:all .25s}
+.section-title{font-size:clamp(25px,3.4vw,40px);font-weight:700;letter-spacing:-.8px;margin-bottom:16px;line-height:1.2;color:#fff}
+.section-desc{font-size:17px;color:rgba(255,255,255,.72);max-width:780px;line-height:1.75}
+.sub-title{font-size:clamp(19px,2.2vw,24px);font-weight:700;color:#fff;margin:52px 0 0;letter-spacing:-.3px}
+.grid2,.grid3{display:grid;gap:16px;margin-top:28px}
+.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color .2s}
+.card:hover{border-color:var(--border-bright)}
+.card-t{font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.2px;line-height:1.35}
+.card-d{font-size:14px;color:rgba(255,255,255,.66);line-height:1.7}
+.ai-band{position:relative;background:linear-gradient(135deg,rgba(0,223,162,.10),rgba(59,130,246,.08));border:1px solid rgba(0,223,162,.30);border-radius:18px;padding:40px 44px;overflow:hidden}
+.ai-band::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--blue),transparent)}
+.ai-q{font-size:clamp(21px,2.7vw,32px);font-weight:700;line-height:1.4;color:#fff;letter-spacing:-.4px;margin-bottom:16px}
+.ai-d{font-size:16px;color:rgba(255,255,255,.75);line-height:1.75;max-width:860px}
+.role-flow{display:flex;align-items:stretch;gap:8px;margin-top:32px;flex-wrap:wrap}
+.role{flex:1 1 0;min-width:150px;background:var(--bg-card2);border:1px solid var(--border-bright);border-radius:12px;padding:16px 18px;text-align:center}
+.role-t{font-size:17px;font-weight:700;color:#fff}
+.role-s{font-size:12px;color:rgba(255,255,255,.58);margin-top:2px}
+.role-arr{display:flex;align-items:center;color:var(--accent);font-size:20px}
+.pain-x{width:28px;height:28px;border-radius:8px;background:rgba(248,113,113,.10);border:1px solid rgba(248,113,113,.3);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.stat-big{font-family:'JetBrains Mono',monospace;font-size:clamp(34px,4.5vw,52px);font-weight:700;color:var(--accent);letter-spacing:-1px;line-height:1.1;margin-bottom:10px}
+.stat-big .u{font-family:inherit;font-size:.45em;color:#fff;letter-spacing:0}
+.stat-src{font-size:12px;color:var(--text-muted);margin-top:12px;font-family:'JetBrains Mono',monospace}
+.diagram{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:36px 32px;margin-top:36px;position:relative;overflow:hidden}
+.diagram::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.diagram-title{text-align:center;font-size:11px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:30px}
+.diagram-flow{display:flex;align-items:center;justify-content:center;gap:4px}
+.diag-box{background:var(--bg-card2);border:1px solid var(--border-bright);border-radius:14px;padding:20px 18px;text-align:center;flex:1 1 0;min-width:0;max-width:260px}
+.diag-box.nv-box{border-color:rgba(118,185,0,.35);background:rgba(118,185,0,.05)}
+.diag-box.rm-box{border-color:rgba(0,223,162,.45);background:rgba(0,223,162,.07)}
+.diag-box.bim-box{border-color:rgba(59,130,246,.35);background:rgba(59,130,246,.05)}
+.diag-icon{margin-bottom:10px;display:flex;align-items:center;justify-content:center;min-height:52px}
+.diag-name{font-size:15px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.diag-name.nv{color:var(--nv-green)}.diag-name.rm{color:var(--accent)}.diag-name.bim{color:#60a5fa}
+.diag-sub{font-size:12px;color:rgba(255,255,255,.62)}
+.diag-arrow{display:flex;flex-direction:column;align-items:center;padding:0 8px;gap:6px;flex:0 0 auto;max-width:170px}
+.arrow-line{width:70px;height:2px;background:linear-gradient(90deg,rgba(0,223,162,.2),rgba(0,223,162,.7),rgba(0,223,162,.2))}
+.arrow-text{font-size:11px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,.55);text-align:center;line-height:1.35}
+.arrow-text.hi{color:var(--accent)}
+.fsm-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 18px;margin-top:26px;padding:14px 18px;border:1px dashed rgba(139,156,247,.45);border-radius:12px;background:rgba(139,156,247,.06);font-size:14px;color:rgba(255,255,255,.8);text-align:center}
+.fsm-strip img{height:34px;width:auto;display:block}
+.fsm-strip strong{color:var(--violet)}
+.goal{margin-top:24px;font-size:16px;color:rgba(255,255,255,.82);border-left:3px solid var(--accent);padding:4px 0 4px 16px;max-width:860px}
+.prod-grid{margin-top:36px}
+.prod-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:30px 30px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),#6ee7b7,var(--blue),transparent)}
+.prod-card.fsm::before{background:linear-gradient(90deg,transparent,var(--violet),var(--blue),transparent)}
+.prod-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.prod-logo{height:50px;width:auto;display:block}
+.prod-kind{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px}
+.prod-tag{font-size:17px;font-weight:600;color:#fff;line-height:1.45;margin-bottom:18px}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.pill-now{color:var(--accent);background:var(--accent-soft);border:1px solid rgba(0,223,162,.3)}
+.pill-plan{color:var(--gold);background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.35)}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
+.feat-list li{padding-left:16px;border-left:2px solid var(--border-bright)}
+.prod-card.fsm .feat-list li{border-left-color:rgba(139,156,247,.4)}
+.ft{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.fd{font-size:13.5px;color:rgba(255,255,255,.64);line-height:1.65}
+.plan{font-size:13px;color:rgba(255,255,255,.68);line-height:1.65;padding:12px 14px;border-radius:10px;background:rgba(245,166,35,.05);border:1px solid rgba(245,166,35,.18);margin-bottom:16px}
+.prod-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);margin-bottom:18px;margin-top:auto}
+.product-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#060910;font-weight:700;font-size:13px;padding:11px 22px;border-radius:8px;box-shadow:0 0 20px var(--accent-glow);transition:all .25s;align-self:flex-start;text-align:center}
 .product-cta:hover{opacity:1;transform:translateY(-1px);box-shadow:0 0 40px var(--accent-glow)}
-.product-body{padding:28px 40px 36px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.product-feature{display:flex;align-items:flex-start;gap:12px}
-.feat-icon{width:34px;height:34px;border-radius:8px;background:var(--accent-soft);border:1px solid rgba(0,223,162,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:2px}
-.feat-title{font-size:15px;font-weight:700;margin-bottom:4px;color:#fff}
-.feat-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
-.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.serve-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:all .25s}
-.serve-card:hover{border-color:var(--border-bright);background:var(--bg-card2);transform:translateY(-2px)}
-.serve-icon{font-size:32px;margin-bottom:16px}
-.serve-title{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px;color:#fff}
-.serve-desc{font-size:14px;color:rgba(255,255,255,.62);line-height:1.7}
+.proof-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;margin-top:28px}
+.proof-big{font-size:clamp(56px,9vw,104px);font-weight:800;line-height:1;color:#fff;letter-spacing:-3px}
+.proof-lbl{font-size:clamp(18px,2.2vw,24px);font-weight:700;color:#fff;margin-top:8px}
+.proof-lbl .g2{color:#4ade80}
+.proof-s{font-size:13px;color:rgba(255,255,255,.58);margin-top:6px}
+.proof-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.pm-v{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent)}
+.pm-t{font-size:13px;font-weight:600;color:#fff;margin-top:2px}
+.pm-d{font-size:12px;color:rgba(255,255,255,.58);line-height:1.55;margin-top:2px}
+.proof-note{font-size:12px;color:var(--text-muted);margin-top:18px}
+.proof-side{display:flex;flex-direction:column;gap:16px}
+.card.side{border-color:rgba(74,222,128,.25);flex:1}
+.open-card,.role-card{position:relative}
+.ok-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:8px}
+.ok-t{font-size:clamp(28px,3vw,38px);font-weight:800;line-height:1.1;margin-bottom:12px}
+.ok-h{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.o1 .ok-t{color:#22d3ee}.o2 .ok-t{color:var(--violet)}.o3 .ok-t{color:#4ade80}
+.o3{border-color:rgba(74,222,128,.35)}
+.r1 .ok-t{color:var(--violet);font-size:24px}.r2 .ok-t{color:#22d3ee;font-size:24px}.r3 .ok-t{color:#4ade80;font-size:24px}
+.eco{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}
+.eco-l{font-size:13px;color:rgba(255,255,255,.55);margin-right:4px}
+.chip{font-size:13px;font-weight:600;color:rgba(255,255,255,.85);border:1px solid var(--border-bright);border-radius:99px;padding:6px 14px;background:var(--bg-card2)}
+a.chip:hover{border-color:var(--nv-green);opacity:1}
+.ind-icon{font-size:30px;margin-bottom:12px}
 .serve-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.serve-tag{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:3px 8px;border-radius:4px}
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:48px}
-.why-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:all .2s}
-.why-card:hover{border-color:var(--border-bright)}
-.why-num{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--border-bright);flex-shrink:0;line-height:1.2}
-.why-title{font-size:15px;font-weight:700;margin-bottom:6px;color:#fff}
-.why-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
-.team-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:32px 36px;margin-top:48px;display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap}
-.team-bio{font-size:14px;color:var(--text-dim);line-height:1.7;max-width:560px}
-.final-cta{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:56px 48px;text-align:center;position:relative;overflow:hidden}
-.final-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.final-cta::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,223,162,.06),transparent 60%)}
-.final-cta h2{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-1px;margin-bottom:14px;position:relative;z-index:1}
-.final-cta p{font-size:16px;color:var(--text-dim);margin-bottom:32px;position:relative;z-index:1}
-.final-cta-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
-footer{padding:32px 0;border-top:1px solid var(--border);margin-top:80px}
-footer .w{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-left{font-size:13px;color:var(--text-muted)}
-.footer-left strong{color:var(--accent)}
-.footer-links{display:flex;gap:20px}
-.footer-links a{font-size:12px;color:var(--text-muted);transition:color .2s}
-.footer-links a:hover{color:var(--text);opacity:1}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero .badge-row{animation:fadeUp .5s ease both}
-.hero h1{animation:fadeUp .5s ease .08s both}
-.hero .hero-sub{animation:fadeUp .5s ease .15s both}
-.hero .cta-row{animation:fadeUp .5s ease .25s both}
-@media(max-width:768px){
-  .nv-grid,.product-body,.serve-grid,.why-grid{grid-template-columns:1fr}
-  .product-header{flex-direction:column}
-  h1{letter-spacing:-1px}
-  .stats{grid-template-columns:1fr}
-  .diagram-flow{flex-direction:column}
-  .diag-arrow{padding:8px 0}
-  .diag-arrow .arrow-line{width:2px;height:30px;background:linear-gradient(180deg,rgba(0,223,162,.2),rgba(0,223,162,.6),rgba(0,223,162,.2))}
-  .nav-links .nav-link{display:none}
-  .final-cta{padding:36px 24px}
-  footer .w{flex-direction:column;text-align:center}
-}
-
-.zxb-logo{height:1.85em;width:auto;vertical-align:-0.2em;display:inline-block}
-.zxb-logo-lg{height:2em;width:auto;vertical-align:-0.22em;display:inline-block}
-.rmai-logo{height:58px;width:auto;display:block}
-.dl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:36px 40px;margin-top:32px;position:relative}
+.serve-tag{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-dim);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:3px 8px;border-radius:4px}
+.next-card .nx-n{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;margin-bottom:8px}
+.next-card .pill{margin-bottom:12px}
+.n1{border-top:3px solid #4ade80}.n1 .nx-n{color:#4ade80}
+.n2{border-top:3px solid var(--violet)}.n2 .nx-n{color:var(--violet)}
+.n3{border-top:3px solid #22d3ee}.n3 .nx-n{color:#22d3ee}
+#video{scroll-margin-top:110px}
+.vid-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-top:32px;position:relative;overflow:hidden}
+.vid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),#6ee7b7,var(--blue),transparent)}
+.vid-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.vtab{font-family:inherit;font-size:14px;font-weight:600;padding:8px 18px;border-radius:8px;border:1px solid var(--border-bright);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s}
+.vtab:hover{color:var(--text)}
+.vtab.active{background:var(--accent-soft);color:var(--accent);border-color:rgba(0,223,162,.4)}
+.vid-panel{display:none}
+.vid-panel.active{display:block}
+.vid-panel video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px}
+.vid-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-dim)}
+.dl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:36px 40px;margin-top:28px;position:relative}
 .tm-frame{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px 34px;padding:22px 24px;border:1px dashed var(--border-bright);border-radius:12px;background:var(--bg-card2);margin-bottom:26px}
 .tm-frame img{height:56px;width:auto;display:block}
 .tm-frame .tm-x{color:var(--text-muted);font-size:22px;font-weight:300}
@@ -197,20 +202,66 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 .dl-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .dl-svc{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);font-size:13px;color:var(--text-dim);line-height:1.8}
 .dl-svc strong{color:rgba(255,255,255,.8)}
+.team-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:32px 36px;margin-top:28px}
+.team-bio{font-size:16px;color:rgba(255,255,255,.78);line-height:1.8;max-width:880px}
+.final-cta{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:56px 48px;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.final-cta::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,223,162,.06),transparent 60%);pointer-events:none}
+.final-cta h2{font-size:clamp(23px,3vw,36px);font-weight:800;letter-spacing:-.8px;margin-bottom:14px;position:relative;z-index:1;line-height:1.3}
+.final-cta p{font-size:16px;color:var(--text-dim);margin-bottom:30px;position:relative;z-index:1}
+.final-cta-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+footer{padding:32px 0;border-top:1px solid var(--border);margin-top:80px}
+footer .w{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-left{font-size:13px;color:var(--text-muted)}
+.footer-left strong{color:var(--accent)}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:var(--text-muted);transition:color .2s}
+.footer-links a:hover{color:var(--text);opacity:1}
 .ftr-tm{width:100%;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:6px}
-@media(max-width:640px){.dl-card{padding:26px 22px}.tm-frame img{height:44px}}
-#video{scroll-margin-top:132px}
-.vid-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-top:32px;position:relative;overflow:hidden}
-.vid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),#6ee7b7,var(--blue),transparent)}
-.vid-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.vtab{font-family:inherit;font-size:14px;font-weight:600;padding:8px 18px;border-radius:8px;border:1px solid var(--border-bright);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s}
-.vtab:hover{color:var(--text)}
-.vtab.active{background:var(--accent-soft);color:var(--accent);border-color:rgba(0,223,162,.4)}
-.vid-panel{display:none}
-.vid-panel.active{display:block}
-.vid-panel video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px}
-.vid-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-dim)}
-@media(max-width:640px){.vid-card{padding:16px}.vtab{flex:1 1 calc(50% - 8px);text-align:center}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero .badge-row{animation:fadeUp .5s ease both}
+.hero h1{animation:fadeUp .5s ease .08s both}
+.hero .hero-sub{animation:fadeUp .5s ease .15s both}
+.hero .cta-row{animation:fadeUp .5s ease .25s both}
+@media(max-width:1100px){.nav-links .nav-link{display:none}}
+@media(max-width:900px){
+  .diagram-flow{flex-direction:column}
+  .diag-box{max-width:none;width:100%}
+  .diag-arrow{padding:10px 0;max-width:none}
+  .diag-arrow .arrow-line{width:2px;height:26px;background:linear-gradient(180deg,rgba(0,223,162,.2),rgba(0,223,162,.7),rgba(0,223,162,.2))}
+  .proof-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:768px){
+  .w{padding:0 16px}
+  nav{padding:10px 0}
+  nav .w{gap:8px}
+  .rmai-logo{height:40px}
+  .nav-links .nav-link,.nav-cta{display:none}
+  .lang-sw{margin-right:0}
+  .lbtn{font-size:10px;padding:4px 6px}
+  .hero{min-height:auto;padding-top:104px;padding-bottom:40px}
+  h1{letter-spacing:-.8px}
+  .hero-prods img{height:36px}
+  section{padding:56px 0;scroll-margin-top:70px}
+  section.tight{padding:0 0 24px}
+  section.tight-top{padding-top:12px}
+  .grid2,.grid3,.proof-mini{grid-template-columns:minmax(0,1fr)}
+  .role-flow{flex-direction:column}
+  .role{min-width:0}
+  .role-arr{justify-content:center;transform:rotate(90deg);height:18px}
+  .ai-band{padding:26px 20px}
+  .diagram{padding:26px 16px}
+  .prod-card{padding:24px 20px}
+  .dl-card{padding:26px 20px}
+  .tm-frame img{height:44px}
+  .team-card{padding:24px 20px}
+  .final-cta{padding:36px 20px}
+  .vid-card{padding:16px}
+  .vtab{flex:1 1 calc(50% - 8px);text-align:center}
+  footer .w{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+@media(max-width:360px){.rmai-logo{height:34px}.lbtn{padding:3px 5px}}
 </style>
 </head>
 <body>
@@ -218,7 +269,7 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
 <div class="glow glow-1"></div>
 <div class="glow glow-2"></div>
 <nav><div class="w">
-  <div class="logo"><img class="rmai-logo" src="img/rmai-lockup.png" alt="Reality Matrix AI"></div>
+  <a class="logo" href="#top"><img class="rmai-logo" src="img/rmai-lockup.png" alt="Reality Matrix AI"></a>
   <div class="nav-links">
     <div class="lang-sw">
       <button class="lbtn" id="lbtn-en" onclick="setLang('en')">EN</button>
@@ -226,150 +277,197 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
       <button class="lbtn" id="lbtn-ja" onclick="setLang('ja')">日本語</button>
       <button class="lbtn" id="lbtn-ko" onclick="setLang('ko')">한국어</button>
     </div>
-    <a href="#ecosystem" class="nav-link" data-i18n="nav_usd">OpenUSD</a>
-    <a href="#product" class="nav-link" data-i18n="nav_product">Product</a>
+    <a href="#products" class="nav-link" data-i18n="nav_products">Products</a>
+    <a href="#open" class="nav-link" data-i18n="nav_open">Open standards</a>
+    <a href="#industries" class="nav-link" data-i18n="nav_ind">Industries</a>
     <a href="#video" class="nav-link" data-i18n="nav_video">Video</a>
-    <a href="#who" class="nav-link" data-i18n="nav_serve">Who We Serve</a>
-    <a href="https://www.zxbuilder.club/" target="_blank" class="nav-cta"><img class="zxb-logo" style="height:2.8em" src="img/zxbuilder-lockup.png" alt="ZXBuilder"> →</a>
+    <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="nav-cta"><img class="zxb-logo" style="height:2.8em" src="img/zxbuilder-lockup.png" alt="ZXBuilder"> &rarr;</a>
   </div>
 </div></nav>
-<section class="hero"><div class="w">
+
+<section class="hero" id="top"><div class="w">
   <div class="badge-row">
-    <span class="badge badge-live"><span class="dot dot-green"></span>Product Live</span>
-    <span class="badge badge-nv"><span class="dot dot-nv"></span>OpenUSD Ecosystem</span>
-    <span class="badge badge-aif">Industrial Digital Twin Ready</span>
+    <span class="badge badge-live"><span class="dot dot-green"></span><span data-i18n="b_avail">ZXBuilder · ZX FSM available now (Pre-Beta)</span></span>
+    <span class="badge badge-nv" data-i18n="b_ind">Semiconductor fabs · AI data centers</span>
+    <span class="badge badge-aif" data-i18n="b_usd">Standard OpenUSD</span>
   </div>
-  <h1>From OpenUSD<br><span class="g">to Revit. Finally.</span></h1>
-  <p class="hero-sub">The digital twin lives in OpenUSD. Your MEP engineering team works in Autodesk Revit. ZXBuilder connects them — bringing simulation precision into Revit, and syncing it back.</p>
-  <p class="hero-tag">USD → Revit &nbsp;·&nbsp; <span>OpenUSD → BIM</span> &nbsp;·&nbsp; <span>Bidirectional · Industrial Digital Twin</span></p>
+  <h1 data-i18n="h1">Infrastructure and bridge<br><span class="g">for industrial digital twins</span></h1>
+  <p class="hero-sub" data-i18n="h_sub">We connect the BIM engineering world with digital-twin applications (NVIDIA AI Factory, SimReady, OpenUSD). ZXBuilder carries engineering data, identity intact, both ways between Revit and OpenUSD. ZX FSM writes the owner’s equipment standards into every component.</p>
+  <div class="hero-prods"><img src="img/zxbuilder-lockup.png" alt="ZXBuilder"><img src="img/zxfsm-lockup.png" alt="ZX FSM — ZX Fab Standard Manager"></div>
   <div class="cta-row">
-    <a href="https://www.zxbuilder.club/" target="_blank" class="cta-primary"><img class="zxb-logo" src="img/zxbuilder-lockup.png" alt="ZXBuilder"> Free Trial <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="mailto:michael.lin@realitymatrixai.com" class="cta-secondary">Enterprise Inquiry</a>
+    <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="cta-primary"><span data-i18n="h_cta1">Download ZXBuilder · ZX FSM</span> <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="mailto:michael.lin@realitymatrixai.com" class="cta-secondary" data-i18n="h_cta2">Enterprise inquiry</a>
   </div>
 </div></section>
-<div class="w diagram-section">
+
+<section class="tight" id="ai"><div class="w">
+  <div class="ai-band">
+    <div class="section-eyebrow" data-i18n="ai_e">For the AI era</div>
+    <p class="ai-q" data-i18n="ai_q">AI agents need engineering data they can trust. ZXBuilder delivers BIM ↔ OpenUSD data that carries its identity.</p>
+    <p class="ai-d" data-i18n="ai_d">Every component leaves Revit with a fixed identity and its connection points, written as plain properties that any OpenUSD program can read without asking Revit. On the way back, it is rebuilt by that identity as a native, editable Revit element with its parameters.</p>
+  </div>
+</div></section>
+
+<section id="problem"><div class="w">
+  <div class="section-eyebrow" data-i18n="pb_e">The problem</div>
+  <div class="section-title" data-i18n="pb_t">Design → Build → Operate: models change hands again and again</div>
+  <p class="section-desc" data-i18n="pb_d">A fab or an AI data center is handed from owner to designer, contractor and equipment supplier. Each handover is a Revit or CAD file exchange, and the identity of each component is hard to carry through.</p>
+  <div class="role-flow">
+    <div class="role"><div class="role-t" data-i18n="r1t">Owner</div><div class="role-s" data-i18n="r1s">Owner / Operator</div></div>
+    <div class="role-arr" aria-hidden="true">&rarr;</div>
+    <div class="role"><div class="role-t" data-i18n="r2t">Designer</div><div class="role-s" data-i18n="r2s">Architect · EPC</div></div>
+    <div class="role-arr" aria-hidden="true">&rarr;</div>
+    <div class="role"><div class="role-t" data-i18n="r3t">Contractor</div><div class="role-s" data-i18n="r3s">Building · MEP · Cleanroom</div></div>
+    <div class="role-arr" aria-hidden="true">&rarr;</div>
+    <div class="role"><div class="role-t" data-i18n="r4t">Supplier</div><div class="role-s" data-i18n="r4s">Revit · SolidWorks · Creo</div></div>
+  </div>
+  <div class="grid3">
+    <div class="card pain"><div class="pain-x" aria-hidden="true">&times;</div><div class="card-t" data-i18n="pn1t">Identity gets lost</div><div class="card-d" data-i18n="pn1d">Downstream teams cannot tell which family and type an object came from, so the data has to be matched again.</div></div>
+    <div class="card pain"><div class="pain-x" aria-hidden="true">&times;</div><div class="card-t" data-i18n="pn2t">Only the shape comes back</div><div class="card-d" data-i18n="pn2d">After moving to a 3D platform, only geometry remains: families, types and parameters are gone, and edited layouts are redrawn in Revit.</div></div>
+    <div class="card pain"><div class="pain-x" aria-hidden="true">&times;</div><div class="card-t" data-i18n="pn3t">Operations can’t connect</div><div class="card-d" data-i18n="pn3d">Equipment data for monitoring systems such as PI AF needs a separate list and mapping, and the model is checked again at handover to operations.</div></div>
+  </div>
+  <div class="sub-title" data-i18n="wn_t">Why now: fabs and AI factories are scaling at once</div>
+  <div class="grid2">
+    <div class="card stat-card"><div class="stat-big">20 <span class="u" data-i18n="wn1u">fabs</span></div><div class="card-t" data-i18n="wn1t">New 300 mm fabs &amp; lines breaking ground in 2026</div><div class="card-d" data-i18n="wn1s">18 more in 2027 · 23 begin output</div><div class="stat-src" data-i18n="wn1src">Source: SEMI, Oct 2026</div></div>
+    <div class="card stat-card"><div class="stat-big">$720B+</div><div class="card-t" data-i18n="wn2t">2026 capex, top four clouds</div><div class="card-d" data-i18n="wn2s">Microsoft · Alphabet · Amazon · Meta · several plan more for 2027</div><div class="stat-src" data-i18n="wn2src">Source: company Q3 2026 reports</div></div>
+  </div>
+</div></section>
+
+<section class="band" id="what"><div class="w">
+  <div class="section-eyebrow" data-i18n="wd_e">Our position</div>
+  <div class="section-title" data-i18n="wd_t">More than conversion: identity and standards, carried through to delivery</div>
+  <p class="section-desc" data-i18n="wd_d">Design data still lives mostly in Revit, and today’s workflows are mostly one-way export. We sit between the two worlds: ZXBuilder is the two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world, and ZX FSM provides the data rules for that bridge.</p>
   <div class="diagram">
-    <div class="diagram-title">Architecture · USD → BIM Bridge</div>
+    <div class="diagram-title" data-i18n="dg_title">Two-way bridge · identity intact</div>
     <div class="diagram-flow">
-      <div class="diag-box nv-box">
-        <div class="diag-icon">
-          <!-- OpenUSD wordmark + cube icon (neutral, OpenUSD official color) -->
-          <svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(4,8)">
-              <path d="M14 0 L28 7 L28 21 L14 28 L0 21 L0 7 Z" fill="none" stroke="#76b900" stroke-width="2.2" stroke-linejoin="round"/>
-              <path d="M0 7 L14 14 L28 7 M14 14 L14 28" fill="none" stroke="#76b900" stroke-width="2.2" stroke-linejoin="round" opacity="0.85"/>
-            </g>
-            <text x="40" y="17" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="13" fill="#76b900" letter-spacing="0.5">OpenUSD</text>
-            <text x="40" y="30" font-family="Arial, sans-serif" font-weight="400" font-size="8" fill="rgba(255,255,255,0.65)" letter-spacing="0.7">UNIVERSAL SCENE</text>
-          </svg>
-        </div>
-        <div class="diag-name nv">OpenUSD</div>
-        <div class="diag-sub">Industrial Digital Twin</div>
-        <div class="diag-sub" style="font-size:11px;margin-top:4px;color:rgba(255,255,255,0.4)">Universal Scene Description</div>
+      <div class="diag-box bim-box">
+        <div class="diag-icon"><svg width="110" height="40" viewBox="0 0 110 40" fill="none" aria-hidden="true"><rect x="0" y="2" width="36" height="36" rx="6" fill="#0696D7"/><path d="M10 10 L10 30 M10 10 L22 10 Q28 10 28 17 Q28 23 22 23 L10 23 M20 23 L28 30" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="42" y="14" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" letter-spacing="1">AUTODESK</text><text x="41" y="29" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="14" fill="white">Revit</text></svg></div>
+        <div class="diag-name bim" data-i18n="dg_l_n">The BIM world</div>
+        <div class="diag-sub" data-i18n="dg_l_s">Autodesk Revit · design &amp; construction</div>
       </div>
       <div class="diag-arrow">
-        <div class="arrow-text" style="color:var(--accent);font-weight:700">USD → Revit ★</div>
+        <div class="arrow-text hi" data-i18n="dg_a1">Export · identity intact →</div>
         <div class="arrow-line"></div>
-        <div class="arrow-text">Revit → USD</div>
+        <div class="arrow-text" data-i18n="dg_a2">← Back · native Revit elements</div>
       </div>
       <div class="diag-box rm-box">
-        <div class="diag-badge">Reality Matrix</div>
-        <div class="diag-icon">
-          <img src="img/zxbuilder-lockup.png" alt="ZXBuilder" style="height:52px;width:auto;display:block;margin:0 auto">
-        </div>
+        <div class="diag-icon"><img src="img/zxbuilder-lockup.png" alt="ZXBuilder" style="height:52px;width:auto;display:block;margin:0 auto"></div>
         <div class="diag-name rm">ZXBuilder</div>
-        <div class="diag-sub">Bidirectional Bridge</div>
-        <div class="diag-sub" style="font-size:11px;margin-top:4px;color:rgba(0,223,162,0.7)">★ Import = Our Permanent Moat</div>
+        <div class="diag-sub" data-i18n="dg_c_s">Revit add-in · two-way bridge</div>
       </div>
       <div class="diag-arrow">
-        <div class="arrow-text" style="color:var(--accent);font-weight:700">USD → Revit ★</div>
+        <div class="arrow-text hi" data-i18n="dg_f1">ZX USDC · scene files</div>
         <div class="arrow-line"></div>
-        <div class="arrow-text">Revit → USD</div>
+        <div class="arrow-text hi" data-i18n="dg_f2">ZF USDC · part libraries</div>
       </div>
-      <div class="diag-box bim-box">
-        <div class="diag-icon">
-          <svg width="110" height="40" viewBox="0 0 110 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="2" width="36" height="36" rx="6" fill="#0696D7"/>
-            <path d="M10 10 L10 30 M10 10 L22 10 Q28 10 28 17 Q28 23 22 23 L10 23 M20 23 L28 30" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <text x="42" y="14" font-family="Arial, sans-serif" font-weight="400" font-size="8" fill="rgba(255,255,255,0.5)" letter-spacing="1">AUTODESK</text>
-            <text x="41" y="29" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="14" fill="white">Revit</text>
-          </svg>
-        </div>
-        <div class="diag-name bim">Autodesk Revit</div>
-        <div class="diag-sub">MEP Engineering Team</div>
-        <div class="diag-sub" style="font-size:11px;margin-top:4px;color:rgba(255,255,255,0.4)">EPC · Fab Facility Design</div>
+      <div class="diag-box nv-box">
+        <div class="diag-icon"><svg width="44" height="44" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 2 L23 7 L23 19 L13 24 L3 19 L3 7 Z" stroke="#76b900" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 7 L13 12 L23 7 M13 12 L13 24" stroke="#76b900" stroke-width="1.8" stroke-linejoin="round" opacity="0.7"/></svg></div>
+        <div class="diag-name nv">NVIDIA Omniverse / OpenUSD</div>
+        <div class="diag-sub" data-i18n="dg_r_s">SimReady · AI factories · digital twins</div>
       </div>
+    </div>
+    <div class="fsm-strip"><img src="img/zxfsm-lockup.png" alt="ZX FSM"><span data-i18n="dg_fsm"><strong>ZX FSM</strong> · the owner’s standard, applied automatically when ZXBuilder brings models back</span></div>
+  </div>
+  <p class="goal" data-i18n="wd_goal">Our goal: make ZX and ZF, both standard OpenUSD files, the data-exchange standard for semiconductor fab infrastructure.</p>
+</div></section>
+
+<section id="products"><div class="w">
+  <div class="section-eyebrow" data-i18n="pr_e">Products</div>
+  <div class="section-title" data-i18n="pr_t">Two products, one workflow</div>
+  <p class="section-desc" data-i18n="pr_d">ZX FSM sets the rules; ZXBuilder follows them. Both are available now as Pre-Beta at <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener">www.zxbuilder.club</a>.</p>
+  <div class="grid2 prod-grid">
+    <div class="prod-card">
+      <div class="prod-head"><img class="prod-logo" src="img/zxbuilder-lockup.png" alt="ZXBuilder"><span class="pill pill-now" data-i18n="st_now">Available now</span></div>
+      <div class="prod-kind" data-i18n="zb_kind">Autodesk Revit 2027 add-in</div>
+      <div class="prod-tag" data-i18n="zb_tag">The two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world</div>
+      <ul class="feat-list">
+      <li><div class="ft" data-i18n="zb1t">Export with identity</div><div class="fd" data-i18n="zb1d">Export a Revit project to OpenUSD with every element’s identity: one file, or a whole list in batch.</div></li>
+      <li><div class="ft" data-i18n="zb2t">Native import</div><div class="fd" data-i18n="zb2d">Bring ZX USDC scenes back as native, editable Revit elements with parameters, ready for schedules.</div></li>
+      <li><div class="ft" data-i18n="zb3t">ZF USDC part libraries</div><div class="fd" data-i18n="zb3d">Build reusable part libraries from Revit families; each part has a fixed identity and connection points.</div></li>
+      <li><div class="ft" data-i18n="zb4t">Follows the owner’s standard</div><div class="fd" data-i18n="zb4d">Reads the ZX FSM standard package on import and sets the system type of straight ducts to the matching type already in the project.</div></li>
+      <li><div class="ft" data-i18n="zb5t">IFC and SimReady</div><div class="fd" data-i18n="zb5d">Convert between IFC and USD; “Export SimReady” adds units, physics and semantics to a USD file.</div></li>
+      <li><div class="ft" data-i18n="zb6t">Built for secure sites</div><div class="fd" data-i18n="zb6d">Online and offline (AirGap) editions with the same features; installers are EV code-signed, with SHA-256 fingerprints for every release.</div></li>
+      </ul>
+      <div class="prod-meta" data-i18n="zb_meta">Windows · Autodesk Revit 2027 · EN / 中文 / 日本語 / 한국어 interface</div>
+      <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="product-cta" data-i18n="dl_go">Download at www.zxbuilder.club →</a>
+    </div>
+    <div class="prod-card fsm">
+      <div class="prod-head"><img class="prod-logo" src="img/zxfsm-lockup.png" alt="ZX FSM — ZX Fab Standard Manager"><span class="pill pill-now" data-i18n="st_now">Available now</span></div>
+      <div class="prod-kind" data-i18n="fs_kind">ZX Fab Standard Manager · Windows desktop app for owners</div>
+      <div class="prod-tag" data-i18n="fs_tag">Facility standards for owners, written into every component, not just documents</div>
+      <ul class="feat-list">
+      <li><div class="ft" data-i18n="fs1t">Set the standard</div><div class="fd" data-i18n="fs1d">Rules in Revit’s own classification: categories, parameters, units, required fields and system type codes; load 40 common Revit categories at once.</div></li>
+      <li><div class="ft" data-i18n="fs2t">Organize RFA files</div><div class="fd" data-i18n="fs2d">Point it at RFA folders: it scans and builds an asset library, and finds new versions, moves, duplicates and missing files. No Revit needed; your files are only read.</div></li>
+      <li><div class="ft" data-i18n="fs3t">Relationship graph</div><div class="fd" data-i18n="fs3d">Categories, families, types, system types, parts and PI AF templates drawn as one interactive network, so gaps show at a glance.</div></li>
+      <li><div class="ft" data-i18n="fs4t">Connect to operations</div><div class="fd" data-i18n="fs4d">Maintain PI AF mappings and IoT points so design parameters match the points used for operational monitoring.</div></li>
+      <li><div class="ft" data-i18n="fs5t">Send to ZXBuilder</div><div class="fd" data-i18n="fs5d">One click writes the standard package and shared parameter file; ZXBuilder applies them on import.</div></li>
+      <li><div class="ft" data-i18n="fs6t">Check deliveries</div><div class="fd" data-i18n="fs6d">Open a ZX USDC scene against the standard and review equipment data in 3D.</div></li>
+      </ul>
+      <div class="plan"><span class="pill pill-plan" data-i18n="st_plan">Planned</span> <span data-i18n="fs_plan">Planned for 0.8: equipment class library, standard check, delivery package with manifest, comparison report. Release date to be announced.</span></div>
+      <div class="prod-meta" data-i18n="fs_meta">Windows · Normal / offline (AirGap) editions · EN / 中文 / 日本語 / 한국어 interface · 0.7 Pre-Beta</div>
+      <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="product-cta" data-i18n="dl_go">Download at www.zxbuilder.club →</a>
     </div>
   </div>
-</div>
-<section class="nv-section" id="ecosystem"><div class="w">
-  <div class="section-eyebrow">OpenUSD Ecosystem</div>
-  <div class="section-title">Built for OpenUSD Digital Twins</div>
-  <p class="section-desc">Industrial digital twins built on OpenUSD contain precision simulation data — equipment layouts, thermal specs, power budgets. ZXBuilder brings this data INTO Autodesk Revit, where EPC and MEP teams do their work.</p>
-  <div class="nv-grid">
-    <div>
-      <a href="https://openusd.org" target="_blank" rel="noopener" class="nv-link-card">
-        <div class="nv-link-icon" style="background:rgba(118,185,0,.12);width:40px;height:40px">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-            <path d="M13 2 L23 7 L23 19 L13 24 L3 19 L3 7 Z" fill="none" stroke="#76b900" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M3 7 L13 12 L23 7 M13 12 L13 24" fill="none" stroke="#76b900" stroke-width="2" stroke-linejoin="round" opacity="0.7"/>
-          </svg>
-        </div>
-        <div class="nv-link-text"><div class="nv-link-label">OpenUSD</div><div class="nv-link-sub">Universal Scene Description — the open standard for 3D scene interchange</div></div>
-        <span class="nv-link-arrow">↗</span>
-      </a>
-      <a href="https://aousd.org" target="_blank" rel="noopener" class="nv-link-card">
-        <div class="nv-link-icon">🤝</div>
-        <div class="nv-link-text"><div class="nv-link-label">Alliance for OpenUSD (AOUSD)</div><div class="nv-link-sub">Industry alliance standardizing OpenUSD across vendors and platforms</div></div>
-        <span class="nv-link-arrow">↗</span>
-      </a>
-      <a href="https://openusd.org/release/index.html" target="_blank" rel="noopener" class="nv-link-card">
-        <div class="nv-link-icon">📐</div>
-        <div class="nv-link-text"><div class="nv-link-label">Simulation-Ready USD</div><div class="nv-link-sub">Physically-accurate USD assets with metadata, behaviors, and IoT bindings</div></div>
-        <span class="nv-link-arrow">↗</span>
-      </a>
-      <a href="https://graphics.pixar.com/usd/release/index.html" target="_blank" rel="noopener" class="nv-link-card">
-        <div class="nv-link-icon">🔷</div>
-        <div class="nv-link-text"><div class="nv-link-label">Pixar USD</div><div class="nv-link-sub">The original Universal Scene Description from Pixar Animation Studios</div></div>
-        <span class="nv-link-arrow">↗</span>
-      </a>
+  <div class="grid2">
+    <div class="card"><div class="card-t" data-i18n="mx1t">ZXSample (Python)</div><div class="card-d" data-i18n="mx1d">For developers: Python tools, sample scenes, a ZF USDC part library and per-file SHA-256. Needs only Python 3.12 and usd-core; sample code is MIT-licensed. Write OpenUSD automation that generates scenes, then bring them into Revit with ZXBuilder.</div></div>
+    <div class="card"><div class="card-t" data-i18n="mx2t">ZX USDC · ZF USDC</div><div class="card-d" data-i18n="mx2d">Two file types, one round trip: ZX USDC scene files and ZF USDC part libraries. Both are standard OpenUSD files that a standard OpenUSD library can open.</div></div>
+  </div>
+</div></section>
+
+<section class="band" id="proof"><div class="w">
+  <div class="section-eyebrow" data-i18n="pf_e">Proof</div>
+  <div class="section-title" data-i18n="pf_t">Not a concept: a measured round trip</div>
+  <div class="proof-grid">
+    <div class="card proof-main">
+      <div class="proof-big">2,627</div>
+      <div class="proof-lbl"><span data-i18n="pf_big_u">components</span> <span class="g2" data-i18n="pf_big_g">100% rebuilt native</span></div>
+      <div class="proof-s" data-i18n="pf_big_s">Round trip on the Autodesk Snowdon Towers (HVAC) sample model · Revit 2027</div>
+      <div class="proof-mini">
+        <div><div class="pm-v">1,053</div><div class="pm-t" data-i18n="pf1t">ducts</div><div class="pm-d" data-i18n="pf1d">size, length and system type match the source</div></div>
+        <div><div class="pm-v">997</div><div class="pm-t" data-i18n="pf2t">duct fittings</div><div class="pm-d" data-i18n="pf2d">family, type and system type match the source</div></div>
+        <div><div class="pm-v">2,596 / 2,596</div><div class="pm-t" data-i18n="pf3t">elements, another HVAC model</div><div class="pm-d" data-i18n="pf3d">all within 0.5 mm of the expected position after export and re-import</div></div>
+      </div>
+      <div class="proof-note" data-i18n="pf_note">Measured by us on Revit 2027; not third-party verified.</div>
     </div>
-    <div class="badge-stack">
-      <div class="nv-badge-card highlight"><div class="nv-badge-title" style="color:var(--accent)">★ USD → Revit: The Missing Link</div><div class="nv-badge-desc">The industry offers one-way export from BIM to USD. ZXBuilder delivers the missing return path — bringing OpenUSD precision INTO Revit, where EPC teams actually work.</div></div>
-      <div class="nv-badge-card"><div class="nv-badge-title" style="color:var(--nv-green)">OpenUSD Native · Industrial Digital Twin Ready</div><div class="nv-badge-desc">Our USD output uses <code style="font-size:10px;background:rgba(0,223,162,.1);padding:1px 4px;border-radius:3px">aif:core:</code> and <code style="font-size:10px;background:rgba(0,223,162,.1);padding:1px 4px;border-radius:3px">aif:spec:</code> namespaces — designed for industrial facility assets including cooling, power, and rack equipment.</div></div>
-      <div class="nv-badge-card"><div class="nv-badge-title" style="color:var(--blue)">Bidirectional · Full Round-Trip</div><div class="nv-badge-desc">USD → Revit to ground the digital twin in real MEP design. Revit → USD to sync updated MEP back to the digital twin model. 99% round-trip accuracy across 402 component types.</div></div>
-      <div class="nv-badge-card"><div class="nv-badge-title" style="color:var(--gold)">SolidWorks: Equipment Layer Next</div><div class="nv-badge-desc">Equipment vendors (cooling, power, rack manufacturers) design in SolidWorks. ZXBuilder SolidWorks connector bridges equipment CAD directly to USD — expanding our coverage from facility MEP to equipment-level assets.</div></div>
+    <div class="proof-side">
+      <div class="card side"><div class="card-t" data-i18n="pc1t">Normal + AirGap editions</div><div class="card-d" data-i18n="pc1d">Designed for fab security · signed and released together</div></div>
+      <div class="card side"><div class="card-t" data-i18n="pc2t">EV code signing · SHA-256</div><div class="card-d" data-i18n="pc2d">Release notes and file fingerprints published for every release</div></div>
+      <div class="card side"><div class="card-t" data-i18n="pc3t">US patents pending</div><div class="card-d" data-i18n="pc3d">7 applications filed · under examination</div></div>
     </div>
   </div>
 </div></section>
-<section id="product"><div class="w">
-  <div class="section-eyebrow">Product</div>
-  <div class="section-title"><img class="zxb-logo" src="img/zxbuilder-lockup.png" alt="ZXBuilder"></div>
-  <p class="section-desc">Brings OpenUSD digital twin data into Autodesk Revit — and syncs it back. Bidirectional. OpenUSD Native. Available now at <a href="https://www.zxbuilder.club/" target="_blank">www.zxbuilder.club</a>.</p>
-  <div class="product-card">
-    <div class="product-header">
-      <div>
-        <div class="product-name"><img class="zxb-logo" src="img/zxbuilder-lockup.png" alt="ZXBuilder"> USD↔Revit Builder</div>
-        <div class="product-tagline">For Semiconductor Fabs · EPC Contractors · MEP Engineers</div>
-        <div class="product-version">Windows · Revit 2027 · OpenUSD Native</div>
-      </div>
-      <a href="https://www.zxbuilder.club/" target="_blank" class="product-cta">Try Free at zxbuilder.club →</a>
-    </div>
-    <div class="product-body">
-      <div class="product-feature"><div class="feat-icon">⬇️</div><div><div class="feat-title">USD → Revit Import (Primary)</div><div class="feat-desc">Bring industrial digital twin data from OpenUSD INTO Revit. The missing link the industry has not provided. 398/402 components fully restored.</div></div></div>
-      <div class="product-feature"><div class="feat-icon">⬆️</div><div><div class="feat-title">Revit → USD Export</div><div class="feat-desc">Export MEP design from Revit back to USD for digital twin sync. 402/402 component types, 100% export with OpenUSD-compatible metadata.</div></div></div>
-      <div class="product-feature"><div class="feat-icon">⚡</div><div><div class="feat-title">One-Click Conversion</div><div class="feat-desc">Convert a full fab MEP model in a single operation. Output is ready for USD pipeline ingestion.</div></div></div>
-      <div class="product-feature"><div class="feat-icon">🔒</div><div><div class="feat-title">Enterprise License System</div><div class="feat-desc">Machine-locked licensing with Trial / Licensed / Unlimited tiers. Works offline — no network required. Designed for restricted semiconductor fab environments.</div></div></div>
-      <div class="product-feature"><div class="feat-icon">👁️</div><div><div class="feat-title">Built-in USD Viewer</div><div class="feat-desc">Preview industrial digital twin USD models directly in Revit before and after conversion. No external tools needed.</div></div></div>
-      <div class="product-feature"><div class="feat-icon">🔩</div><div><div class="feat-title">SolidWorks Connector (Next)</div><div class="feat-desc">Equipment vendors design in SolidWorks. ZXBuilder SolidWorks connector extends the digital twin coverage to the equipment layer.</div></div></div>
-    </div>
+
+<section id="open"><div class="w">
+  <div class="section-eyebrow" data-i18n="op_e">Open by design</div>
+  <div class="section-title" data-i18n="op_t">Open formats, industry delivery standards</div>
+  <div class="grid3">
+    <div class="card open-card o1"><div class="ok-k">OPEN</div><div class="ok-t" data-i18n="op1t">Open</div><div class="ok-h" data-i18n="op1h">ZX / ZF are standard OpenUSD</div><div class="card-d" data-i18n="op1d">Any tool can open and validate them</div></div>
+    <div class="card open-card o2"><div class="ok-k">TWO-WAY</div><div class="ok-t" data-i18n="op2t">Two-way</div><div class="ok-h" data-i18n="op2h">Revit ⇄ Omniverse</div><div class="card-d" data-i18n="op2d">Identity out, native elements back</div></div>
+    <div class="card open-card o3"><div class="ok-k">STANDARD</div><div class="ok-t" data-i18n="op3t">Standard</div><div class="ok-h" data-i18n="op3h">HTFA Digital Twin Committee</div><div class="card-d" data-i18n="op3d">An industry spec with OpenUSD as the delivery format</div></div>
+  </div>
+  <div class="eco"><span class="eco-l" data-i18n="op_eco">Works with</span><span class="chip">Autodesk Revit</span><span class="chip">NVIDIA Omniverse</span><a class="chip" href="https://openusd.org" target="_blank" rel="noopener">OpenUSD</a><span class="chip">SimReady</span></div>
+</div></section>
+
+<section class="band" id="industries"><div class="w">
+  <div class="section-eyebrow" data-i18n="in_e">Industries</div>
+  <div class="section-title" data-i18n="in_t">Focused on semiconductor fabs and AI data centers</div>
+  <div class="grid2">
+    <div class="card ind"><div class="ind-icon" aria-hidden="true">&#127981;</div><div class="card-t" data-i18n="in1t">Semiconductor fabs</div><div class="card-d" data-i18n="in1d">Vacuum pumps, scrubbers, chillers: many systems and many hands from design to operation. Owners define one standard in ZX FSM and check every delivery against it.</div></div>
+    <div class="card ind"><div class="ind-icon" aria-hidden="true">&#128452;&#65039;</div><div class="card-t" data-i18n="in2t">AI data centers</div><div class="card-d" data-i18n="in2d">CDUs, UPS and other equipment are laid out, simulated and twinned in NVIDIA Omniverse. ZXBuilder carries the Revit design into OpenUSD with its identity, and back to Revit after changes.</div></div>
+  </div>
+  <div class="sub-title" data-i18n="rv_t">Value for every stakeholder</div>
+  <div class="grid3">
+    <div class="card role-card r1"><div class="ok-k">OWNERS</div><div class="ok-t" data-i18n="rl1t">Owners</div><div class="ok-h" data-i18n="rl1h">Define standards once</div><div class="card-d" data-i18n="rl1d">verify every delivery</div></div>
+    <div class="card role-card r2"><div class="ok-k">CONTRACTORS &amp; SUPPLIERS</div><div class="ok-t" data-i18n="rl2t">Contractors &amp; suppliers</div><div class="ok-h" data-i18n="rl2h">Your existing Revit models</div><div class="card-d" data-i18n="rl2d">become SimReady digital twins</div><div class="serve-tags"><span class="serve-tag">CTCI</span><span class="serve-tag">Exyte</span><span class="serve-tag">Fluor</span><span class="serve-tag">MEP Design</span></div></div>
+    <div class="card role-card r3"><div class="ok-k">OPERATIONS</div><div class="ok-t" data-i18n="rl3t">Operations</div><div class="ok-h" data-i18n="rl3h">From day one</div><div class="card-d" data-i18n="rl3d">the twin carries the right data</div></div>
   </div>
 </div></section>
+
 <!-- Product video · four languages (files hosted as GitHub release assets, tag intro-videos-20261102) -->
-<section style="padding-top:0" id="video"><div class="w">
-  <div class="section-eyebrow" data-i18n="v_e">Product Video</div>
-  <div class="section-title" data-i18n="v_t">ZXBuilder Product Introduction</div>
-  <p class="section-desc" data-i18n="v_d">ZXBuilder is the two-way bridge between NVIDIA Omniverse / OpenUSD and the BIM world. Each video runs about two to three minutes and is available in Chinese, English, Japanese and Korean.</p>
+<section id="video"><div class="w">
+  <div class="section-eyebrow" data-i18n="v_e">Video</div>
+  <div class="section-title" data-i18n="v_t">Introducing Reality Matrix AI: ZXBuilder and ZX FSM</div>
+  <p class="section-desc" data-i18n="v_d">Each video runs about two to three minutes and walks through the problem, why now, the gap, our solution, proof, ZX FSM, openness, value and what’s next. Available in Chinese, English, Japanese and Korean.</p>
   <div class="vid-card">
     <div class="vid-tabs" role="tablist">
       <button class="vtab" data-vl="zh" role="tab" aria-selected="false" onclick="selectVideo('zh')">中文</button>
@@ -395,356 +493,790 @@ footer .w{display:flex;align-items:center;justify-content:space-between;flex-wra
     </div>
   </div>
 </div></section>
+
+<section class="tight-top" id="next"><div class="w">
+  <div class="section-eyebrow" data-i18n="nx_e">What’s next</div>
+  <div class="section-title" data-i18n="nx_t">Next: from fabs to AI factories</div>
+  <p class="section-desc" data-i18n="nx_note">Planned directions, not yet available; timing to be announced.</p>
+  <div class="grid3">
+    <div class="card next-card n1"><div class="nx-n">01</div><span class="pill pill-plan" data-i18n="st_plan">Planned</span><div class="card-t" data-i18n="nx1t">SimReady part libraries for AI factories</div><div class="card-d" data-i18n="nx1d">Electrical and thermal data for NVIDIA DSX workflows</div></div>
+    <div class="card next-card n2"><div class="nx-n">02</div><span class="pill pill-plan" data-i18n="st_plan">Planned</span><div class="card-t" data-i18n="nx2t">Delivery packages + comparison reports</div><div class="card-d" data-i18n="nx2d">Standard → delivery → verification, end to end</div></div>
+    <div class="card next-card n3"><div class="nx-n">03</div><span class="pill pill-plan" data-i18n="st_plan">Planned</span><div class="card-t" data-i18n="nx3t">Interfaces for AI agents</div><div class="card-d" data-i18n="nx3d">AI agents use ZX tools directly</div></div>
+  </div>
+</div></section>
+
 <!-- Products · Downloadable software (ZXBuilder) — company mark + product mark in one frame -->
-<section style="padding-top:0" id="download"><div class="w">
+<section class="tight-top" id="download"><div class="w">
   <div class="section-eyebrow" data-i18n="dl_e">Products &middot; Downloadable Software</div>
   <div class="section-title" data-i18n="dl_t">ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI</div>
   <div class="dl-card">
     <div class="tm-frame"><img src="img/rmai-lockup.png" alt="Reality Matrix AI"><span class="tm-x">&times;</span><img src="img/zxbuilder-lockup.png" alt="ZXBuilder"></div>
     <div class="dl-name" data-i18n="dl_name">ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027</div>
-    <p class="dl-desc" data-i18n="dl_d">ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 7-day trial.</p>
-    <div class="dl-ver" data-i18n="dl_ver">Current release: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027</div>
+    <p class="dl-desc" data-i18n="dl_d">ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 30-day trial.</p>
+    <div class="dl-ver" data-i18n="dl_ver">Latest release (Pre-Beta) and downloads: see www.zxbuilder.club &middot; Windows &middot; Autodesk Revit 2027</div>
     <div class="dl-row">
-      <a href="https://www.zxbuilder.club/" target="_blank" class="product-cta" data-i18n="dl_btn1">Download ZXBuilder &mdash; Free Trial &rarr;</a>
-      <a href="https://www.zxbuilder.club/" target="_blank" class="dl-link" data-i18n="dl_btn2">Product site: www.zxbuilder.club</a>
+      <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="product-cta" data-i18n="dl_btn1">Download ZXBuilder &mdash; Free Trial &rarr;</a>
+      <a href="https://www.zxbuilder.club/" target="_blank" rel="noopener" class="dl-link" data-i18n="dl_btn2">Product site: www.zxbuilder.club</a>
     </div>
     <div class="dl-svc" data-i18n="dl_svc"><strong>Software services under the ZXBuilder name:</strong> online licensing &amp; trial-key service &middot; software design &amp; development &middot; updates &amp; maintenance &middot; technical consulting, integration &amp; training. Trial and licensed editions are issued by Reality Matrix AI Inc. through the ZXBuilder licensing service.</div>
   </div>
 </div></section>
-<section style="padding-top:0" id="who"><div class="w">
-  <div class="section-eyebrow">Who We Serve</div>
-  <div class="section-title">Built for the Industrial Enterprise</div>
-  <p class="section-desc">Our customers are the teams building and operating the world's most advanced manufacturing facilities.</p>
-  <div class="serve-grid">
-    <div class="serve-card"><div class="serve-icon">🏭</div><div class="serve-title">Semiconductor Fabs</div><div class="serve-desc">Leading foundries building industrial digital twins on OpenUSD need their facility MEP data in Revit — and Revit MEP data synced back to the digital twin. ZXBuilder is the bridge.</div><div class="serve-tags"><span class="serve-tag">Digital Twin</span><span class="serve-tag">OpenUSD</span><span class="serve-tag">MEP</span></div></div>
-    <div class="serve-card"><div class="serve-icon">🏗️</div><div class="serve-title">EPC Contractors</div><div class="serve-desc">Engineering, Procurement &amp; Construction firms design semiconductor fab MEP in Revit. They need to import OpenUSD reference models into Revit — and deliver USD back to the fab.</div><div class="serve-tags"><span class="serve-tag">CTCI</span><span class="serve-tag">Exyte</span><span class="serve-tag">Fluor</span><span class="serve-tag">MEP Design</span></div></div>
-    <div class="serve-card"><div class="serve-icon">⚙️</div><div class="serve-title">Equipment Suppliers</div><div class="serve-desc">Cooling, power, and rack equipment manufacturers design in SolidWorks. ZXBuilder's SolidWorks connector bridges equipment CAD to USD — completing the digital twin asset pipeline.</div><div class="serve-tags"><span class="serve-tag">SolidWorks</span><span class="serve-tag">Equipment CAD</span><span class="serve-tag">USD Assets</span></div></div>
-  </div>
+
+<section class="tight-top"><div class="w">
+  <div class="section-eyebrow" data-i18n="te">Team</div>
+  <div class="section-title" data-i18n="tt">Built by industry veterans</div>
+  <div class="team-card"><div class="team-bio" data-i18n="tm_bio">Our founder and CEO, Michael Lin, has more than 25 years in industrial software, 3D and simulation, including 20 years of hands-on BIM work, and personally developed the USD → Revit engine in ZXBuilder. Of the six people on our co-founder &amp; CFO and advisory board team, four come from the Autodesk, AVEVA and PTC industrial-software ecosystems and their partners.</div></div>
 </div></section>
-<section style="padding-top:0"><div class="w">
-  <div class="section-eyebrow" data-i18n="we">Why Reality Matrix</div>
-  <div class="section-title" data-i18n="wt">The Permanent Gap We Fill</div>
-  <div class="why-grid">
-    <div class="why-card"><div class="why-num">01</div><div><div class="why-title">USD → Revit: The Missing Link</div><div class="why-desc">The industry provides one-way export from BIM to USD. ZXBuilder delivers the missing return path. Industrial digital twin data flows INTO Revit — enabling MEP teams to design from simulation-accurate models.</div></div></div>
-    <div class="why-card"><div class="why-num">02</div><div><div class="why-title">USD Domain Knowledge</div><div class="why-desc">402 MEP component types mapped to correct USD metadata namespaces (<code style="font-size:11px">aif:core:</code> / <code style="font-size:11px">aif:spec:</code>). Built from real semiconductor fab Revit files. No other tool has this.</div></div></div>
-    <div class="why-card"><div class="why-num">03</div><div><div class="why-title">Proven on Real Fab Data</div><div class="why-desc">Validated against actual semiconductor fab MEP models. 40 PASS / 0 FAIL. Production-grade, not a prototype.</div></div></div>
-    <div class="why-card"><div class="why-num">04</div><div><div class="why-title">Full Ecosystem Coverage</div><div class="why-desc">Facility MEP via Revit. Equipment CAD via SolidWorks (next). Both feed into OpenUSD digital twins. Reality Matrix covers every import path Autodesk left open — permanently.</div></div></div>
-  </div>
-</div></section>
-<section style="padding-top:0"><div class="w">
-  <div class="section-eyebrow" data-i18n="te">Founding Team</div>
-  <div class="section-title" data-i18n="tt">Built by Industry Veterans</div>
-  <div class="team-card" style="justify-content:center;text-align:center;padding:40px">
-    <div class="team-bio" style="font-size:18px;color:rgba(255,255,255,.78);line-height:1.7;max-width:620px;margin:0 auto">Team comes from 20+ years of crossed-industry experience in industrial software, BIM, simulation, and semiconductor manufacturing across Greater China and APAC.</div>
-  </div>
-</div></section>
-<section style="padding-bottom:0"><div class="w">
+
+<section class="tight-top" style="padding-bottom:0"><div class="w">
   <div class="final-cta">
-    <h2>Ready to bring your<br>USD digital twin into Revit?</h2>
-    <p>OpenUSD has the digital twin. Your MEP team has Revit. ZXBuilder connects them — in both directions.</p>
+    <h2 data-i18n="fc_t">Start with the Revit model you already have</h2>
+    <p data-i18n="fc_d">Try ZXBuilder and ZX FSM free, or tell us about your project.</p>
     <div class="final-cta-row">
-      <a href="https://www.zxbuilder.club/" target="_blank" class="cta-primary"><img class="zxb-logo" src="img/zxbuilder-lockup.png" alt="ZXBuilder"> Free Trial <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="mailto:michael.lin@realitymatrixai.com" class="cta-secondary">Enterprise Inquiry</a>
+      <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" class="cta-primary"><span data-i18n="fc_cta1">Download free trial</span> <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="mailto:michael.lin@realitymatrixai.com" class="cta-secondary" data-i18n="fc_cta2">Enterprise inquiry</a>
     </div>
   </div>
 </div></section>
+
 <footer><div class="w">
-  <div class="footer-left">© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · Taipei, Taiwan · <a href="mailto:michael.lin@realitymatrixai.com" style="color:var(--text-muted)">michael.lin@realitymatrixai.com</a></div>
+  <div class="footer-left"><span data-i18n="foot">© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · Taipei, Taiwan</span> · <a href="mailto:michael.lin@realitymatrixai.com" style="color:var(--text-muted)">michael.lin@realitymatrixai.com</a></div>
   <div class="footer-links">
-    <a href="https://www.zxbuilder.club/" target="_blank">ZXBuilder Product</a>
-    <a href="https://openusd.org" target="_blank">OpenUSD</a>
-    <a href="mailto:michael.lin@realitymatrixai.com">Contact</a>
+    <a href="https://www.zxbuilder.club/#downloads" target="_blank" rel="noopener" data-i18n="zp_link">ZXBuilder · ZX FSM downloads</a>
+    <a href="https://openusd.org" target="_blank" rel="noopener" data-i18n="nv_link">OpenUSD</a>
+    <a href="mailto:michael.lin@realitymatrixai.com" data-i18n="ct_link">Contact</a>
   </div>
   <div class="ftr-tm" data-i18n="ftr_tm">ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.</div>
 </div></footer>
 <script>
-// ── Reality Matrix AI — i18n (EN / 中文 / 日本語 / 한국어) ──
+// Reality Matrix AI — i18n (EN / 中文 / 日本語 / 한국어). Every translatable element carries data-i18n.
 const _RM = {
-en:{
-  nav_usd:'OpenUSD', nav_product:'Product', nav_serve:'Who We Serve', nav_video:'Video',
-  v_e:'Product Video', v_t:'ZXBuilder Product Introduction', v_d:'ZXBuilder is the two-way bridge between NVIDIA Omniverse / OpenUSD and the BIM world. Each video runs about two to three minutes and is available in Chinese, English, Japanese and Korean.', v_dl:'Download video',
-  dl_e:'Products &middot; Downloadable Software', dl_t:'ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI', dl_name:'ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027', dl_d:'ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 7-day trial.', dl_ver:'Current release: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'Download ZXBuilder &mdash; Free Trial &rarr;', dl_btn2:'Product site: www.zxbuilder.club', dl_svc:'<strong>Software services under the ZXBuilder name:</strong> online licensing &amp; trial-key service &middot; software design &amp; development &middot; updates &amp; maintenance &middot; technical consulting, integration &amp; training. Trial and licensed editions are issued by Reality Matrix AI Inc. through the ZXBuilder licensing service.', ftr_tm:'ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc.',
-  b_live:'Product Live', b_nv:'OpenUSD Ecosystem', b_aif:'Industrial Digital Twin Ready',
-  h1:'From OpenUSD', h2:'to Revit. Finally.',
-  h_sub:'The digital twin lives in OpenUSD. Your MEP engineering team works in Autodesk Revit. ZXBuilder connects them — bringing simulation precision into Revit, and syncing it back.',
-  h_tag:'USD → Revit &nbsp;·&nbsp; <span>OpenUSD → BIM</span> &nbsp;·&nbsp; <span>Bidirectional · Industrial Digital Twin</span>',
-  h_cta1:'Free Trial', h_cta2:'Enterprise Inquiry',
-  diag_title:'Architecture · USD → BIM Bridge',
-  d1n:'OpenUSD', d1s1:'Industrial Digital Twin', d1s2:'Universal Scene Description',
-  d2n:'ZXBuilder', d2s1:'Bidirectional Bridge', d2s2:'★ Import = Our Permanent Moat',
-  d3n:'Autodesk Revit', d3s1:'MEP Engineering Team', d3s2:'EPC · Fab Facility Design',
-  arr1:'USD → Revit ★', arr2:'Revit → USD',
-  st1:'MEP Component Types · 100% Export', st2:'Round-Trip Accuracy', st3:'Full Conversion Speed',
-  ns_e:'OPENUSD ECOSYSTEM', ns_t:'Built for OpenUSD Digital Twins',
-  ns_d:'Industrial digital twins built on OpenUSD contain precision simulation data — equipment layouts, thermal specs, power budgets. ZXBuilder brings this data INTO Autodesk Revit, where EPC and MEP teams do their work.',
-  nl1:'OpenUSD', nl1s:'Universal Scene Description — the open standard for 3D scene interchange',
-  nl2:'Alliance for OpenUSD (AOUSD)', nl2s:'Industry alliance standardizing OpenUSD across vendors and platforms',
-  nl3:'Simulation-Ready USD', nl3s:'Physically-accurate USD assets with metadata, behaviors, and IoT bindings',
-  nl4:'Pixar USD', nl4s:'The original Universal Scene Description from Pixar Animation Studios',
-  nb1:'★ USD → Revit: The Missing Link', nb1d:'The industry offers one-way export from BIM to USD. ZXBuilder delivers the missing return path — bringing OpenUSD precision INTO Revit, where EPC teams actually work.',
-  nb2:'OpenUSD Native · Industrial Digital Twin Ready', nb2d:'Our USD output uses aif:core: and aif:spec: namespaces — designed for industrial facility assets including cooling, power, and rack equipment.',
-  nb3:'Bidirectional · Full Round-Trip', nb3d:'USD → Revit to ground the digital twin in real MEP design. Revit → USD to sync updated MEP back to the digital twin model. 99% round-trip accuracy across 402 component types.',
-  nb4:'SolidWorks: Equipment Layer Next', nb4d:'Equipment vendors (cooling, power, rack manufacturers) design in SolidWorks. ZXBuilder SolidWorks connector bridges equipment CAD directly to USD — expanding our coverage from facility MEP to equipment-level assets.',
-  pe:'PRODUCT', pt_pre:'', pd:'Brings OpenUSD digital twin data into Autodesk Revit — and syncs it back. Bidirectional. OpenUSD Native. Available now at',
-  p_tag:'For Semiconductor Fabs · EPC Contractors · MEP Engineers',
-  p_ver:'Windows · Revit 2027 · OpenUSD Native',
-  pf1t:'USD → Revit Import (Primary)', pf1d:'Bring industrial digital twin data from OpenUSD INTO Revit. The missing link the industry has not provided. 398/402 components fully restored.',
-  pf2t:'Revit → USD Export', pf2d:'Export MEP design from Revit back to USD for digital twin sync. 402/402 component types, 100% export with OpenUSD-compatible metadata.',
-  pf3t:'One-Click Conversion', pf3d:'Convert a full fab MEP model in a single operation. Output is ready for USD pipeline ingestion.',
-  pf4t:'Enterprise License System', pf4d:'Machine-locked licensing with Trial / Licensed / Unlimited tiers. Works offline — no network required. Designed for restricted semiconductor fab environments.',
-  pf5t:'Built-in USD Viewer', pf5d:'Preview industrial digital twin USD models directly in Revit before and after conversion. No external tools needed.',
-  pf6t:'SolidWorks Connector (Next)', pf6d:'Equipment vendors design in SolidWorks. ZXBuilder SolidWorks connector extends the digital twin coverage to the equipment layer.',
-  se:'WHO WE SERVE', st_t:'Built for the Industrial Enterprise',
-  sd:"Our customers are the teams building and operating the world's most advanced manufacturing facilities.",
-  sc1t:'Semiconductor Fabs', sc1d:'Leading foundries building industrial digital twins on OpenUSD need their facility MEP data in Revit — and Revit MEP data synced back to the digital twin. ZXBuilder is the bridge.',
-  sc2t:'EPC Contractors', sc2d:'Engineering, Procurement & Construction firms design semiconductor fab MEP in Revit. They need to import OpenUSD reference models into Revit — and deliver USD back to the fab.',
-  sc3t:'Equipment Suppliers', sc3d:"Cooling, power, and rack equipment manufacturers design in SolidWorks. ZXBuilder's SolidWorks connector bridges equipment CAD to USD — completing the digital twin asset pipeline.",
-  we:'WHY REALITY MATRIX', wt:'The Permanent Gap We Fill',
-  wc1t:'USD → Revit: The Missing Link', wc1d:'The industry provides one-way export from BIM to USD. ZXBuilder delivers the missing return path. Industrial digital twin data flows INTO Revit — enabling MEP teams to design from simulation-accurate models.',
-  wc2t:'USD Domain Knowledge', wc2d:'402 MEP component types mapped to correct USD metadata namespaces. Built from real semiconductor fab Revit files. No other tool has this.',
-  wc3t:'Proven on Real Fab Data', wc3d:'Validated against actual semiconductor fab MEP models. 40 PASS / 0 FAIL. Production-grade, not a prototype.',
-  wc4t:'Full Ecosystem Coverage', wc4d:'Facility MEP via Revit. Equipment CAD via SolidWorks (next). Both feed into OpenUSD digital twins. Reality Matrix covers every connection the industry needs — bidirectionally.',
-  te:'FOUNDING TEAM', tt:'Built by Industry Veterans',
-  tm_bio:'Team comes from 20+ years of crossed-industry experience in industrial software, BIM, simulation, and semiconductor manufacturing across Greater China and APAC.',
-  fc_t:'Ready to bring your<br>USD digital twin into Revit?',
-  fc_d:'OpenUSD has the digital twin. Your MEP team has Revit. ZXBuilder connects them — in both directions.',
-  fc_cta1:'Free Trial', fc_cta2:'Enterprise Inquiry',
-  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · Taipei, Taiwan',
-  zp_link:'ZXBuilder Product', nv_link:'OpenUSD', ct_link:'Contact'
+"en": {
+"doc_title": "Reality Matrix AI — Infrastructure and bridge for industrial digital twins",
+"nav_products": "Products",
+"nav_open": "Open standards",
+"nav_ind": "Industries",
+"nav_video": "Video",
+"b_avail": "ZXBuilder · ZX FSM available now (Pre-Beta)",
+"b_ind": "Semiconductor fabs · AI data centers",
+"b_usd": "Standard OpenUSD",
+"h1": "Infrastructure and bridge<br><span class=\"g\">for industrial digital twins<\/span>",
+"h_sub": "We connect the BIM engineering world with digital-twin applications (NVIDIA AI Factory, SimReady, OpenUSD). ZXBuilder carries engineering data, identity intact, both ways between Revit and OpenUSD. ZX FSM writes the owner’s equipment standards into every component.",
+"h_cta1": "Download ZXBuilder · ZX FSM",
+"h_cta2": "Enterprise inquiry",
+"ai_e": "For the AI era",
+"ai_q": "AI agents need engineering data they can trust. ZXBuilder delivers BIM ↔ OpenUSD data that carries its identity.",
+"ai_d": "Every component leaves Revit with a fixed identity and its connection points, written as plain properties that any OpenUSD program can read without asking Revit. On the way back, it is rebuilt by that identity as a native, editable Revit element with its parameters.",
+"pb_e": "The problem",
+"pb_t": "Design → Build → Operate: models change hands again and again",
+"pb_d": "A fab or an AI data center is handed from owner to designer, contractor and equipment supplier. Each handover is a Revit or CAD file exchange, and the identity of each component is hard to carry through.",
+"r1t": "Owner",
+"r1s": "Owner / Operator",
+"r2t": "Designer",
+"r2s": "Architect · EPC",
+"r3t": "Contractor",
+"r3s": "Building · MEP · Cleanroom",
+"r4t": "Supplier",
+"r4s": "Revit · SolidWorks · Creo",
+"pn1t": "Identity gets lost",
+"pn1d": "Downstream teams cannot tell which family and type an object came from, so the data has to be matched again.",
+"pn2t": "Only the shape comes back",
+"pn2d": "After moving to a 3D platform, only geometry remains: families, types and parameters are gone, and edited layouts are redrawn in Revit.",
+"pn3t": "Operations can’t connect",
+"pn3d": "Equipment data for monitoring systems such as PI AF needs a separate list and mapping, and the model is checked again at handover to operations.",
+"wn_t": "Why now: fabs and AI factories are scaling at once",
+"wn1u": "fabs",
+"wn1t": "New 300 mm fabs &amp; lines breaking ground in 2026",
+"wn1s": "18 more in 2027 · 23 begin output",
+"wn1src": "Source: SEMI, Oct 2026",
+"wn2t": "2026 capex, top four clouds",
+"wn2s": "Microsoft · Alphabet · Amazon · Meta · several plan more for 2027",
+"wn2src": "Source: company Q3 2026 reports",
+"wd_e": "Our position",
+"wd_t": "More than conversion: identity and standards, carried through to delivery",
+"wd_d": "Design data still lives mostly in Revit, and today’s workflows are mostly one-way export. We sit between the two worlds: ZXBuilder is the two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world, and ZX FSM provides the data rules for that bridge.",
+"dg_title": "Two-way bridge · identity intact",
+"dg_l_n": "The BIM world",
+"dg_l_s": "Autodesk Revit · design &amp; construction",
+"dg_c_s": "Revit add-in · two-way bridge",
+"dg_r_s": "SimReady · AI factories · digital twins",
+"dg_a1": "Export · identity intact →",
+"dg_a2": "← Back · native Revit elements",
+"dg_f1": "ZX USDC · scene files",
+"dg_f2": "ZF USDC · part libraries",
+"dg_fsm": "<strong>ZX FSM<\/strong> · the owner’s standard, applied automatically when ZXBuilder brings models back",
+"wd_goal": "Our goal: make ZX and ZF, both standard OpenUSD files, the data-exchange standard for semiconductor fab infrastructure.",
+"pr_e": "Products",
+"pr_t": "Two products, one workflow",
+"pr_d": "ZX FSM sets the rules; ZXBuilder follows them. Both are available now as Pre-Beta at <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a>.",
+"st_now": "Available now",
+"st_plan": "Planned",
+"zb_kind": "Autodesk Revit 2027 add-in",
+"zb_tag": "The two-way bridge linking NVIDIA Omniverse / OpenUSD to the BIM world",
+"zb1t": "Export with identity",
+"zb1d": "Export a Revit project to OpenUSD with every element’s identity: one file, or a whole list in batch.",
+"zb2t": "Native import",
+"zb2d": "Bring ZX USDC scenes back as native, editable Revit elements with parameters, ready for schedules.",
+"zb3t": "ZF USDC part libraries",
+"zb3d": "Build reusable part libraries from Revit families; each part has a fixed identity and connection points.",
+"zb4t": "Follows the owner’s standard",
+"zb4d": "Reads the ZX FSM standard package on import and sets the system type of straight ducts to the matching type already in the project.",
+"zb5t": "IFC and SimReady",
+"zb5d": "Convert between IFC and USD; “Export SimReady” adds units, physics and semantics to a USD file.",
+"zb6t": "Built for secure sites",
+"zb6d": "Online and offline (AirGap) editions with the same features; installers are EV code-signed, with SHA-256 fingerprints for every release.",
+"zb_meta": "Windows · Autodesk Revit 2027 · EN / 中文 / 日本語 / 한국어 interface",
+"dl_go": "Download at www.zxbuilder.club →",
+"fs_kind": "ZX Fab Standard Manager · Windows desktop app for owners",
+"fs_tag": "Facility standards for owners, written into every component, not just documents",
+"fs1t": "Set the standard",
+"fs1d": "Rules in Revit’s own classification: categories, parameters, units, required fields and system type codes; load 40 common Revit categories at once.",
+"fs2t": "Organize RFA files",
+"fs2d": "Point it at RFA folders: it scans and builds an asset library, and finds new versions, moves, duplicates and missing files. No Revit needed; your files are only read.",
+"fs3t": "Relationship graph",
+"fs3d": "Categories, families, types, system types, parts and PI AF templates drawn as one interactive network, so gaps show at a glance.",
+"fs4t": "Connect to operations",
+"fs4d": "Maintain PI AF mappings and IoT points so design parameters match the points used for operational monitoring.",
+"fs5t": "Send to ZXBuilder",
+"fs5d": "One click writes the standard package and shared parameter file; ZXBuilder applies them on import.",
+"fs6t": "Check deliveries",
+"fs6d": "Open a ZX USDC scene against the standard and review equipment data in 3D.",
+"fs_plan": "Planned for 0.8: equipment class library, standard check, delivery package with manifest, comparison report. Release date to be announced.",
+"fs_meta": "Windows · Normal / offline (AirGap) editions · EN / 中文 / 日本語 / 한국어 interface · 0.7 Pre-Beta",
+"mx1t": "ZXSample (Python)",
+"mx1d": "For developers: Python tools, sample scenes, a ZF USDC part library and per-file SHA-256. Needs only Python 3.12 and usd-core; sample code is MIT-licensed. Write OpenUSD automation that generates scenes, then bring them into Revit with ZXBuilder.",
+"mx2t": "ZX USDC · ZF USDC",
+"mx2d": "Two file types, one round trip: ZX USDC scene files and ZF USDC part libraries. Both are standard OpenUSD files that a standard OpenUSD library can open.",
+"pf_e": "Proof",
+"pf_t": "Not a concept: a measured round trip",
+"pf_big_u": "components",
+"pf_big_g": "100% rebuilt native",
+"pf_big_s": "Round trip on the Autodesk Snowdon Towers (HVAC) sample model · Revit 2027",
+"pf1t": "ducts",
+"pf1d": "size, length and system type match the source",
+"pf2t": "duct fittings",
+"pf2d": "family, type and system type match the source",
+"pf3t": "elements, another HVAC model",
+"pf3d": "all within 0.5 mm of the expected position after export and re-import",
+"pf_note": "Measured by us on Revit 2027; not third-party verified.",
+"pc1t": "Normal + AirGap editions",
+"pc1d": "Designed for fab security · signed and released together",
+"pc2t": "EV code signing · SHA-256",
+"pc2d": "Release notes and file fingerprints published for every release",
+"pc3t": "US patents pending",
+"pc3d": "7 applications filed · under examination",
+"op_e": "Open by design",
+"op_t": "Open formats, industry delivery standards",
+"op1t": "Open",
+"op1h": "ZX / ZF are standard OpenUSD",
+"op1d": "Any tool can open and validate them",
+"op2t": "Two-way",
+"op2h": "Revit ⇄ Omniverse",
+"op2d": "Identity out, native elements back",
+"op3t": "Standard",
+"op3h": "HTFA Digital Twin Committee",
+"op3d": "An industry spec with OpenUSD as the delivery format",
+"op_eco": "Works with",
+"in_e": "Industries",
+"in_t": "Focused on semiconductor fabs and AI data centers",
+"in1t": "Semiconductor fabs",
+"in1d": "Vacuum pumps, scrubbers, chillers: many systems and many hands from design to operation. Owners define one standard in ZX FSM and check every delivery against it.",
+"in2t": "AI data centers",
+"in2d": "CDUs, UPS and other equipment are laid out, simulated and twinned in NVIDIA Omniverse. ZXBuilder carries the Revit design into OpenUSD with its identity, and back to Revit after changes.",
+"rv_t": "Value for every stakeholder",
+"rl1t": "Owners",
+"rl1h": "Define standards once",
+"rl1d": "verify every delivery",
+"rl2t": "Contractors &amp; suppliers",
+"rl2h": "Your existing Revit models",
+"rl2d": "become SimReady digital twins",
+"rl3t": "Operations",
+"rl3h": "From day one",
+"rl3d": "the twin carries the right data",
+"v_e": "Video",
+"v_t": "Introducing Reality Matrix AI: ZXBuilder and ZX FSM",
+"v_d": "Each video runs about two to three minutes and walks through the problem, why now, the gap, our solution, proof, ZX FSM, openness, value and what’s next. Available in Chinese, English, Japanese and Korean.",
+"v_dl": "Download video",
+"nx_e": "What’s next",
+"nx_t": "Next: from fabs to AI factories",
+"nx_note": "Planned directions, not yet available; timing to be announced.",
+"nx1t": "SimReady part libraries for AI factories",
+"nx1d": "Electrical and thermal data for NVIDIA DSX workflows",
+"nx2t": "Delivery packages + comparison reports",
+"nx2d": "Standard → delivery → verification, end to end",
+"nx3t": "Interfaces for AI agents",
+"nx3d": "AI agents use ZX tools directly",
+"dl_e": "Products &middot; Downloadable Software",
+"dl_t": "ZXBuilder&trade; &mdash; Downloadable Software by Reality Matrix AI",
+"dl_name": "ZXBuilder &mdash; USD &harr; Revit plug-in for Autodesk Revit 2027",
+"dl_d": "ZXBuilder is downloadable computer software from Reality Matrix AI Inc.: a plug-in for Autodesk Revit 2027 that converts, translates and exchanges 3D model and building information modeling (BIM) data between OpenUSD and Revit. It is delivered as a Windows installer (MSI), EV code-signed by Reality Matrix AI Inc., with a free 30-day trial.",
+"dl_ver": "Latest release (Pre-Beta) and downloads: see www.zxbuilder.club &middot; Windows &middot; Autodesk Revit 2027",
+"dl_btn1": "Download ZXBuilder &mdash; Free Trial &rarr;",
+"dl_btn2": "Product site: www.zxbuilder.club",
+"dl_svc": "<strong>Software services under the ZXBuilder name:<\/strong> online licensing &amp; trial-key service &middot; software design &amp; development &middot; updates &amp; maintenance &middot; technical consulting, integration &amp; training. Trial and licensed editions are issued by Reality Matrix AI Inc. through the ZXBuilder licensing service.",
+"te": "Team",
+"tt": "Built by industry veterans",
+"tm_bio": "Our founder and CEO, Michael Lin, has more than 25 years in industrial software, 3D and simulation, including 20 years of hands-on BIM work, and personally developed the USD → Revit engine in ZXBuilder. Of the six people on our co-founder &amp; CFO and advisory board team, four come from the Autodesk, AVEVA and PTC industrial-software ecosystems and their partners.",
+"fc_t": "Start with the Revit model you already have",
+"fc_d": "Try ZXBuilder and ZX FSM free, or tell us about your project.",
+"fc_cta1": "Download free trial",
+"fc_cta2": "Enterprise inquiry",
+"foot": "© 2026 <strong>Reality Matrix AI Inc.<\/strong> (實矩科技) · Taipei, Taiwan",
+"zp_link": "ZXBuilder · ZX FSM downloads",
+"nv_link": "OpenUSD",
+"ct_link": "Contact",
+"ftr_tm": "ZXBuilder&trade;, the Z logo, Reality Matrix AI&trade; and the cube logo are trademarks of Reality Matrix AI Inc."
 },
-zh:{
-  nav_usd:'OpenUSD', nav_product:'產品', nav_serve:'服務對象', nav_video:'影片',
-  v_e:'產品介紹影片', v_t:'ZXBuilder 產品介紹', v_d:'ZXBuilder 是 NVIDIA Omniverse / OpenUSD 連到 BIM 世界的雙向橋梁。影片約兩到三分鐘，提供中文、英文、日文、韓文四種語言版本。', v_dl:'下載影片',
-  dl_e:'產品 &middot; 可下載軟體', dl_t:'ZXBuilder&trade; —— Reality Matrix AI 的可下載軟體', dl_name:'ZXBuilder —— Autodesk Revit 2027 的 USD &harr; Revit 外掛程式', dl_d:'ZXBuilder 是實矩科技 Reality Matrix AI Inc. 的可下載電腦軟體：Autodesk Revit 2027 外掛程式，在 OpenUSD 與 Revit 之間轉換、翻譯與交換 3D 模型與建築資訊模型（BIM）資料。以 Windows 安裝程式（MSI）交付，經 Reality Matrix AI Inc. EV 程式碼簽章，並提供 7 天免費試用。', dl_ver:'現行版本：ZXBuilder v5.7.8.7-r2（Pre-Beta）&middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'下載 ZXBuilder —— 免費試用 &rarr;', dl_btn2:'產品網站：www.zxbuilder.club', dl_svc:'<strong>以 ZXBuilder 名義提供的軟體服務：</strong>線上授權與試用金鑰服務 &middot; 軟體設計與開發 &middot; 更新與維護 &middot; 技術諮詢、導入整合與教育訓練。試用版與正式授權版均由實矩科技經 ZXBuilder 授權服務核發。', ftr_tm:'ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.（實矩科技）之商標。',
-  b_live:'產品已上線', b_nv:'OpenUSD 生態系', b_aif:'工業數位孿生就緒',
-  h1:'從 OpenUSD', h2:'到 Revit，終於實現。',
-  h_sub:'數位孿生存在於 OpenUSD。MEP 工程師在 Autodesk Revit 工作。ZXBuilder 橋接兩者 — 將模擬精準數據帶入 Revit,並雙向同步。',
-  h_tag:'USD → Revit &nbsp;·&nbsp; <span>OpenUSD → BIM</span> &nbsp;·&nbsp; <span>雙向 · 工業數位孿生</span>',
-  h_cta1:'免費試用', h_cta2:'企業諮詢',
-  diag_title:'架構 · USD → BIM 橋接',
-  d1n:'OpenUSD', d1s1:'工業數位孿生', d1s2:'通用場景描述標準',
-  d2n:'ZXBuilder', d2s1:'雙向橋接', d2s2:'★ 匯入 = 我們的永久護城河',
-  d3n:'Autodesk Revit', d3s1:'MEP 工程師團隊', d3s2:'EPC · 廠房設施設計',
-  arr1:'USD → Revit ★', arr2:'Revit → USD',
-  st1:'MEP 元件類型 · 100% 匯出', st2:'往返轉換精確率', st3:'完整轉換速度',
-  ns_e:'OPENUSD 生態系', ns_t:'專為 OpenUSD 數位孿生打造',
-  ns_d:'建構於 OpenUSD 的工業數位孿生包含精準模擬數據 — 設備佈局、熱規格、電力預算。ZXBuilder 將這些數據帶入 Autodesk Revit，讓 EPC 和 MEP 團隊能夠直接使用。',
-  nl1:'OpenUSD', nl1s:'通用場景描述 — 3D 場景互通的開放標準',
-  nl2:'OpenUSD 聯盟 (AOUSD)', nl2s:'跨廠商與平台標準化 OpenUSD 的產業聯盟',
-  nl3:'Simulation-Ready USD', nl3s:'物理精確的 USD 資產，含 metadata、行為與 IoT 綁定',
-  nl4:'Pixar USD', nl4s:'來自皮克斯動畫的原生 Universal Scene Description',
-  nb1:'★ USD → Revit：缺失的環節', nb1d:'業界只提供從 BIM 到 USD 的單向匯出。ZXBuilder 提供缺失的回程路徑 — 將 OpenUSD 精準數據帶入 Revit，讓 EPC 團隊能夠實際使用。',
-  nb2:'OpenUSD 原生 · 工業數位孿生就緒', nb2d:'我們的 USD 輸出使用 aif:core: 和 aif:spec: 命名空間，專為工業設施資產設計，涵蓋冷卻、電力與機架設備。',
-  nb3:'雙向 · 完整往返', nb3d:'USD → Revit 將數位孿生落地至實際 MEP 設計。Revit → USD 將更新後的 MEP 同步回數位孿生模型。402 種元件類型 99% 往返精確率。',
-  nb4:'SolidWorks：設備層（下一步）', nb4d:'設備廠商（冷卻、電力、機架製造商）使用 SolidWorks 設計。ZXBuilder SolidWorks Connector 將設備 CAD 直接橋接至 USD，將覆蓋範圍從設施 MEP 擴展至設備層。',
-  pe:'產品', pt_pre:'', pd:'將 OpenUSD 數位孿生數據帶入 Autodesk Revit，並雙向同步。雙向 · OpenUSD 原生。立即試用：',
-  p_tag:'適用於半導體廠 · EPC 承包商 · MEP 工程師',
-  p_ver:'Windows · Revit 2027 · OpenUSD 原生',
-  pf1t:'USD → Revit 匯入（主要功能）', pf1d:'將工業數位孿生數據從 OpenUSD 帶入 Revit。業界尚未提供的缺失環節。398/402 元件完整還原。',
-  pf2t:'Revit → USD 匯出', pf2d:'將 MEP 設計從 Revit 匯出回 USD 進行數位孿生同步。402/402 元件類型，100% 匯出並附帶 OpenUSD 相容 metadata。',
-  pf3t:'一鍵完成轉換', pf3d:'完整廠房 MEP 模型一次轉換完成。輸出可直接供 USD pipeline 接收。',
-  pf4t:'企業授權系統', pf4d:'機器鎖定授權，分 Trial / Licensed / Unlimited 層級。支援離線模式 — 無需網路連線。專為半導體廠受限環境設計。',
-  pf5t:'內建 USD Viewer', pf5d:'在 Revit 中直接預覽工業數位孿生 USD 模型，轉換前後皆可。無需外部工具。',
-  pf6t:'SolidWorks Connector（即將推出）', pf6d:'設備廠商使用 SolidWorks 設計。ZXBuilder SolidWorks Connector 將設備 CAD 橋接至 USD，擴展數位孿生覆蓋範圍至設備層。',
-  se:'服務對象', st_t:'專為工業企業打造',
-  sd:'我們的客戶是建造和運營全球最先進製造設施的團隊。',
-  sc1t:'半導體廠', sc1d:'在 OpenUSD 上建立工業數位孿生的頂尖晶圓廠，需要將設施 MEP 數據帶入 Revit，並將 Revit MEP 數據同步回數位孿生。ZXBuilder 就是這座橋。',
-  sc2t:'EPC 承包商', sc2d:'在 Revit 設計半導體廠 MEP 的工程、採購和建設公司，需要從 OpenUSD 匯入參考模型至 Revit，並將 USD 交付回廠方。',
-  sc3t:'設備供應商', sc3d:'冷卻、電力與機架設備製造商使用 SolidWorks 設計。ZXBuilder SolidWorks Connector 將設備 CAD 橋接至 USD，完成數位孿生資產管線。',
-  we:'為何選擇我們', wt:'我們填補的永久缺口',
-  wc1t:'USD → Revit：缺失的環節', wc1d:'業界提供從 BIM 到 USD 的單向匯出。ZXBuilder 提供缺失的回程路徑。工業數位孿生數據流入 Revit，讓 MEP 團隊能夠基於精準模擬數據進行設計。',
-  wc2t:'USD 領域知識', wc2d:'402 種 MEP 元件類型已對應至正確的 USD metadata 命名空間。從真實半導體廠 Revit 檔案建立。沒有其他工具擁有這些。',
-  wc3t:'經真實廠房數據驗證', wc3d:'針對實際半導體廠 MEP 模型驗證。40 PASS / 0 FAIL。生產級別，非原型。',
-  wc4t:'完整生態系覆蓋', wc4d:'透過 Revit 覆蓋設施 MEP。透過 SolidWorks（下一步）覆蓋設備 CAD。兩者都接入 OpenUSD 數位孿生。Reality Matrix 提供業界需要的每個雙向連接。',
-  te:'創辦團隊', tt:'由業界資深人士打造',
-  tm_bio:'團隊在工業軟體、BIM、模擬及半導體製造領域擁有超過 20 年跨行業的大中華區和亞太地區經驗。',
-  fc_t:'準備好將<br>USD 數位孿生帶入 Revit 了嗎？',
-  fc_d:'OpenUSD 擁有數位孿生。MEP 團隊使用 Revit。ZXBuilder 雙向連接它們。',
-  fc_cta1:'免費試用', fc_cta2:'企業諮詢',
-  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 台北，台灣',
-  zp_link:'ZXBuilder 產品', nv_link:'OpenUSD', ct_link:'聯絡我們'
+"zh": {
+"doc_title": "Reality Matrix AI 實矩科技 — 工業數位孿生的基礎建設與橋梁",
+"nav_products": "產品",
+"nav_open": "開放與標準",
+"nav_ind": "產業",
+"nav_video": "影片",
+"b_avail": "ZXBuilder · ZX FSM 已提供下載(Pre-Beta)",
+"b_ind": "半導體廠房 · AI 資料中心",
+"b_usd": "標準 OpenUSD",
+"h1": "工業數位孿生的<br><span class=\"g\">基礎建設與橋梁<\/span>",
+"h_sub": "連接 BIM 工程領域與數位孿生應用領域(NVIDIA AI Factory、SimReady、OpenUSD 等)。ZXBuilder 讓工程資料帶著身分，在 Revit 與 OpenUSD 之間雙向往返；ZX FSM 讓業主的設備資訊標準寫進每一個元件。",
+"h_cta1": "下載 ZXBuilder · ZX FSM",
+"h_cta2": "企業諮詢",
+"ai_e": "AI 時代",
+"ai_q": "AI 代理程式需要可信的工程資料，ZXBuilder 提供 BIM ↔ OpenUSD 帶身分的資料。",
+"ai_d": "每個元件帶著固定身分與連接點離開 Revit，寫成明文屬性，任何 OpenUSD 程式不必問 Revit 就讀得到；回到 Revit 時，再依身分重建成原生、可編輯、帶參數的元件。",
+"pb_e": "痛點",
+"pb_t": "設計 → 施工 → 營運：模型要在不同角色之間交手無數次",
+"pb_d": "一座晶圓廠或 AI 資料中心，模型要在業主、設計方、承包商與設備商之間交手無數次；每次交接都是 Revit 或 CAD 檔案交換，元件身分很難一路帶下去。",
+"r1t": "業主",
+"r1s": "業主 · 營運方",
+"r2t": "設計方",
+"r2s": "建築師 · EPC",
+"r3t": "承包商",
+"r3s": "建築 · 機電 · 無塵室",
+"r4t": "設備商",
+"r4s": "Revit · SolidWorks · Creo",
+"pn1t": "身分帶不下去",
+"pn1d": "下游不知道某個物件原本是哪一個族、哪一個型別，資料要重新對。",
+"pn2t": "回來只剩外形",
+"pn2d": "模型轉到 3D 平台後只留下幾何，族、型別與參數不見；改完的佈置只能在 Revit 裡重畫一次。",
+"pn3t": "營運接不上",
+"pn3d": "設備資料要接到 PI AF 等監控系統，得另外整理設備清單與對照；模型交到營運端還要再對一次。",
+"wn_t": "為什麼是現在：建廠與 AI 工廠，同時進入高峰",
+"wn1u": "座",
+"wn1t": "2026 年全球新動工 300mm 晶圓廠 / 產線",
+"wn1s": "2027 再 18 座動工、23 座投產",
+"wn1src": "來源：SEMI，2026/10",
+"wn2t": "2026 年四大雲端業者資本支出",
+"wn2s": "Microsoft · Alphabet · Amazon · Meta；多家規劃 2027 年再增加",
+"wn2src": "來源：各公司 2026 年第三季財報",
+"wd_e": "我們的定位",
+"wd_t": "不只是轉檔：讓身分與標準一路帶到交付",
+"wd_d": "設計資料大多還在 Revit 裡，今天的流程多半只能單向匯出。我們站在兩個世界中間：ZXBuilder 是 NVIDIA Omniverse / OpenUSD 連到 BIM 世界的雙向橋梁；ZX FSM 提供這座橋上的資料規矩。",
+"dg_title": "雙向橋梁 · 身分一路帶著走",
+"dg_l_n": "BIM 世界",
+"dg_l_s": "Autodesk Revit · 設計 / 施工",
+"dg_c_s": "Revit 增益集 · 雙向橋梁",
+"dg_r_s": "SimReady · AI Factory · 數位孿生",
+"dg_a1": "匯出 · 帶著身分 →",
+"dg_a2": "← 匯回 · 原生 Revit 元件",
+"dg_f1": "ZX USDC · 場景檔",
+"dg_f2": "ZF USDC · 零件庫檔",
+"dg_fsm": "<strong>ZX FSM<\/strong> · 業主的標準，ZXBuilder 匯回時自動套用",
+"wd_goal": "我們的目標：讓 ZX / ZF 這兩種標準 OpenUSD 檔，成為半導體廠房基礎建設的資料交換標準。",
+"pr_e": "產品",
+"pr_t": "兩個產品，一條工作流",
+"pr_d": "ZX FSM 定規矩，ZXBuilder 照規矩做。兩者都已在 <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a> 以 Pre-Beta 提供下載。",
+"st_now": "現已提供",
+"st_plan": "規劃中",
+"zb_kind": "Autodesk Revit 2027 增益集",
+"zb_tag": "NVIDIA Omniverse / OpenUSD 連到 BIM 世界的雙向橋梁",
+"zb1t": "帶身分匯出",
+"zb1d": "把 Revit 專案輸出成 OpenUSD，每個元素帶著元件身分；單檔或照清單批次。",
+"zb2t": "原生匯回",
+"zb2d": "把 ZX USDC 場景匯回成原生、可編輯、帶參數的 Revit 元件，可進明細表。",
+"zb3t": "ZF USDC 零件庫",
+"zb3d": "由 Revit 族建立可重複使用的零件庫，每個零件有固定身分與連接點。",
+"zb4t": "照業主標準匯回",
+"zb4d": "匯回時讀取 ZX FSM 標準包，把風管直管的系統類型設成專案內已有的同名系統類型。",
+"zb5t": "IFC 與 SimReady",
+"zb5d": "IFC 與 USD 互轉；「匯出 SimReady」為 USD 檔加上單位、物理與語意資訊。",
+"zb6t": "為廠內環境設計",
+"zb6d": "線上版與離線版(AirGap)功能相同；安裝檔以 EV 程式碼簽章，每版附 SHA-256 指紋。",
+"zb_meta": "Windows · Autodesk Revit 2027 · 中 / 英 / 日 / 韓介面",
+"dl_go": "到 www.zxbuilder.club 下載 →",
+"fs_kind": "ZX Fab Standard Manager · 給業主的 Windows 桌面程式",
+"fs_tag": "業主的廠房標準管理：標準不只寫在文件裡，而是寫進每一個元件",
+"fs1t": "制定標準",
+"fs1d": "用 Revit 的分類語言定規矩：類別、參數、單位、必填與系統類型代碼；一次帶入 40 個常用 Revit 類別。",
+"fs2t": "整理 RFA",
+"fs2d": "指定放 RFA 的資料夾，自動掃描建資產庫，找出新版次、搬移、重複與缺漏；不需要安裝 Revit，只讀你的檔案，不改、不搬、不刪。",
+"fs3t": "關聯圖",
+"fs3d": "類別、族群、類型、系統類型、零件與 PI AF 樣板畫成一張可互動的網，一眼看出誰還沒接上。",
+"fs4t": "接上營運",
+"fs4d": "維護 PI AF 對照與 IoT 點位，讓設計參數對到營運監控的點位。",
+"fs5t": "一鍵送到 ZXBuilder",
+"fs5d": "寫出標準包與共用參數檔，ZXBuilder 匯回時自動套用。",
+"fs6t": "驗收交付",
+"fs6d": "開啟 ZX USDC 場景對照標準，在 3D 中檢視設備資料。",
+"fs_plan": "0.8 規劃中：設備類別庫、對照標準包、產出交付包與清單、比對報告。上架時間另行通知。",
+"fs_meta": "Windows · 一般版 / 離線版(AirGap)· 中 / 英 / 日 / 韓介面 · 0.7 Pre-Beta",
+"mx1t": "ZXSample 範例包(Python)",
+"mx1d": "給開發者：Python 工具、範例場景、ZF USDC 零件庫與逐檔 SHA-256；只需 Python 3.12 與 usd-core，範例原始碼以 MIT 授權。用它寫 OpenUSD 自動化程式產生場景，再經 ZXBuilder 匯回 Revit。",
+"mx2t": "ZX USDC · ZF USDC",
+"mx2d": "兩種檔案，一條往返路：ZX USDC 是場景檔，ZF USDC 是零件庫檔，都是標準 OpenUSD 檔，用標準的 OpenUSD 程式庫就能開啟。",
+"pf_e": "實證",
+"pf_t": "不是概念，是可量測的往返",
+"pf_big_u": "件元件",
+"pf_big_g": "100% 原生重建",
+"pf_big_s": "Autodesk 範例模型 Snowdon Towers(HVAC)往返實測 · Revit 2027",
+"pf1t": "風管",
+"pf1d": "尺寸、長度與系統類型與來源相符",
+"pf2t": "風管配件",
+"pf2d": "族、類型與系統類型與來源一致",
+"pf3t": "件，另一個空調模型",
+"pf3d": "匯出再匯回，與預期位置相差都在 0.5 mm 以內",
+"pf_note": "以上為我方在 Revit 2027 上自行實測，非第三方驗證。",
+"pc1t": "Normal + AirGap 離線版",
+"pc1d": "專為晶圓廠資安設計 · 同批簽章發布",
+"pc2t": "EV 程式碼簽章 · SHA-256",
+"pc2d": "每版公開版本說明與檔案指紋",
+"pc3t": "美國專利申請中",
+"pc3d": "7 件申請 · 審查中",
+"op_e": "開放與標準",
+"op_t": "開放格式，推動產業交付標準",
+"op1t": "開放",
+"op1h": "ZX / ZF 都是標準 OpenUSD",
+"op1d": "任何工具都打得開、驗得過",
+"op2t": "雙向",
+"op2h": "Revit ⇄ Omniverse",
+"op2d": "帶身分匯出，原生匯回",
+"op3t": "標準",
+"op3h": "HTFA 數位孿生委員會",
+"op3d": "推動以 OpenUSD 為交付格式的產業規格",
+"op_eco": "相容生態",
+"in_e": "焦點產業",
+"in_t": "專注半導體廠房與 AI 資料中心",
+"in1t": "半導體廠房",
+"in1d": "真空泵、洗滌塔、冰水主機……系統多、經手的人多，從設計到營運反覆交接。業主在 ZX FSM 定一份標準，每次交付都照同一份標準驗收。",
+"in2t": "AI 資料中心",
+"in2d": "冷卻液分配單元(CDU)、不斷電系統(UPS)等設備，要在 NVIDIA Omniverse 裡做佈置、模擬與數位孿生。ZXBuilder 把 Revit 裡的設計帶著身分送進 OpenUSD，改完再回到 Revit。",
+"rv_t": "對每一個角色，都有價值",
+"rl1t": "業主",
+"rl1h": "標準一次定義",
+"rl1d": "每次交付都能驗收",
+"rl2t": "承包商 · 設備商",
+"rl2h": "手上的 Revit 模型",
+"rl2d": "就能變成 SimReady 數位孿生",
+"rl3t": "營運團隊",
+"rl3h": "從第一天起",
+"rl3d": "孿生就帶著正確的資料",
+"v_e": "產品介紹影片",
+"v_t": "實矩科技介紹：ZXBuilder 與 ZX FSM",
+"v_d": "影片約兩到三分鐘，依序說明痛點、時機、缺口、定位、實證、ZX FSM、開放、價值與下一步；提供中文、英文、日文、韓文四種語言版本。",
+"v_dl": "下載影片",
+"nx_e": "下一步",
+"nx_t": "接下來：從廠房走向 AI 工廠",
+"nx_note": "以下為規劃方向，目前尚未提供，時程另行通知。",
+"nx1t": "AI 工廠 SimReady 零件庫",
+"nx1d": "電氣與散熱資料，對接 NVIDIA DSX 流程",
+"nx2t": "交付包 + 自動比對報告",
+"nx2d": "標準 → 交付 → 驗收，一路串起來",
+"nx3t": "AI 代理程式介面",
+"nx3d": "讓 AI 代理程式直接使用 ZX 工具",
+"dl_e": "產品 &middot; 可下載軟體",
+"dl_t": "ZXBuilder&trade; —— Reality Matrix AI 的可下載軟體",
+"dl_name": "ZXBuilder —— Autodesk Revit 2027 的 USD &harr; Revit 外掛程式",
+"dl_d": "ZXBuilder 是實矩科技 Reality Matrix AI Inc. 的可下載電腦軟體：Autodesk Revit 2027 外掛程式，在 OpenUSD 與 Revit 之間轉換、翻譯與交換 3D 模型與建築資訊模型(BIM)資料。以 Windows 安裝程式(MSI)交付，經 Reality Matrix AI Inc. EV 程式碼簽章，並提供 30 天免費試用。",
+"dl_ver": "最新版本(Pre-Beta)與下載以 www.zxbuilder.club 公告為準 &middot; Windows &middot; Autodesk Revit 2027",
+"dl_btn1": "下載 ZXBuilder —— 免費試用 &rarr;",
+"dl_btn2": "產品網站：www.zxbuilder.club",
+"dl_svc": "<strong>以 ZXBuilder 名義提供的軟體服務：<\/strong>線上授權與試用金鑰服務 &middot; 軟體設計與開發 &middot; 更新與維護 &middot; 技術諮詢、導入整合與教育訓練。試用版與正式授權版均由實矩科技經 ZXBuilder 授權服務核發。",
+"te": "團隊",
+"tt": "由業界資深人士打造",
+"tm_bio": "創辦人暨執行長 Michael Lin 在工業軟體、3D 與模擬領域逾 25 年，有 20 年 BIM 實務經驗，親自開發 ZXBuilder 的 USD → Revit 引擎。共同創辦人暨財務長與顧問委員會共六位，其中四位來自 Autodesk、AVEVA 與 PTC 工業軟體體系及其合作夥伴。",
+"fc_t": "用你已有的 Revit 模型，出一座 SimReady 廠房",
+"fc_d": "免費試用 ZXBuilder 與 ZX FSM，或來信聊聊你的專案。",
+"fc_cta1": "下載免費試用",
+"fc_cta2": "企業諮詢",
+"foot": "© 2026 <strong>Reality Matrix AI Inc.<\/strong>(實矩科技)· 台北，台灣",
+"zp_link": "ZXBuilder · ZX FSM 下載",
+"nv_link": "OpenUSD",
+"ct_link": "聯絡我們",
+"ftr_tm": "ZXBuilder&trade;、Z 圖形標誌、Reality Matrix AI&trade; 與立方體圖形標誌均為 Reality Matrix AI Inc.(實矩科技)之商標。"
 },
-ja:{
-  nav_usd:'OpenUSD', nav_product:'製品', nav_serve:'導入企業', nav_video:'動画',
-  v_e:'製品紹介動画', v_t:'ZXBuilder 製品紹介', v_d:'ZXBuilder は、NVIDIA Omniverse / OpenUSD と BIM の世界をつなぐ双方向の橋渡しです。各動画は約 2〜3 分で、中国語・英語・日本語・韓国語の 4 言語版をご用意しています。', v_dl:'動画をダウンロード',
-  dl_e:'製品 &middot; ダウンロード型ソフトウェア', dl_t:'ZXBuilder&trade; &mdash; Reality Matrix AI のダウンロード型ソフトウェア', dl_name:'ZXBuilder &mdash; Autodesk Revit 2027 向け USD &harr; Revit プラグイン', dl_d:'ZXBuilder は Reality Matrix AI Inc. が提供するダウンロード型コンピュータソフトウェアです。Autodesk Revit 2027 用プラグインとして、OpenUSD と Revit の間で 3D モデルおよび BIM データを変換・翻訳・交換します。Reality Matrix AI Inc. の EV コード署名付き Windows インストーラ（MSI）で提供され、7 日間の無料トライアルがあります。', dl_ver:'現行リリース：ZXBuilder v5.7.8.7-r2（Pre-Beta）&middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'ZXBuilder をダウンロード &mdash; 無料トライアル &rarr;', dl_btn2:'製品サイト：www.zxbuilder.club', dl_svc:'<strong>ZXBuilder の名称で提供するソフトウェアサービス：</strong>オンラインライセンス・トライアルキー発行 &middot; ソフトウェア設計・開発 &middot; 更新・保守 &middot; 技術コンサルティング・導入・トレーニング。トライアル版および正規ライセンス版は Reality Matrix AI Inc. が ZXBuilder ライセンスサービスを通じて発行します。', ftr_tm:'ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。',
-  b_live:'製品リリース済', b_nv:'OpenUSD エコシステム', b_aif:'産業デジタルツイン対応',
-  h1:'OpenUSD から', h2:'Revit へ。ついに実現。',
-  h_sub:'デジタルツインは OpenUSD に存在します。MEP エンジニアリングチームは Autodesk Revit で作業します。ZXBuilder が両者を橋渡しし — シミュレーション精度を Revit に取り込み、双方向で同期します。',
-  h_tag:'USD → Revit &nbsp;·&nbsp; <span>OpenUSD → BIM</span> &nbsp;·&nbsp; <span>双方向 · 産業デジタルツイン</span>',
-  h_cta1:'無料トライアル', h_cta2:'エンタープライズ問合せ',
-  diag_title:'アーキテクチャ · USD → BIM ブリッジ',
-  d1n:'OpenUSD', d1s1:'産業デジタルツイン', d1s2:'Universal Scene Description',
-  d2n:'ZXBuilder', d2s1:'双方向ブリッジ', d2s2:'★ インポート = 永続的な競合優位',
-  d3n:'Autodesk Revit', d3s1:'MEP エンジニアリングチーム', d3s2:'EPC · ファブ設備設計',
-  arr1:'USD → Revit ★', arr2:'Revit → USD',
-  st1:'MEP コンポーネント種類 · 100% エクスポート', st2:'往復精度', st3:'変換速度',
-  ns_e:'OPENUSD エコシステム', ns_t:'OpenUSD デジタルツインのために構築',
-  ns_d:'OpenUSD で構築された産業デジタルツインには精密なシミュレーションデータが含まれています。ZXBuilderはこのデータを Autodesk Revit に取り込み、EPC および MEP チームが実際に作業できるようにします。',
-  nl1:'OpenUSD', nl1s:'Universal Scene Description — 3Dシーン交換のオープン標準',
-  nl2:'OpenUSD アライアンス (AOUSD)', nl2s:'OpenUSD をベンダー・プラットフォーム横断で標準化する業界アライアンス',
-  nl3:'Simulation-Ready USD', nl3s:'メタデータ・挙動・IoT バインディングを備えた物理精密 USD 資産',
-  nl4:'Pixar USD', nl4s:'Pixar Animation Studios 発祥の Universal Scene Description',
-  nb1:'★ USD → Revit：欠けているリンク', nb1d:'業界は BIM から USD へ一方向のエクスポートのみを提供します。ZXBuilder は欠けているリターンパスを提供します — OpenUSD の精度を Revit に取り込み、EPC チームが実際に作業できるようにします。',
-  nb2:'OpenUSD ネイティブ · 産業デジタルツイン対応', nb2d:'当社の USD 出力は aif:core: および aif:spec: 名前空間を使用し、冷却・電源・ラック機器を含む産業施設資産向けに設計されています。',
-  nb3:'双方向 · 完全往復', nb3d:'USD → Revit でデジタルツインを実際の MEP 設計に落とし込みます。Revit → USD で更新された MEP をデジタルツインモデルに同期します。402 コンポーネント種類で 99% の往復精度。',
-  nb4:'SolidWorks：設備層（次期）', nb4d:'設備メーカー（冷却・電源・ラック）は SolidWorks で設計しています。ZXBuilder SolidWorks Connector が設備 CAD を USD に直接ブリッジし、施設 MEP から設備レベルへカバレッジを拡大します。',
-  pe:'製品', pt_pre:'', pd:'OpenUSD デジタルツインデータを Autodesk Revit に取り込み、双方向同期します。OpenUSD ネイティブ。今すぐ試用：',
-  p_tag:'半導体ファブ · EPC 事業者 · MEP エンジニア向け',
-  p_ver:'Windows · Revit 2027 · OpenUSD ネイティブ',
-  pf1t:'USD → Revit インポート（主要機能）', pf1d:'産業デジタルツインデータを OpenUSD から Revit へ取り込みます。業界がまだ提供していない欠けているリンク。398/402 コンポーネントを完全復元。',
-  pf2t:'Revit → USD エクスポート', pf2d:'MEP 設計を Revit から USD へエクスポートしてデジタルツインを同期。402/402 コンポーネント種類、OpenUSD 互換メタデータ付き 100% エクスポート。',
-  pf3t:'ワンクリックで変換', pf3d:'ファブ全体の MEP モデルを一括変換。出力は USD パイプラインにそのまま取り込めます。',
-  pf4t:'エンタープライズライセンスシステム', pf4d:'マシンロックライセンス（Trial / Licensed / Unlimited 3段階）。オフライン対応 — ネットワーク接続不要。制限された半導体ファブ環境向けに設計。',
-  pf5t:'内蔵 USD ビューアー', pf5d:'変換前後に産業デジタルツイン USD モデルを Revit 内で直接プレビュー。外部ツール不要。',
-  pf6t:'SolidWorks Connector（次期）', pf6d:'設備メーカーは SolidWorks で設計しています。ZXBuilder SolidWorks Connector が設備 CAD を USD にブリッジし、デジタルツインカバレッジを拡大します。',
-  se:'導入企業', st_t:'産業エンタープライズのために構築',
-  sd:'当社のお客様は、世界最先端の製造施設を建設・運営するチームです。',
-  sc1t:'半導体ファブ', sc1d:'OpenUSD で産業デジタルツインを構築する主要ファウンドリは、施設 MEP データを Revit で取り込み、Revit MEP データをデジタルツインに同期する必要があります。',
-  sc2t:'EPC 事業者', sc2d:'Revit で半導体ファブの MEP を設計する EPC 企業は、OpenUSD から参照モデルを Revit に取り込み、USD をファブに納品する必要があります。',
-  sc3t:'設備サプライヤー', sc3d:'冷却・電源・ラックメーカーは SolidWorks で設計しています。ZXBuilder SolidWorks Connector が設備 CAD を USD にブリッジし、デジタルツイン資産パイプラインを完成させます。',
-  we:'選ばれる理由', wt:'私たちが埋める永続的なギャップ',
-  wc1t:'USD → Revit：欠けているリンク', wc1d:'業界は BIM から USD への一方向エクスポートを提供します。ZXBuilder は欠けているリターンパスを提供します。産業デジタルツインデータが Revit に流れ込み、MEP チームがシミュレーション精度に基づいた設計を行えます。',
-  wc2t:'USD ドメイン知識', wc2d:'402 種類の MEP コンポーネントを正確な USD メタデータ名前空間にマッピング。実際の半導体ファブ Revit ファイルから構築。他のツールには存在しません。',
-  wc3t:'実際のファブデータで検証済み', wc3d:'実際の半導体ファブ MEP モデルで検証。40 PASS / 0 FAIL。プロトタイプではなく、本番環境対応。',
-  wc4t:'完全なエコシステムカバレッジ', wc4d:'Revit で施設 MEP をカバー。SolidWorks（次期）で設備 CAD をカバー。両方が OpenUSD デジタルツインに接続。Reality Matrix が業界に必要なすべての双方向接続を提供します。',
-  te:'創設チーム', tt:'業界のベテランが構築',
-  tm_bio:'チームは中華圏およびアジア太平洋地域での産業ソフトウェア、BIM、シミュレーション、半導体製造における 20 年以上の業界横断的な経験を持っています。',
-  fc_t:'USD デジタルツインを<br>Revit に取り込む準備はできていますか？',
-  fc_d:'OpenUSD にデジタルツインがあります。MEP チームに Revit があります。ZXBuilder が双方向で繋ぎます。',
-  fc_cta1:'無料トライアル', fc_cta2:'エンタープライズ問合せ',
-  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 台北、台湾',
-  zp_link:'ZXBuilder 製品', nv_link:'OpenUSD', ct_link:'お問合せ'
+"ja": {
+"doc_title": "Reality Matrix AI — 産業デジタルツインの基盤と架け橋",
+"nav_products": "製品",
+"nav_open": "オープンと標準",
+"nav_ind": "産業",
+"nav_video": "動画",
+"b_avail": "ZXBuilder · ZX FSM 提供中(Pre-Beta)",
+"b_ind": "半導体ファブ · AI データセンター",
+"b_usd": "標準 OpenUSD",
+"h1": "産業デジタルツインの<br><span class=\"g\">基盤と架け橋<\/span>",
+"h_sub": "BIM のエンジニアリング領域と、デジタルツインの活用領域(NVIDIA AI Factory、SimReady、OpenUSD など)をつなぎます。ZXBuilder はエンジニアリングデータを識別情報付きで Revit と OpenUSD の間で双方向にやり取りし、ZX FSM はオーナーの設備情報標準をすべての要素に書き込みます。",
+"h_cta1": "ZXBuilder · ZX FSM をダウンロード",
+"h_cta2": "エンタープライズお問い合わせ",
+"ai_e": "AI 時代に",
+"ai_q": "AI エージェントには、信頼できるエンジニアリングデータが必要です。ZXBuilder は、識別情報付きの BIM ↔ OpenUSD データを提供します。",
+"ai_d": "すべての部品は固定の識別情報と接続点を持って Revit を出ます。これらは平文のプロパティとして書かれ、どの OpenUSD プログラムも Revit を介さずに読み取れます。Revit に戻るときは、識別情報に基づいて、パラメータ付きの編集可能なネイティブ要素として再構築されます。",
+"pb_e": "課題",
+"pb_t": "設計 → 施工 → 運用：モデルは何度も人の手を渡る",
+"pb_d": "ファブや AI データセンターのモデルは、オーナー、設計者、施工会社、設備メーカーの間で何度も受け渡されます。受け渡しのたびに Revit や CAD のファイル交換となり、要素の識別情報を最後まで引き継ぐのは困難です。",
+"r1t": "オーナー",
+"r1s": "所有者 · 運用者",
+"r2t": "設計者",
+"r2s": "建築家 · EPC",
+"r3t": "施工会社",
+"r3s": "建築 · 設備 · クリーンルーム",
+"r4t": "設備メーカー",
+"r4s": "Revit · SolidWorks · Creo",
+"pn1t": "識別情報が失われる",
+"pn1d": "下流では、あるオブジェクトが元はどのファミリ・どのタイプだったか分からず、データを照合し直す必要があります。",
+"pn2t": "戻ってくるのは形だけ",
+"pn2d": "3D プラットフォームに移すと形状だけが残り、ファミリ、タイプ、パラメータは失われます。変更したレイアウトは Revit で描き直すしかありません。",
+"pn3t": "運用につながらない",
+"pn3d": "PI AF などの監視システムにつなぐには、設備リストと対応表を別途整理する必要があり、運用側への引き渡しでも再確認が発生します。",
+"wn_t": "なぜ今か：ファブと AI ファクトリーが同時に拡大",
+"wn1u": "件",
+"wn1t": "2026 年に世界で着工する 300mm ファブ / ライン",
+"wn1s": "2027 年にさらに 18 件が着工、23 件が稼働",
+"wn1src": "出典：SEMI、2026/10",
+"wn2t": "2026 年、大手クラウド 4 社の設備投資",
+"wn2s": "Microsoft · Alphabet · Amazon · Meta。複数社が 2027 年にさらに増額を計画",
+"wn2src": "出典：各社 2026 年第 3 四半期決算",
+"wd_e": "私たちの位置付け",
+"wd_t": "変換だけではない：識別情報と標準を納品まで運ぶ",
+"wd_d": "設計データの多くは今も Revit の中にあり、現在のワークフローはほとんどが一方向の書き出しです。私たちは二つの世界の間に立ちます。ZXBuilder は NVIDIA Omniverse / OpenUSD と BIM の世界をつなぐ双方向の架け橋であり、ZX FSM はこの架け橋のデータルールを提供します。",
+"dg_title": "双方向の架け橋 · 識別情報を保ったまま",
+"dg_l_n": "BIM の世界",
+"dg_l_s": "Autodesk Revit · 設計 / 施工",
+"dg_c_s": "Revit アドイン · 双方向の架け橋",
+"dg_r_s": "SimReady · AI ファクトリー · デジタルツイン",
+"dg_a1": "書き出し · 識別情報付き →",
+"dg_a2": "← 取り込み · ネイティブ Revit 要素",
+"dg_f1": "ZX USDC · シーンファイル",
+"dg_f2": "ZF USDC · 部品ライブラリ",
+"dg_fsm": "<strong>ZX FSM<\/strong> · オーナーの標準を、ZXBuilder の取り込み時に自動適用",
+"wd_goal": "私たちの目標：標準 OpenUSD ファイルである ZX と ZF を、半導体ファブのインフラにおけるデータ交換の標準にすること。",
+"pr_e": "製品",
+"pr_t": "二つの製品、一つのワークフロー",
+"pr_d": "ZX FSM がルールを定め、ZXBuilder がそれに従います。どちらも <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a> で Pre-Beta としてダウンロードできます。",
+"st_now": "提供中",
+"st_plan": "計画中",
+"zb_kind": "Autodesk Revit 2027 アドイン",
+"zb_tag": "NVIDIA Omniverse / OpenUSD と BIM の世界をつなぐ双方向の架け橋",
+"zb1t": "識別情報付きで書き出し",
+"zb1d": "Revit プロジェクトを、各要素の識別情報付きで OpenUSD に書き出します。1 ファイルでも、リストによる一括処理でも。",
+"zb2t": "ネイティブで取り込み",
+"zb2d": "ZX USDC シーンを、パラメータ付きの編集可能なネイティブ Revit 要素として取り込みます。集計表にも使えます。",
+"zb3t": "ZF USDC 部品ライブラリ",
+"zb3d": "Revit ファミリから再利用できる部品ライブラリを作成します。各部品は固定の識別情報と接続点を持ちます。",
+"zb4t": "オーナーの標準どおりに取り込み",
+"zb4d": "取り込み時に ZX FSM の標準パッケージを読み、ダクトのシステムタイプをプロジェクト内の同名タイプに設定します。",
+"zb5t": "IFC と SimReady",
+"zb5d": "IFC と USD を相互変換。「SimReady 書き出し」で USD ファイルに単位、物理、セマンティクス情報を追加します。",
+"zb6t": "ファブ環境向けの設計",
+"zb6d": "オンライン版とオフライン版(AirGap)は同じ機能です。インストーラは EV コード署名済みで、リリースごとに SHA-256 フィンガープリントを公開します。",
+"zb_meta": "Windows · Autodesk Revit 2027 · 日本語 / 英語 / 中国語 / 韓国語 UI",
+"dl_go": "www.zxbuilder.club でダウンロード →",
+"fs_kind": "ZX Fab Standard Manager · オーナー向け Windows デスクトップアプリ",
+"fs_tag": "オーナーのファブ標準管理：標準を文書だけでなく、すべての要素に書き込む",
+"fs1t": "標準を定める",
+"fs1d": "Revit の分類体系でルールを定義します：カテゴリ、パラメータ、単位、必須項目、システムタイプコード。よく使う Revit カテゴリ 40 種を一度に読み込めます。",
+"fs2t": "RFA を整理",
+"fs2d": "RFA フォルダを指定すると自動でスキャンして資産ライブラリを作成し、新しい版、移動、重複、欠落を見つけます。Revit は不要で、ファイルは読むだけです。",
+"fs3t": "関係グラフ",
+"fs3d": "カテゴリ、ファミリ、タイプ、システムタイプ、部品、PI AF テンプレートを一つの対話型ネットワークで表示し、未接続の箇所がひと目で分かります。",
+"fs4t": "運用につなぐ",
+"fs4d": "PI AF の対応と IoT ポイントを管理し、設計パラメータを運用監視のポイントに対応付けます。",
+"fs5t": "ZXBuilder へワンクリック送信",
+"fs5d": "標準パッケージと共有パラメータファイルを書き出し、ZXBuilder が取り込み時に自動適用します。",
+"fs6t": "納品をチェック",
+"fs6d": "ZX USDC シーンを標準と照合し、設備データを 3D で確認できます。",
+"fs_plan": "0.8 で計画中：設備クラスライブラリ、標準との照合、納品パッケージとその一覧、比較レポート。リリース時期は別途お知らせします。",
+"fs_meta": "Windows · 通常版 / オフライン版(AirGap)· 日本語 / 英語 / 中国語 / 韓国語 UI · 0.7 Pre-Beta",
+"mx1t": "ZXSample(Python)",
+"mx1d": "開発者向け：Python ツール、サンプルシーン、ZF USDC 部品ライブラリ、ファイルごとの SHA-256。必要なのは Python 3.12 と usd-core のみで、サンプルコードは MIT ライセンスです。OpenUSD の自動化プログラムでシーンを生成し、ZXBuilder で Revit に取り込めます。",
+"mx2t": "ZX USDC · ZF USDC",
+"mx2d": "二つのファイル、一つの往復：ZX USDC はシーンファイル、ZF USDC は部品ライブラリ。どちらも標準の OpenUSD ファイルで、標準の OpenUSD ライブラリで開けます。",
+"pf_e": "実証",
+"pf_t": "コンセプトではなく、計測された往復",
+"pf_big_u": "個の要素",
+"pf_big_g": "100% ネイティブで再構築",
+"pf_big_s": "Autodesk サンプルモデル Snowdon Towers(HVAC)で往復を実測 · Revit 2027",
+"pf1t": "ダクト",
+"pf1d": "サイズ、長さ、システムタイプが元データと一致",
+"pf2t": "ダクト継手",
+"pf2d": "ファミリ、タイプ、システムタイプが元データと一致",
+"pf3t": "要素、別の空調モデル",
+"pf3d": "書き出し後に再取り込みし、すべて想定位置から 0.5 mm 以内",
+"pf_note": "上記は当社が Revit 2027 で計測した値で、第三者による検証ではありません。",
+"pc1t": "Normal + AirGap オフライン版",
+"pc1d": "ファブのセキュリティ要件向けに設計 · 同時に署名・リリース",
+"pc2t": "EV コード署名 · SHA-256",
+"pc2d": "リリースごとにリリースノートとファイルのフィンガープリントを公開",
+"pc3t": "米国特許出願中",
+"pc3d": "7 件出願 · 審査中",
+"op_e": "オープン設計",
+"op_t": "オープンな形式で、業界の納品標準を推進",
+"op1t": "オープン",
+"op1h": "ZX / ZF は標準 OpenUSD",
+"op1d": "どのツールでも開けて、検証できる",
+"op2t": "双方向",
+"op2h": "Revit ⇄ Omniverse",
+"op2d": "識別情報付きで書き出し、ネイティブで取り込み",
+"op3t": "標準",
+"op3h": "HTFA デジタルツイン委員会",
+"op3d": "OpenUSD を納品形式とする業界仕様を推進",
+"op_eco": "対応エコシステム",
+"in_e": "注力産業",
+"in_t": "半導体ファブと AI データセンターに注力",
+"in1t": "半導体ファブ",
+"in1d": "真空ポンプ、スクラバー、チラー…。システムも関係者も多く、設計から運用まで受け渡しが繰り返されます。オーナーは ZX FSM で一つの標準を定め、すべての納品を同じ標準で検収できます。",
+"in2t": "AI データセンター",
+"in2d": "CDU(冷却液分配ユニット)や UPS などの設備は、NVIDIA Omniverse でレイアウト、シミュレーション、デジタルツイン化されます。ZXBuilder は Revit の設計を識別情報付きで OpenUSD に運び、変更後に Revit へ戻します。",
+"rv_t": "すべての関係者に価値を",
+"rl1t": "オーナー",
+"rl1h": "標準は一度定義するだけ",
+"rl1d": "すべての納品を検収できる",
+"rl2t": "施工会社 · 設備メーカー",
+"rl2h": "手元の Revit モデルが",
+"rl2d": "SimReady なデジタルツインに",
+"rl3t": "運用チーム",
+"rl3h": "初日から",
+"rl3d": "ツインが正しいデータを持っている",
+"v_e": "紹介動画",
+"v_t": "Reality Matrix AI のご紹介：ZXBuilder と ZX FSM",
+"v_d": "各動画は約 2〜3 分で、課題、なぜ今か、ギャップ、位置付け、実証、ZX FSM、オープン性、価値、次のステップを順に紹介します。中国語・英語・日本語・韓国語の 4 言語版をご用意しています。",
+"v_dl": "動画をダウンロード",
+"nx_e": "次のステップ",
+"nx_t": "次へ：ファブから AI ファクトリーへ",
+"nx_note": "以下は計画中の方向性で、まだ提供していません。時期は別途お知らせします。",
+"nx1t": "AI ファクトリー向け SimReady 部品ライブラリ",
+"nx1d": "電気と熱のデータで NVIDIA DSX のワークフローに対応",
+"nx2t": "納品パッケージ + 比較レポート",
+"nx2d": "標準 → 納品 → 検収を一貫して",
+"nx3t": "AI エージェント向けインターフェース",
+"nx3d": "AI エージェントが ZX ツールを直接使える",
+"dl_e": "製品 &middot; ダウンロード型ソフトウェア",
+"dl_t": "ZXBuilder&trade; &mdash; Reality Matrix AI のダウンロード型ソフトウェア",
+"dl_name": "ZXBuilder &mdash; Autodesk Revit 2027 向け USD &harr; Revit プラグイン",
+"dl_d": "ZXBuilder は Reality Matrix AI Inc. が提供するダウンロード型コンピュータソフトウェアです。Autodesk Revit 2027 用プラグインとして、OpenUSD と Revit の間で 3D モデルおよび BIM データを変換・翻訳・交換します。Reality Matrix AI Inc. の EV コード署名付き Windows インストーラ(MSI)で提供され、30 日間の無料トライアルがあります。",
+"dl_ver": "最新リリース(Pre-Beta)とダウンロードは www.zxbuilder.club をご覧ください &middot; Windows &middot; Autodesk Revit 2027",
+"dl_btn1": "ZXBuilder をダウンロード &mdash; 無料トライアル &rarr;",
+"dl_btn2": "製品サイト：www.zxbuilder.club",
+"dl_svc": "<strong>ZXBuilder の名称で提供するソフトウェアサービス：<\/strong>オンラインライセンス・トライアルキー発行 &middot; ソフトウェア設計・開発 &middot; 更新・保守 &middot; 技術コンサルティング・導入・トレーニング。トライアル版および正規ライセンス版は Reality Matrix AI Inc. が ZXBuilder ライセンスサービスを通じて発行します。",
+"te": "チーム",
+"tt": "業界のベテランが構築",
+"tm_bio": "創業者兼 CEO の Michael Lin は、産業ソフトウェア、3D、シミュレーションの分野で 25 年以上、BIM の実務で 20 年の経験を持ち、ZXBuilder の USD → Revit エンジンを自ら開発しました。共同創業者兼 CFO とアドバイザリーボードの計 6 名のうち 4 名は、Autodesk、AVEVA、PTC の産業ソフトウェア体系とそのパートナーの出身です。",
+"fc_t": "お手持ちの Revit モデルから、SimReady なファブへ",
+"fc_d": "ZXBuilder と ZX FSM を無料でお試しいただくか、プロジェクトについてお気軽にご相談ください。",
+"fc_cta1": "無料トライアルをダウンロード",
+"fc_cta2": "エンタープライズお問い合わせ",
+"foot": "© 2026 <strong>Reality Matrix AI Inc.<\/strong> (實矩科技) · 台北、台湾",
+"zp_link": "ZXBuilder · ZX FSM ダウンロード",
+"nv_link": "OpenUSD",
+"ct_link": "お問い合わせ",
+"ftr_tm": "ZXBuilder&trade;、Z ロゴ、Reality Matrix AI&trade; およびキューブロゴは Reality Matrix AI Inc. の商標です。"
 },
-ko:{
-  nav_usd:'OpenUSD', nav_product:'제품', nav_serve:'고객사', nav_video:'동영상',
-  v_e:'제품 소개 영상', v_t:'ZXBuilder 제품 소개', v_d:'ZXBuilder는 NVIDIA Omniverse / OpenUSD와 BIM 세계를 잇는 양방향 브리지입니다. 각 영상은 약 2~3분이며 중국어, 영어, 일본어, 한국어 4개 언어로 제공됩니다.', v_dl:'동영상 다운로드',
-  dl_e:'제품 &middot; 다운로드형 소프트웨어', dl_t:'ZXBuilder&trade; &mdash; Reality Matrix AI의 다운로드형 소프트웨어', dl_name:'ZXBuilder &mdash; Autodesk Revit 2027용 USD &harr; Revit 플러그인', dl_d:'ZXBuilder는 Reality Matrix AI Inc.의 다운로드형 컴퓨터 소프트웨어입니다. Autodesk Revit 2027용 플러그인으로 OpenUSD와 Revit 간에 3D 모델 및 BIM 데이터를 변환·번역·교환합니다. Reality Matrix AI Inc.의 EV 코드 서명이 적용된 Windows 설치 프로그램(MSI)으로 제공되며 7일 무료 체험이 가능합니다.', dl_ver:'현재 릴리스: ZXBuilder v5.7.8.7-r2 (Pre-Beta) &middot; Windows &middot; Autodesk Revit 2027', dl_btn1:'ZXBuilder 다운로드 &mdash; 무료 체험 &rarr;', dl_btn2:'제품 사이트: www.zxbuilder.club', dl_svc:'<strong>ZXBuilder 이름으로 제공하는 소프트웨어 서비스:</strong> 온라인 라이선스 및 체험 키 발급 &middot; 소프트웨어 설계 및 개발 &middot; 업데이트 및 유지보수 &middot; 기술 컨설팅, 통합 및 교육. 체험판과 정식 라이선스는 Reality Matrix AI Inc.가 ZXBuilder 라이선스 서비스를 통해 발급합니다.', ftr_tm:'ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다.',
-  b_live:'제품 출시', b_nv:'OpenUSD 생태계', b_aif:'산업용 디지털 트윈 지원',
-  h1:'OpenUSD에서', h2:'Revit으로. 드디어.',
-  h_sub:'디지털 트윈은 OpenUSD에 존재합니다. MEP 엔지니어링 팀은 Autodesk Revit에서 작업합니다. ZXBuilder가 양쪽을 연결합니다 — 시뮬레이션 정밀도를 Revit으로 가져오고, 다시 동기화합니다.',
-  h_tag:'USD → Revit &nbsp;·&nbsp; <span>OpenUSD → BIM</span> &nbsp;·&nbsp; <span>양방향 · 산업용 디지털 트윈</span>',
-  h_cta1:'무료 체험', h_cta2:'기업 문의',
-  diag_title:'아키텍처 · USD → BIM 브리지',
-  d1n:'OpenUSD', d1s1:'산업용 디지털 트윈', d1s2:'Universal Scene Description',
-  d2n:'ZXBuilder', d2s1:'양방향 브리지', d2s2:'★ 임포트 = 영구적 경쟁 우위',
-  d3n:'Autodesk Revit', d3s1:'MEP 엔지니어링 팀', d3s2:'EPC · 팹 시설 설계',
-  arr1:'USD → Revit ★', arr2:'Revit → USD',
-  st1:'MEP 컴포넌트 유형 · 100% 익스포트', st2:'라운드트립 정확도', st3:'전체 변환 속도',
-  ns_e:'OPENUSD 생태계', ns_t:'OpenUSD 디지털 트윈을 위해 구축',
-  ns_d:'OpenUSD로 구축된 산업용 디지털 트윈에는 정밀 시뮬레이션 데이터가 포함됩니다 — 장비 레이아웃, 열 사양, 전력 예산. ZXBuilder는 이 데이터를 Autodesk Revit으로 가져와 EPC 및 MEP 팀이 실제로 작업할 수 있도록 합니다.',
-  nl1:'OpenUSD', nl1s:'Universal Scene Description — 3D 씬 교환을 위한 개방형 표준',
-  nl2:'OpenUSD 얼라이언스 (AOUSD)', nl2s:'벤더 및 플랫폼 간 OpenUSD를 표준화하는 산업 얼라이언스',
-  nl3:'Simulation-Ready USD', nl3s:'메타데이터, 동작 및 IoT 바인딩을 갖춘 물리적으로 정확한 USD 자산',
-  nl4:'Pixar USD', nl4s:'Pixar Animation Studios의 원조 Universal Scene Description',
-  nb1:'★ USD → Revit: 빠진 연결고리', nb1d:'업계는 BIM에서 USD로의 단방향 익스포트만 제공합니다. ZXBuilder는 빠진 리턴 경로를 제공합니다 — OpenUSD 정밀도를 Revit으로 가져와 EPC 팀이 실제로 작업할 수 있도록 합니다.',
-  nb2:'OpenUSD 네이티브 · 산업용 디지털 트윈 지원', nb2d:'당사의 USD 출력은 aif:core: 및 aif:spec: 네임스페이스를 사용하며, 냉각, 전력 및 랙 장비를 포함한 산업 시설 자산용으로 설계되었습니다.',
-  nb3:'양방향 · 완전 라운드트립', nb3d:'USD → Revit으로 디지털 트윈을 실제 MEP 설계에 반영합니다. Revit → USD로 업데이트된 MEP를 디지털 트윈 모델에 동기화합니다. 402개 컴포넌트 유형에서 99% 라운드트립 정확도.',
-  nb4:'SolidWorks: 장비 레이어 (차기)', nb4d:'장비 제조업체(냉각, 전력, 랙)는 SolidWorks로 설계합니다. ZXBuilder SolidWorks Connector가 장비 CAD를 USD로 직접 브리지하여, 시설 MEP에서 장비 수준으로 커버리지를 확장합니다.',
-  pe:'제품', pt_pre:'', pd:'OpenUSD 디지털 트윈 데이터를 Autodesk Revit으로 가져오고 양방향 동기화합니다. OpenUSD 네이티브. 지금 바로 체험:',
-  p_tag:'반도체 팹 · EPC 시공사 · MEP 엔지니어 대상',
-  p_ver:'Windows · Revit 2027 · OpenUSD 네이티브',
-  pf1t:'USD → Revit 임포트 (핵심 기능)', pf1d:'산업용 디지털 트윈 데이터를 OpenUSD에서 Revit으로 가져옵니다. 업계가 아직 제공하지 못한 빠진 연결고리. 398/402 컴포넌트 완전 복원.',
-  pf2t:'Revit → USD 익스포트', pf2d:'MEP 설계를 Revit에서 USD로 익스포트하여 디지털 트윈을 동기화합니다. 402/402 컴포넌트 유형, OpenUSD 호환 메타데이터 포함 100% 익스포트.',
-  pf3t:'원클릭 변환', pf3d:'전체 팹 MEP 모델을 한 번에 변환. 출력은 USD 파이프라인에 바로 사용 가능.',
-  pf4t:'엔터프라이즈 라이선스 시스템', pf4d:'머신 잠금 라이선스(Trial / Licensed / Unlimited 3단계). 오프라인 지원 — 네트워크 연결 불필요. 보안이 제한된 반도체 팹 환경을 위해 설계.',
-  pf5t:'내장 USD 뷰어', pf5d:'변환 전후에 산업용 디지털 트윈 USD 모델을 Revit 내에서 직접 미리보기. 외부 도구 불필요.',
-  pf6t:'SolidWorks Connector (차기)', pf6d:'장비 제조업체는 SolidWorks로 설계합니다. ZXBuilder SolidWorks Connector가 장비 CAD를 USD로 브리지하여 디지털 트윈 커버리지를 장비 레이어까지 확장합니다.',
-  se:'고객사', st_t:'산업 엔터프라이즈를 위해 구축',
-  sd:'당사의 고객은 세계 최첨단 제조 시설을 건설하고 운영하는 팀입니다.',
-  sc1t:'반도체 팹', sc1d:'OpenUSD로 산업용 디지털 트윈을 구축하는 선도 파운드리는 시설 MEP 데이터를 Revit에서 활용하고, Revit MEP 데이터를 디지털 트윈에 동기화해야 합니다. ZXBuilder가 그 브리지입니다.',
-  sc2t:'EPC 시공사', sc2d:'Revit에서 반도체 팹 MEP를 설계하는 EPC 기업은 OpenUSD 참조 모델을 Revit으로 임포트하고, USD를 팹에 납품해야 합니다.',
-  sc3t:'장비 공급업체', sc3d:'냉각, 전력, 랙 장비 제조업체는 SolidWorks로 설계합니다. ZXBuilder SolidWorks Connector가 장비 CAD를 USD로 브리지하여 디지털 트윈 자산 파이프라인을 완성합니다.',
-  we:'Reality Matrix를 선택하는 이유', wt:'우리가 채우는 영구적 격차',
-  wc1t:'USD → Revit: 빠진 연결고리', wc1d:'업계는 BIM에서 USD로의 단방향 익스포트를 제공합니다. ZXBuilder는 빠진 리턴 경로를 제공합니다. 산업용 디지털 트윈 데이터가 Revit으로 흘러들어, MEP 팀이 시뮬레이션 정확도에 기반한 설계를 수행할 수 있습니다.',
-  wc2t:'USD 도메인 지식', wc2d:'402종 MEP 컴포넌트 유형을 정확한 USD 메타데이터 네임스페이스에 매핑. 실제 반도체 팹 Revit 파일에서 구축. 다른 어떤 도구도 이를 보유하고 있지 않습니다.',
-  wc3t:'실제 팹 데이터로 검증 완료', wc3d:'실제 반도체 팹 MEP 모델에 대해 검증. 40 PASS / 0 FAIL. 프로토타입이 아닌, 프로덕션 등급.',
-  wc4t:'완전한 생태계 커버리지', wc4d:'Revit으로 시설 MEP를 커버. SolidWorks(차기)로 장비 CAD를 커버. 양쪽 모두 OpenUSD 디지털 트윈에 연결. Reality Matrix는 업계에 필요한 모든 양방향 연결을 제공합니다.',
-  te:'창립 팀', tt:'업계 베테랑이 구축',
-  tm_bio:'팀은 중화권 및 아시아태평양 지역에서 산업 소프트웨어, BIM, 시뮬레이션, 반도체 제조 분야에서 20년 이상의 크로스 인더스트리 경험을 보유하고 있습니다.',
-  fc_t:'USD 디지털 트윈을<br>Revit으로 가져올 준비가 되셨습니까?',
-  fc_d:'OpenUSD에 디지털 트윈이 있습니다. MEP 팀에 Revit이 있습니다. ZXBuilder가 양방향으로 연결합니다.',
-  fc_cta1:'무료 체험', fc_cta2:'기업 문의',
-  foot:'© 2026 <strong>Reality Matrix AI Inc.</strong> (實矩科技) · 타이베이, 대만',
-  zp_link:'ZXBuilder 제품', nv_link:'OpenUSD', ct_link:'문의하기'
+"ko": {
+"doc_title": "Reality Matrix AI — 산업용 디지털 트윈의 기반이자 가교",
+"nav_products": "제품",
+"nav_open": "개방과 표준",
+"nav_ind": "산업",
+"nav_video": "동영상",
+"b_avail": "ZXBuilder · ZX FSM 다운로드 제공 중 (Pre-Beta)",
+"b_ind": "반도체 팹 · AI 데이터센터",
+"b_usd": "표준 OpenUSD",
+"h1": "산업용 디지털 트윈의<br><span class=\"g\">기반이자 가교<\/span>",
+"h_sub": "BIM 엔지니어링 영역과 디지털 트윈 활용 영역(NVIDIA AI Factory, SimReady, OpenUSD 등)을 연결합니다. ZXBuilder는 엔지니어링 데이터를 식별 정보와 함께 Revit과 OpenUSD 사이에서 양방향으로 주고받고, ZX FSM은 오너의 설비 정보 표준을 모든 요소에 기록합니다.",
+"h_cta1": "ZXBuilder · ZX FSM 다운로드",
+"h_cta2": "기업 문의",
+"ai_e": "AI 시대를 위해",
+"ai_q": "AI 에이전트에는 신뢰할 수 있는 엔지니어링 데이터가 필요합니다. ZXBuilder는 식별 정보를 지닌 BIM ↔ OpenUSD 데이터를 제공합니다.",
+"ai_d": "모든 부품은 고정된 식별 정보와 연결점을 가진 채 Revit을 떠납니다. 이 정보는 평문 속성으로 기록되어 어떤 OpenUSD 프로그램이든 Revit 없이 읽을 수 있습니다. Revit으로 돌아올 때는 식별 정보를 기준으로 매개변수가 있는 편집 가능한 네이티브 요소로 다시 만들어집니다.",
+"pb_e": "문제",
+"pb_t": "설계 → 시공 → 운영: 모델은 여러 주체 사이를 수없이 오갑니다",
+"pb_d": "팹이나 AI 데이터센터의 모델은 오너, 설계사, 시공사, 설비 공급업체 사이에서 수없이 전달됩니다. 전달할 때마다 Revit 또는 CAD 파일 교환이 이루어지고, 요소의 식별 정보를 끝까지 유지하기 어렵습니다.",
+"r1t": "오너",
+"r1s": "소유주 · 운영자",
+"r2t": "설계사",
+"r2s": "건축가 · EPC",
+"r3t": "시공사",
+"r3s": "건축 · MEP · 클린룸",
+"r4t": "설비 공급업체",
+"r4s": "Revit · SolidWorks · Creo",
+"pn1t": "식별 정보가 사라짐",
+"pn1d": "하류 단계에서는 어떤 객체가 원래 어떤 패밀리, 어떤 유형이었는지 알 수 없어 데이터를 다시 맞춰야 합니다.",
+"pn2t": "돌아오는 것은 형상뿐",
+"pn2d": "3D 플랫폼으로 옮기면 형상만 남고 패밀리, 유형, 매개변수는 사라집니다. 수정한 배치는 Revit에서 다시 그려야 합니다.",
+"pn3t": "운영과 연결되지 않음",
+"pn3d": "PI AF 같은 모니터링 시스템에 연결하려면 설비 목록과 대응표를 따로 정리해야 하고, 운영 측에 넘길 때 다시 확인해야 합니다.",
+"wn_t": "왜 지금인가: 팹과 AI 팩토리가 동시에 확장",
+"wn1u": "곳",
+"wn1t": "2026년 전 세계에서 착공하는 300mm 팹 / 라인",
+"wn1s": "2027년 18곳 추가 착공 · 23곳 가동",
+"wn1src": "출처: SEMI, 2026/10",
+"wn2t": "2026년 4대 클라우드 기업 설비 투자",
+"wn2s": "Microsoft · Alphabet · Amazon · Meta. 여러 곳이 2027년 추가 증액 계획",
+"wn2src": "출처: 각사 2026년 3분기 실적 보고",
+"wd_e": "우리의 포지셔닝",
+"wd_t": "변환을 넘어: 식별 정보와 표준을 납품까지",
+"wd_d": "설계 데이터의 대부분은 아직 Revit 안에 있고, 오늘날의 워크플로는 대부분 단방향 내보내기입니다. 우리는 두 세계 사이에 섭니다. ZXBuilder는 NVIDIA Omniverse / OpenUSD와 BIM 세계를 잇는 양방향 가교이고, ZX FSM은 이 가교의 데이터 규칙을 제공합니다.",
+"dg_title": "양방향 가교 · 식별 정보 유지",
+"dg_l_n": "BIM 세계",
+"dg_l_s": "Autodesk Revit · 설계 / 시공",
+"dg_c_s": "Revit 애드인 · 양방향 가교",
+"dg_r_s": "SimReady · AI 팩토리 · 디지털 트윈",
+"dg_a1": "내보내기 · 식별 정보 유지 →",
+"dg_a2": "← 가져오기 · 네이티브 Revit 요소",
+"dg_f1": "ZX USDC · 장면 파일",
+"dg_f2": "ZF USDC · 부품 라이브러리",
+"dg_fsm": "<strong>ZX FSM<\/strong> · 오너의 표준을 ZXBuilder 가져오기 시 자동 적용",
+"wd_goal": "우리의 목표: 표준 OpenUSD 파일인 ZX와 ZF를 반도체 팹 인프라의 데이터 교환 표준으로 만드는 것.",
+"pr_e": "제품",
+"pr_t": "두 제품, 하나의 워크플로",
+"pr_d": "ZX FSM이 규칙을 정하고, ZXBuilder가 그 규칙을 따릅니다. 두 제품 모두 <a href=\"https://www.zxbuilder.club/#downloads\" target=\"_blank\" rel=\"noopener\">www.zxbuilder.club<\/a>에서 Pre-Beta로 다운로드할 수 있습니다.",
+"st_now": "제공 중",
+"st_plan": "계획 중",
+"zb_kind": "Autodesk Revit 2027 애드인",
+"zb_tag": "NVIDIA Omniverse / OpenUSD와 BIM 세계를 잇는 양방향 가교",
+"zb1t": "식별 정보와 함께 내보내기",
+"zb1d": "Revit 프로젝트를 각 요소의 식별 정보와 함께 OpenUSD로 내보냅니다. 파일 하나 또는 목록 일괄 처리.",
+"zb2t": "네이티브로 가져오기",
+"zb2d": "ZX USDC 장면을 매개변수가 있는 편집 가능한 네이티브 Revit 요소로 가져옵니다. 일람표에도 바로 쓸 수 있습니다.",
+"zb3t": "ZF USDC 부품 라이브러리",
+"zb3d": "Revit 패밀리로 재사용 가능한 부품 라이브러리를 만듭니다. 각 부품은 고정된 식별 정보와 연결점을 가집니다.",
+"zb4t": "오너 표준대로 가져오기",
+"zb4d": "가져오기 시 ZX FSM 표준 패키지를 읽어 직선 덕트의 시스템 유형을 프로젝트 안의 같은 이름 유형으로 설정합니다.",
+"zb5t": "IFC와 SimReady",
+"zb5d": "IFC와 USD를 상호 변환합니다. “SimReady 내보내기”는 USD 파일에 단위, 물리, 의미 정보를 추가합니다.",
+"zb6t": "팹 환경을 위한 설계",
+"zb6d": "온라인판과 오프라인판(AirGap)은 기능이 같습니다. 설치 파일은 EV 코드 서명되며, 릴리스마다 SHA-256 지문을 공개합니다.",
+"zb_meta": "Windows · Autodesk Revit 2027 · 한국어 / 영어 / 중국어 / 일본어 UI",
+"dl_go": "www.zxbuilder.club에서 다운로드 →",
+"fs_kind": "ZX Fab Standard Manager · 오너를 위한 Windows 데스크톱 앱",
+"fs_tag": "오너의 팹 표준 관리: 표준을 문서에만 두지 않고 모든 요소에 기록",
+"fs1t": "표준 정하기",
+"fs1d": "Revit의 분류 체계로 규칙을 정의합니다: 카테고리, 매개변수, 단위, 필수 항목, 시스템 유형 코드. 자주 쓰는 Revit 카테고리 40개를 한 번에 불러옵니다.",
+"fs2t": "RFA 정리",
+"fs2d": "RFA 폴더를 지정하면 자동으로 스캔해 자산 라이브러리를 만들고, 새 버전, 이동, 중복, 누락을 찾아냅니다. Revit이 필요 없으며 파일은 읽기만 합니다.",
+"fs3t": "관계 그래프",
+"fs3d": "카테고리, 패밀리, 유형, 시스템 유형, 부품, PI AF 템플릿을 하나의 대화형 네트워크로 보여 주어, 연결되지 않은 부분이 한눈에 보입니다.",
+"fs4t": "운영과 연결",
+"fs4d": "PI AF 대응과 IoT 포인트를 관리하여 설계 매개변수를 운영 모니터링 포인트에 맞춥니다.",
+"fs5t": "ZXBuilder로 원클릭 전송",
+"fs5d": "표준 패키지와 공유 매개변수 파일을 내보내면 ZXBuilder가 가져오기 시 자동 적용합니다.",
+"fs6t": "납품 검수",
+"fs6d": "ZX USDC 장면을 표준과 대조하고 설비 데이터를 3D로 확인합니다.",
+"fs_plan": "0.8 계획: 설비 클래스 라이브러리, 표준 대조, 납품 패키지와 목록, 비교 보고서. 출시 시기는 별도로 안내합니다.",
+"fs_meta": "Windows · 일반판 / 오프라인판(AirGap) · 한국어 / 영어 / 중국어 / 일본어 UI · 0.7 Pre-Beta",
+"mx1t": "ZXSample (Python)",
+"mx1d": "개발자용: Python 도구, 샘플 장면, ZF USDC 부품 라이브러리, 파일별 SHA-256. Python 3.12와 usd-core만 있으면 되며 샘플 코드는 MIT 라이선스입니다. OpenUSD 자동화 프로그램으로 장면을 생성한 뒤 ZXBuilder로 Revit에 가져올 수 있습니다.",
+"mx2t": "ZX USDC · ZF USDC",
+"mx2d": "두 가지 파일, 하나의 왕복 경로: ZX USDC는 장면 파일, ZF USDC는 부품 라이브러리 파일입니다. 둘 다 표준 OpenUSD 파일이라 표준 OpenUSD 라이브러리로 열 수 있습니다.",
+"pf_e": "실증",
+"pf_t": "개념이 아닌, 측정된 왕복",
+"pf_big_u": "개 요소",
+"pf_big_g": "100% 네이티브 재구성",
+"pf_big_s": "Autodesk 샘플 모델 Snowdon Towers(HVAC) 왕복 실측 · Revit 2027",
+"pf1t": "덕트",
+"pf1d": "크기, 길이, 시스템 유형이 원본과 일치",
+"pf2t": "덕트 피팅",
+"pf2d": "패밀리, 유형, 시스템 유형이 원본과 일치",
+"pf3t": "개 요소, 또 다른 공조 모델",
+"pf3d": "내보낸 뒤 다시 가져와도 모두 예상 위치에서 0.5 mm 이내",
+"pf_note": "위 수치는 당사가 Revit 2027에서 직접 측정한 것으로, 제3자 검증이 아닙니다.",
+"pc1t": "Normal + AirGap 오프라인판",
+"pc1d": "팹 보안 환경을 위해 설계 · 함께 서명·배포",
+"pc2t": "EV 코드 서명 · SHA-256",
+"pc2d": "릴리스마다 릴리스 노트와 파일 지문 공개",
+"pc3t": "미국 특허 출원 중",
+"pc3d": "7건 출원 · 심사 중",
+"op_e": "개방형 설계",
+"op_t": "개방형 포맷으로 산업 납품 표준을 추진",
+"op1t": "개방",
+"op1h": "ZX / ZF는 표준 OpenUSD",
+"op1d": "어떤 도구로도 열고 검증할 수 있음",
+"op2t": "양방향",
+"op2h": "Revit ⇄ Omniverse",
+"op2d": "식별 정보와 함께 내보내고, 네이티브로 가져오기",
+"op3t": "표준",
+"op3h": "HTFA 디지털 트윈 위원회",
+"op3d": "OpenUSD를 납품 형식으로 하는 산업 사양 추진",
+"op_eco": "호환 생태계",
+"in_e": "주력 산업",
+"in_t": "반도체 팹과 AI 데이터센터에 집중",
+"in1t": "반도체 팹",
+"in1d": "진공 펌프, 스크러버, 칠러… 시스템도 관계자도 많아 설계부터 운영까지 전달이 반복됩니다. 오너는 ZX FSM에서 하나의 표준을 정하고, 모든 납품을 같은 표준으로 검수합니다.",
+"in2t": "AI 데이터센터",
+"in2d": "CDU(냉각수 분배 장치), UPS 등의 설비는 NVIDIA Omniverse에서 배치, 시뮬레이션, 디지털 트윈 작업을 거칩니다. ZXBuilder는 Revit 설계를 식별 정보와 함께 OpenUSD로 옮기고, 변경 후 다시 Revit으로 가져옵니다.",
+"rv_t": "모든 이해관계자를 위한 가치",
+"rl1t": "오너",
+"rl1h": "표준은 한 번만 정의",
+"rl1d": "모든 납품을 검수",
+"rl2t": "시공사 · 설비 공급업체",
+"rl2h": "지금 가진 Revit 모델이",
+"rl2d": "SimReady 디지털 트윈으로",
+"rl3t": "운영 팀",
+"rl3h": "첫날부터",
+"rl3d": "트윈이 올바른 데이터를 지님",
+"v_e": "소개 영상",
+"v_t": "Reality Matrix AI 소개: ZXBuilder와 ZX FSM",
+"v_d": "각 영상은 약 2~3분이며 문제, 왜 지금인가, 공백, 포지셔닝, 실증, ZX FSM, 개방성, 가치, 다음 단계를 차례로 소개합니다. 중국어, 영어, 일본어, 한국어 4개 언어로 제공됩니다.",
+"v_dl": "동영상 다운로드",
+"nx_e": "다음 단계",
+"nx_t": "다음: 팹에서 AI 팩토리로",
+"nx_note": "아래는 계획 중인 방향으로 아직 제공되지 않으며, 시기는 별도로 안내합니다.",
+"nx1t": "AI 팩토리용 SimReady 부품 라이브러리",
+"nx1d": "전기·열 데이터로 NVIDIA DSX 워크플로에 대응",
+"nx2t": "납품 패키지 + 비교 보고서",
+"nx2d": "표준 → 납품 → 검수를 한 흐름으로",
+"nx3t": "AI 에이전트용 인터페이스",
+"nx3d": "AI 에이전트가 ZX 도구를 직접 사용",
+"dl_e": "제품 &middot; 다운로드형 소프트웨어",
+"dl_t": "ZXBuilder&trade; &mdash; Reality Matrix AI의 다운로드형 소프트웨어",
+"dl_name": "ZXBuilder &mdash; Autodesk Revit 2027용 USD &harr; Revit 플러그인",
+"dl_d": "ZXBuilder는 Reality Matrix AI Inc.의 다운로드형 컴퓨터 소프트웨어입니다. Autodesk Revit 2027용 플러그인으로 OpenUSD와 Revit 간에 3D 모델 및 BIM 데이터를 변환·번역·교환합니다. Reality Matrix AI Inc.의 EV 코드 서명이 적용된 Windows 설치 프로그램(MSI)으로 제공되며 30일 무료 체험이 가능합니다.",
+"dl_ver": "최신 릴리스(Pre-Beta)와 다운로드는 www.zxbuilder.club을 확인하세요 &middot; Windows &middot; Autodesk Revit 2027",
+"dl_btn1": "ZXBuilder 다운로드 &mdash; 무료 체험 &rarr;",
+"dl_btn2": "제품 사이트: www.zxbuilder.club",
+"dl_svc": "<strong>ZXBuilder 이름으로 제공하는 소프트웨어 서비스:<\/strong> 온라인 라이선스 및 체험 키 발급 &middot; 소프트웨어 설계 및 개발 &middot; 업데이트 및 유지보수 &middot; 기술 컨설팅, 통합 및 교육. 체험판과 정식 라이선스는 Reality Matrix AI Inc.가 ZXBuilder 라이선스 서비스를 통해 발급합니다.",
+"te": "팀",
+"tt": "업계 베테랑이 구축",
+"tm_bio": "창업자 겸 CEO Michael Lin은 산업용 소프트웨어, 3D, 시뮬레이션 분야에서 25년 이상, BIM 실무 20년의 경력을 갖고 있으며 ZXBuilder의 USD → Revit 엔진을 직접 개발했습니다. 공동 창업자 겸 CFO와 자문위원회 6명 가운데 4명은 Autodesk, AVEVA, PTC 산업용 소프트웨어 생태계와 그 파트너 출신입니다.",
+"fc_t": "이미 가진 Revit 모델로 SimReady 팹을",
+"fc_d": "ZXBuilder와 ZX FSM을 무료로 체험하거나, 프로젝트에 대해 편하게 문의해 주세요.",
+"fc_cta1": "무료 체험 다운로드",
+"fc_cta2": "기업 문의",
+"foot": "© 2026 <strong>Reality Matrix AI Inc.<\/strong> (實矩科技) · 타이베이, 대만",
+"zp_link": "ZXBuilder · ZX FSM 다운로드",
+"nv_link": "OpenUSD",
+"ct_link": "문의하기",
+"ftr_tm": "ZXBuilder&trade;, Z 로고, Reality Matrix AI&trade; 및 큐브 로고는 Reality Matrix AI Inc.의 상표입니다."
 }
 };
-
 function selectVideo(l){
   document.querySelectorAll('.vid-panel').forEach(p=>{ const on=p.dataset.vl===l; p.classList.toggle('active',on); const v=p.querySelector('video'); if(!on && v && !v.paused) v.pause(); });
   document.querySelectorAll('.vtab').forEach(b=>{ const on=b.dataset.vl===l; b.classList.toggle('active',on); b.setAttribute('aria-selected',on?'true':'false'); });
 }
 function setLang(lang){
-  const t = _RM[lang];
-  if(!t) return;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k = el.dataset.i18n;
-    if(t[k] !== undefined) el.innerHTML = t[k];
-  });
-  const h1 = document.querySelector('.hero h1');
-  if(h1){ const s = h1.querySelector('.g'); if(s) s.textContent = t.h2; const f = h1.firstChild; if(f && f.nodeType===3) f.textContent = t.h1+'\n'; }
-  const hs = document.querySelector('.hero-sub'); if(hs) hs.innerHTML = t.h_sub;
-  const ht = document.querySelector('.hero-tag'); if(ht) ht.innerHTML = t.h_tag;
-  document.querySelectorAll('.cta-primary').forEach(b=>{
-    const tn = Array.from(b.childNodes).find(n=>n.nodeType===3 && n.textContent.trim());
-    if(tn) tn.textContent = ' '+t.h_cta1+' ';
-  });
-  document.querySelectorAll('.cta-secondary').forEach(b=>{ if(b.tagName==='A') b.textContent = t.h_cta2; });
-  const dt = document.querySelector('.diagram-title'); if(dt) dt.textContent = t.diag_title;
-  const dboxes = document.querySelectorAll('.diag-box');
-  if(dboxes[0]){ dboxes[0].querySelectorAll('.diag-name')[0].textContent=t.d1n; const subs=dboxes[0].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d1s1; if(subs[1]) subs[1].textContent=t.d1s2; }
-  if(dboxes[1]){ dboxes[1].querySelectorAll('.diag-name')[0].textContent=t.d2n; const subs=dboxes[1].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d2s1; if(subs[1]) subs[1].textContent=t.d2s2; }
-  if(dboxes[2]){ dboxes[2].querySelectorAll('.diag-name')[0].textContent=t.d3n; const subs=dboxes[2].querySelectorAll('.diag-sub'); if(subs[0]) subs[0].textContent=t.d3s1; if(subs[1]) subs[1].textContent=t.d3s2; }
-  document.querySelectorAll('.arrow-text').forEach((a,i)=>{ a.textContent=(i%2===0)?t.arr1:t.arr2; });
-  const nse=document.querySelector('#ecosystem .section-eyebrow'); if(nse) nse.textContent=t.ns_e;
-  const nst=document.querySelector('#ecosystem .section-title'); if(nst) nst.textContent=t.ns_t;
-  const nsd=document.querySelector('#ecosystem .section-desc'); if(nsd) nsd.textContent=t.ns_d;
-  const nlc=document.querySelectorAll('.nv-link-card');
-  [[t.nl1,t.nl1s],[t.nl2,t.nl2s],[t.nl3,t.nl3s],[t.nl4,t.nl4s]].forEach(([l,s],i)=>{
-    if(nlc[i]){ const lbl=nlc[i].querySelector('.nv-link-label'); const sub=nlc[i].querySelector('.nv-link-sub'); if(lbl) lbl.textContent=l; if(sub) sub.textContent=s; }
-  });
-  const nbc=document.querySelectorAll('.nv-badge-card');
-  [[t.nb1,t.nb1d],[t.nb2,t.nb2d],[t.nb3,t.nb3d],[t.nb4,t.nb4d]].forEach(([ti,d],i)=>{
-    if(nbc[i]){ const tt2=nbc[i].querySelector('.nv-badge-title'); const dd=nbc[i].querySelector('.nv-badge-desc'); if(tt2) tt2.innerHTML=ti; if(dd) dd.textContent=d; }
-  });
-  const pe=document.querySelector('#product .section-eyebrow'); if(pe) pe.textContent=t.pe;
-  const psd=document.querySelector('#product .section-desc'); if(psd){ const a=psd.querySelector('a'); const aHtml=a?a.outerHTML:'<a href="https://www.zxbuilder.club/" target="_blank">www.zxbuilder.club</a>'; psd.innerHTML=t.pd+' '+aHtml+'.'; }
-  const ptag=document.querySelector('.product-tagline'); if(ptag) ptag.textContent=t.p_tag;
-  const pver=document.querySelector('.product-version'); if(pver) pver.textContent=t.p_ver;
-  const feats=document.querySelectorAll('.product-feature');
-  [[t.pf1t,t.pf1d],[t.pf2t,t.pf2d],[t.pf3t,t.pf3d],[t.pf4t,t.pf4d],[t.pf5t,t.pf5d],[t.pf6t,t.pf6d]].forEach(([ft,fd],i)=>{
-    if(feats[i]){ const ftt=feats[i].querySelector('.feat-title'); const fdd=feats[i].querySelector('.feat-desc'); if(ftt) ftt.textContent=ft; if(fdd) fdd.textContent=fd; }
-  });
-  const sere=document.querySelector('#who .section-eyebrow'); if(sere) sere.textContent=t.se;
-  const sert=document.querySelector('#who .section-title'); if(sert) sert.textContent=t.st_t;
-  const serd=document.querySelector('#who .section-desc'); if(serd) serd.textContent=t.sd;
-  const scards=document.querySelectorAll('.serve-card');
-  [[t.sc1t,t.sc1d],[t.sc2t,t.sc2d],[t.sc3t,t.sc3d]].forEach(([ct,cd],i)=>{
-    if(scards[i]){ const tt2=scards[i].querySelector('.serve-title'); const dd=scards[i].querySelector('.serve-desc'); if(tt2) tt2.textContent=ct; if(dd) dd.textContent=cd; }
-  });
-  const wcards=document.querySelectorAll('.why-card');
-  [[t.wc1t,t.wc1d],[t.wc2t,t.wc2d],[t.wc3t,t.wc3d],[t.wc4t,t.wc4d]].forEach(([ct,cd],i)=>{
-    if(wcards[i]){ const tt2=wcards[i].querySelector('.why-title'); const dd=wcards[i].querySelector('.why-desc'); if(tt2) tt2.textContent=ct; if(dd) dd.textContent=cd; }
-  });
-  const teBio=document.querySelector('.team-bio'); if(teBio) teBio.innerHTML=t.tm_bio;
-  const fch=document.querySelector('.final-cta h2'); if(fch) fch.innerHTML=t.fc_t;
-  const fcp=document.querySelector('.final-cta p'); if(fcp) fcp.textContent=t.fc_d;
-  const fl=document.querySelector('.footer-left'); if(fl) fl.innerHTML=t.foot+' · <a href="mailto:michael.lin@realitymatrixai.com" style="color:var(--text-muted)">michael.lin@realitymatrixai.com</a>';
-  const flinks=document.querySelectorAll('.footer-links a');
-  if(flinks[0]) flinks[0].textContent=t.zp_link;
-  if(flinks[1]) flinks[1].textContent=t.nv_link;
-  if(flinks[2]) flinks[2].textContent=t.ct_link;
+  const t=_RM[lang]; if(!t) return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.dataset.i18n; if(t[k]!==undefined) el.innerHTML=t[k]; });
+  if(t.doc_title) document.title=t.doc_title;
   selectVideo(lang);
   document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('active'));
   const ab=document.getElementById('lbtn-'+lang); if(ab) ab.classList.add('active');
-  localStorage.setItem('rm_lang',lang);
-  document.documentElement.lang=lang==='zh'?'zh-TW':lang==='ko'?'ko':'ja'===lang?'ja':lang;
+  try{ localStorage.setItem('rm_lang',lang); }catch(e){}
+  document.documentElement.lang = lang==='zh' ? 'zh-TW' : lang;
 }
 (function(){
-  const saved=localStorage.getItem('rm_lang');
+  let q=null, saved=null;
+  try{ q=new URLSearchParams(location.search).get('lang'); }catch(e){}
+  try{ saved=localStorage.getItem('rm_lang'); }catch(e){}
   const nav=navigator.language||'';
-  const auto=saved||(nav.startsWith('zh')?'zh':nav.startsWith('ja')?'ja':nav.startsWith('ko')?'ko':'en');
-  setLang(auto);
+  const pick=(q&&_RM[q])?q:((saved&&_RM[saved])?saved:(nav.startsWith('zh')?'zh':nav.startsWith('ja')?'ja':nav.startsWith('ko')?'ko':'en'));
+  setLang(pick);
 })();
 </script>
 </body>
